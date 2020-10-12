@@ -2,22 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <title>Bienvenue sur Sortir.com !</title>
 </head>
 <body>
 
 
+{% block logo %}
+    <div class="logo">
+        <div class="logoanimation">Sortir.com</div>
+    </div>
+{% endblock %}
+
+
 
 <!-- Menu -->
 {% block menu %}
-    Ici le menu
+    <div class="menu">
+        <a class="menubutton" href="http://www.google.com">Bouton test</a>
+        <a class="menubutton" href="http://www.google.com">Bouton test</a>
+        <a class="menubutton" href="http://www.google.com">Bouton test</a>
+
+    </div>
 {% endblock %}
 
 
 
 <!-- Main part of the page that will be edited  -->
 {%  block main %}
-    <h1> Ceci est le block main</h1>
 {% endblock %}
 
 
@@ -25,7 +37,10 @@
 
 <!-- Footer part  -->
 {% block footer %}
-    Ceci est le footer
+    <div class="footer">
+        <div class="authors">Made by Samy, Laetitia, Raphael & Kevin</div>
+        <div class="copyrights"> &copy {{ "now"|date("Y") }}</div>
+    </div>
 {%  endblock %}
 
 

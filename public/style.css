@@ -1,0 +1,77 @@
+/* Variables */
+:root{
+    --main-background-color : #00072D ;
+    --second-background-color: #0A2472 ;
+    --third-background-color: #A6E1FA;
+    --first-font-family: "Bookman Old Style";
+}
+
+/* HTML basics */
+body{
+    background-color: var(--second-background-color);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* Twig blocks */
+
+.logo{
+    text-align: center;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+    font-size: 60px;
+    font-weight: bold;
+}
+.logoanimation{
+    animation: logoanimation 4s;
+}
+
+.main{
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border:solid 3px black;
+    border-radius: 30px;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: var(--third-background-color);
+
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+}
+.menu{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+.menubutton{
+    background-color: var(--third-background-color);
+    height: 50px;
+    width: 200px;
+    border:solid 3px black;
+    border-radius: 30px;
+    padding-top:15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* Keyframes and animations */
+@keyframes logoanimation  {
+    from{
+        transform: translateY(-400px);
+            }
+    to{
+        transform: translate(0px);
+    }
+}
