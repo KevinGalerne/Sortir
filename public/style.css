@@ -1,14 +1,17 @@
 /* Variables */
 :root{
-    --main-background-color : #00072D ;
-    --second-background-color: #0A2472 ;
-    --third-background-color: #A6E1FA;
-    --first-font-family: "Bookman Old Style";
+    --main-background-color : #005AA7 ;
+    --second-background-color: #2c3e50;
+    --third-background-color: #ecf0f1;
+    --first-font-family: 'Lobster', cursive;
+    --second-font-family : 'Amatic SC', cursive;
 }
 
 /* HTML basics */
 body{
     background-color: var(--second-background-color);
+    font-family: var(--second-font-family);
+    color: var(--main-background-color);
 }
 a{
     text-decoration: none;
