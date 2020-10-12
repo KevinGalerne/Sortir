@@ -5,7 +5,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2c1a40f-dc7e-4774-9b4b-93776d6fffc5" name="Default Changelist" comment="" />
+    <list default="true" id="d2c1a40f-dc7e-4774-9b4b-93776d6fffc5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,6 +134,7 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/orm-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="1im8gzaDdbrn418Ej1EO2z67koZ" />
@@ -164,6 +169,9 @@
       <workItem from="1602502880315" duration="15000" />
       <workItem from="1602502913818" duration="5000" />
       <workItem from="1602502934658" duration="41000" />
+      <workItem from="1602510368927" duration="134000" />
+      <workItem from="1602512229810" duration="91000" />
+      <workItem from="1602512487759" duration="390000" />
     </task>
     <servers />
   </component>
