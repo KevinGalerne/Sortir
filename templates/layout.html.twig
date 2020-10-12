@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bienvenu sur Sortir.com !</title>
+    <title>Bienvenue sur Sortir.com !</title>
 </head>
 <body>
+
+
+
+<!-- Menu -->
+{% block menu %}
+    Ici le menu
+{% endblock %}
+
+
+
+<!-- Main part of the page that will be edited  -->
+{%  block main %}
+    <h1> Ceci est le block main</h1>
+{% endblock %}
+
+
+
+
+<!-- Footer part  -->
+{% block footer %}
+    Ceci est le footer
+{%  endblock %}
+
+
+
 
 </body>
 </html>
