@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
@@ -18,7 +20,8 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column (type="string")
+     * @Assert\Length(max="100", maxMessage="The name should be 100 characters max !")
+     * @ORM\Column (type="string", length=100)
      */
     private $name;
 

@@ -30,7 +30,6 @@ a{
 .logoanimation{
     animation: logoanimation 4s;
 }
-
 .main{
     text-align: center;
     padding-top: 40px;
@@ -41,7 +40,6 @@ a{
     margin-left: 200px;
     margin-right: 200px;
     background-color: var(--third-background-color);
-
 }
 .footer{
     position: fixed;

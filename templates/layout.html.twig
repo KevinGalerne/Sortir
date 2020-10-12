@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -19,21 +19,21 @@
 
 
 <!-- Menu -->
+<div class="menu">
 {% block menu %}
-    <div class="menu">
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
-        <a class="menubutton" href={{ path('event') }}>Test Evènements</a>
-
+        <a class="menubutton" href={{ path('events') }}>Test Evènements</a>
     </div>
 {% endblock %}
-
+</div>
 
 
 <!-- Main part of the page that will be edited  -->
+<div class="main">
 {%  block main %}
 {% endblock %}
-
+</div>
 
 
 
