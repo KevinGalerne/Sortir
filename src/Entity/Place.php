@@ -48,11 +48,11 @@ class Place
     /**
      * @ORM\OneToMany(targetEntity=Event::class, mappedBy="place")
      */
-    private $events;
+    private $event;
 
     public function __construct()
     {
-        $this->events = new ArrayCollection();
+        $this->event = new ArrayCollection();
     }
 
     //GETTERS & SETTERS -----------------------------------------------------------------------------------------------
