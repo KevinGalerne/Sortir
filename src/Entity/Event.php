@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Event
 {
+    // PROPRIETES ---------------------------------------------------------------------------------------------------
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -55,6 +56,10 @@ class Event
      */
     private $description;
 
+    //RELATIONS -----------------------------------------------------------------------------------------------------
+
+
+    //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
     public function getId(): ?int
     {
         return $this->id;
