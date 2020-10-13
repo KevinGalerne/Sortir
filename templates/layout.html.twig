@@ -11,15 +11,19 @@
 
 
 {% block logo %}
-    <div class="logo">
-        <div class="logoanimation">Sortir.com</div>
+    <div class="logoblock">
+        <div class="logoanimation">
+            <a href={{ path('index') }}>
+                <div class="logo"> Sortir.com </div>
+            </a>
+        </div>
     </div>
 {% endblock %}
 
 
 
 <!-- Menu -->
-<div class="menu">
+<div class="menublock">
 {% block menu %}
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
@@ -30,7 +34,7 @@
 
 
 <!-- Main part of the page that will be edited  -->
-<div class="main">
+<div class="mainblock">
 {%  block main %}
 {% endblock %}
 </div>
@@ -39,7 +43,7 @@
 
 <!-- Footer part  -->
 {% block footer %}
-    <div class="footer">
+    <div class="footerblock">
         <div class="authors">Made by Samy, Laetitia, Raphael & Kevin</div>
         <div class="copyrights"> &copy {{ "now"|date("Y") }}</div>
     </div>

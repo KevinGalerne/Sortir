@@ -7,7 +7,15 @@
     --second-font-family : 'Amatic SC', cursive;
 }
 
-/* HTML basics */
+
+
+
+
+/*
+ *
+ *HTML basics
+ */
+
 body{
     background-color: var(--second-background-color);
     font-family: var(--second-font-family);
@@ -15,22 +23,37 @@ body{
 }
 a{
     text-decoration: none;
-    color: black;
 }
 
-/* Twig blocks */
 
-.logo{
+
+
+
+
+
+/*
+ *
+ *Twig blocks
+ */
+
+
+/*Logo block */
+.logoblock{
     text-align: center;
     font-family: var(--first-font-family);
-    color: var(--third-background-color);
     font-size: 60px;
     font-weight: bold;
 }
 .logoanimation{
     animation: logoanimation 4s;
 }
-.main{
+
+.logo{
+    color: var(--third-background-color);
+}
+
+/* Main block */
+.mainblock{
     text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -41,7 +64,9 @@ a{
     margin-right: 200px;
     background-color: var(--third-background-color);
 }
-.footer{
+
+/*Footer block */
+.footerblock{
     position: fixed;
     bottom: 0;
     right: 0;
@@ -49,7 +74,7 @@ a{
     font-family: var(--first-font-family);
     color: var(--third-background-color);
 }
-.menu{
+.menublock{
     padding-top: 40px;
     padding-bottom: 40px;
     display: flex;
@@ -65,6 +90,13 @@ a{
     text-align: center;
     font-weight: bold;
 }
+
+
+
+
+
+
+
 
 
 /* Keyframes and animations */
