@@ -26,14 +26,7 @@ class EventsController extends AbstractController
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished("false");
 
-
-
-
-
-
-
         $eventForm = $this->createForm(EventType::class, $event);
-
 
         return $this->render('events/create_event.html.twig', [
             "eventForm" => $eventForm->createView()
