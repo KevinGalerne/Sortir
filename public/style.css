@@ -91,9 +91,17 @@ a{
     font-weight: bold;
 }
 
+/*
+*
+* Create User
+*
+*/
 
-
-
+.forminput{
+    border-radius: 30px;
+    color: var(--third-background-color);
+    background-color: var(--main-background-color);
+}
 
 
 
