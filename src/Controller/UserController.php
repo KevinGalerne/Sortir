@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
@@ -17,7 +18,7 @@ class UserController extends AbstractController
      */
 
     //create new request
-    public function add(Request $request, EntityManagerInterface $entityManager )
+    public function add(Request $request, EntityManagerInterface $entityManager,UserPasswordEncoderInterface $passwordEncoder)
     {
         //create new user
         $user = new User();
@@ -30,6 +31,15 @@ class UserController extends AbstractController
 
         //if form is submit and if data are validate
         if($userForm->isSubmitted() && $userForm->isValid()) {
+
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $userForm->get('password')->getData()
+                )
+            );
+
 
             //save data
             $entityManager->persist($user);

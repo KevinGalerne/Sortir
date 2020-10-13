@@ -185,12 +185,9 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->userName;
+        return (string) $this->email;
     }
-    public function setUsername($userName): void
-    {
-        $this->userName = $userName;
-    }
+
 
     /**
      * @see UserInterface
