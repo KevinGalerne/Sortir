@@ -16,22 +16,21 @@ class UserController extends AbstractController
      * @Route("/add", name="profil_add")
      */
 
-    //création de la requete
+    //create new request
     public function add(Request $request, EntityManagerInterface $entityManager )
     {
-        //creation d'un nouvel user
+        //create new user
         $user = new User();
 
-        //création du formulaire
-        //récupération des données
+        //create form and get data
         $userForm = $this->createForm(UserType::class, $user);
         $userForm->handleRequest($request);
 
 
-        //si le formulaire est soumis et que les données sont valides
+        //if form is submit and if data are validate
         if($userForm->isSubmitted() && $userForm->isValid()) {
 
-            //garde en mémoire puis enregistre
+            //save data
             $entityManager->persist($user);
             $entityManager->flush();
 
