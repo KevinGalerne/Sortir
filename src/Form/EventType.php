@@ -6,14 +6,17 @@ use App\Entity\Event;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EventType extends AbstractType
@@ -48,6 +51,15 @@ class EventType extends AbstractType
             ->add('place',
                   EntityType::class,
                        ["class"=>"App\Entity\Place", "choice_label"=>"name"])
+            ->add('save',
+                  SubmitType::class,
+                       ['label' => 'Enregistrer'])
+            ->add('publish',
+                  SubmitType::class,
+                       ['label' => 'Publier'])
+            ->add('cancel',
+                  SubmitType::class,
+                       ['label' => 'Annuler'])
         ;
     }
 

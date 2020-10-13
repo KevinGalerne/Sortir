@@ -182,6 +182,7 @@ button{
 .formdescription{
     display: inline-flex;
 }
+
 /* Keyframes and animations */
 @keyframes logoanimation  {
     from{
