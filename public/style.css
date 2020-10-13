@@ -59,8 +59,8 @@ button{
 .logoanimation{
     animation: logoanimation 4s;
 }
-
 .logo{
+    height: 30vh;
     color: var(--third-background-color);
 }
 
@@ -71,7 +71,6 @@ button{
     padding-bottom: 40px;
     border:solid 3px black;
     border-radius: 30px;
-    margin-top: 50px;
     margin-left: 10%;
     margin-right: 10%;
     background-color: var(--third-background-color);
@@ -204,9 +203,9 @@ button{
 /* Keyframes and animations */
 @keyframes logoanimation  {
     from{
-        transform: translateY(-400px);
+        transform: translateY(-400px) scale(3);
     }
     to{
-        transform: translate(0px);
+        transform: translate(0px) scale(1);
     }
 }
