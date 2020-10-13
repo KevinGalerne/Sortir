@@ -10,7 +10,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="welcome")
      */
-    public function login()
+    public function welcome()
     {
         return $this->render('default/welcome.html.twig', [
             'controller_name' => 'DefaultController',
