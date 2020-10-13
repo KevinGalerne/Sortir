@@ -4,19 +4,57 @@
 {%  block main %}
 
 
-
     <div class="formlabel">
         Pseudonyme
     </div>
-    <div class="forminput">
-        {{ form_widget(userForm.username) }}
+            {{ form_widget(userForm.username) }}
+
+
+    <div class="formlabel">
+        Prénom
     </div>
+            {{  form_widget(userForm.firstname) }}
 
 
+    <div class="formlabel">
+        Nom
+    </div>
+    {{  form_widget(userForm.name) }}
 
 
+    <div class="formlabel">
+        Téléphone
+    </div>
+    {{  form_widget(userForm.phonenumber) }}
 
 
+    <div class="formlabel">
+        Email
+    </div>
+    {{  form_widget(userForm.email) }}
 
+
+    <div class="formlabel">
+        Mot de passe
+    </div>
+    {{  form_widget(userForm.password) }}
+
+
+    <div class="formlabel">
+        Confirmation du Mot de passe
+    </div>
+    {{  form_widget(userForm.passwordconfirmation) }}
+
+
+    <div class="button">
+
+    </div>
+    {{  form_widget(userForm.save) }}
+
+
+    <div class="button">
+
+    </div>
+    {{  form_widget(userForm.cancel) }}
 
 {%  endblock  %}
