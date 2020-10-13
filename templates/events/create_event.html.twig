@@ -6,7 +6,6 @@
         <div class="eventside">
             <div class="formlabel">
                 Nom de la sortie : <div class="eventfield">{{ form_widget(eventForm.name) }}</div>
-
             </div>
 
             <div class="formlabel">
@@ -65,6 +64,12 @@
                 Longitude :
             </div>
         </div>
+    </div>
+    {#Div des boutons#}
+    <div>
+        {{ form_widget(eventForm.Enregistrer) }}
+        {{ form_widget(eventForm.Publier) }}
+        {{ form_widget(eventForm.Annuler) }}
     </div>
 {% endblock %}
 
