@@ -9,14 +9,7 @@
 
 
 
-button{
-    background-color: var(--second-background-color);
-    font-family: var(--first-font-family);
-    border-radius: 30px;
-    height: 60px;
-    width: 150px;
-    margin: 20px;
-}
+
 
 
 
@@ -33,7 +26,16 @@ body{
 a{
     text-decoration: none;
 }
+button{
+    background-color: var(--second-background-color);
+    font-family: var(--first-font-family);
+    border-radius: 30px;
+    height: 60px;
+    width: 150px;
+    margin: 20px;
+    color: var(--third-background-color);
 
+}
 
 /*
  *
@@ -107,7 +109,22 @@ a{
     padding: 20px;
     text-align: center;
 }
+.homebuttons{
+    padding: 20px;
+}
+.credentials{
 
+}
+.homebutton{
+    background-color: var(--second-background-color);
+    font-family: var(--first-font-family);
+    font-size: large;
+    color: var(--third-background-color);
+    border-radius: 30px;
+    height: 60px;
+    width: 150px;
+    margin: 20px;
+}
 
 
 
