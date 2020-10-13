@@ -1,6 +1,37 @@
 {% extends "layout.html.twig" %}
 
 
-
 {% block main %}
+    <!-- Welcome page when not connected -->
+
+
+
+    <!-- This part contain the form where user log (credentials)-->
+    <form>
+        <div class="credentials">
+            <div class="homelabel">
+                Identifiant :
+                <input type="text" placeholder="superZorro">
+            </div>
+            <div class="homelabel">
+                Mot de passe :
+                <input type="text" placeholder="Maxi mot de passe inviolable">
+            </div>
+        </div>
+
+
+
+
+        <!-- Buttons part-->
+        <div class="homebuttons">
+            <input type="button" class="homebutton" value="Connexion">
+            <input type="checkbox" value="Se souvenir de moi">Se souvenir de moi
+        </div>
+
+
+        <a href="">Mot de passe oublié?</a>
+
+    </form>
+
+
 {%  endblock %}
