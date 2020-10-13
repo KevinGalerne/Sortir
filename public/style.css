@@ -24,7 +24,13 @@ body{
 a{
     text-decoration: none;
 }
-
+.button{
+    background-color: var(--second-background-color);
+    font-family: var(--first-font-family);
+    border-radius: 30px;
+    height: 60px;
+    width: 150px;
+}
 
 
 
@@ -41,7 +47,7 @@ a{
 .logoblock{
     text-align: center;
     font-family: var(--first-font-family);
-    font-size: 60px;
+    font-size: 100px;
     font-weight: bold;
 }
 .logoanimation{
@@ -93,12 +99,29 @@ a{
 
 /*
 *
-* Create User
+* Home page
+*
+*/
+
+.homelabel{
+    font-family: var(--second-font-family);
+    color: var(--main-background-color);
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+
+/*
+*
+* Create User page
 *
 */
 
 .forminput{
     border-radius: 30px;
+    background-color: var(--main-background-color);
 }
 .formlabel{
     font: var(--first-font-family);
@@ -113,7 +136,7 @@ a{
 @keyframes logoanimation  {
     from{
         transform: translateY(-400px);
-            }
+    }
     to{
         transform: translate(0px);
     }
