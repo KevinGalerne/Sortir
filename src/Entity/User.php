@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -35,10 +36,11 @@ class User
     /**
      * @ORM\Column(type="integer")
      */
-    private $telephonenumber;
+    private $phonenumber;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Email(message="Ceci n'est pas un email valide.")
      */
     private $email;
 
@@ -94,14 +96,14 @@ class User
         return $this;
     }
 
-    public function getTelephonenumber(): ?int
+    public function getphonenumber(): ?int
     {
-        return $this->telephonenumber;
+        return $this->phonenumber;
     }
 
-    public function setTelephonenumber(int $telephonenumber): self
+    public function setphonenumber(int $phonenumber): self
     {
-        $this->telephonenumber = $telephonenumber;
+        $this->phonenumber = $phonenumber;
 
         return $this;
     }
