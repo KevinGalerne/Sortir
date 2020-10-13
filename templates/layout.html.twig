@@ -25,10 +25,12 @@
 <!-- Menu -->
 <div class="menublock">
 {% block menu %}
+    {% if app.user %}
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
         <a class="menubutton" href={{ path('events') }}>Test Evènements</a>
         <a class="menubutton" href={{ path('profil_add') }}>Enregistrer un utilisateur</a>
+    {% endif %}
     </div>
 {% endblock %}
 </div>
