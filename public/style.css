@@ -44,7 +44,7 @@ button {
 .logoblock {
     text-align: center;
     font-family: var(--first-font-family);
-    font-size: 100px;
+    font-size: 160px;
     font-weight: bold;
 }
 
@@ -63,7 +63,7 @@ button {
     padding-bottom: 40px;
     border: solid 3px black;
     border-radius: 20px;
-    margin-top: 50px;
+    margin-top: 0px;
     margin-left: 200px;
     margin-right: 200px;
     background-color: var(--third-background-color);
@@ -109,13 +109,10 @@ button {
     padding: 20px;
     text-align: center;
 }
-
 .homebuttons {
     padding: 20px;
 }
-
 .credentials {
-
 }
 
 .homebutton {
