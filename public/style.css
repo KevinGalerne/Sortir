@@ -99,8 +99,10 @@ a{
 
 .forminput{
     border-radius: 30px;
-    color: var(--third-background-color);
-    background-color: var(--main-background-color);
+}
+.formlabel{
+    font: var(--first-font-family);
+    color : var(--main-background-color)
 }
 
 

@@ -3,7 +3,18 @@
 
 {%  block main %}
 
-{{ form(userForm)}}
+
+
+    <div class="formlabel">
+        Pseudonyme
+    </div>
+    <div class="forminput">
+        {{ form_widget(userForm.username) }}
+    </div>
+
+
+
+
 
 
 
