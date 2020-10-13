@@ -14,34 +14,33 @@
     <div class="logoblock">
         <div class="logoanimation">
             <a href={{ path('index') }}>
-                <div class="logo"> Sortir.com </div>
+                <div class="logo"> Sortir.com</div>
             </a>
         </div>
     </div>
 {% endblock %}
 
 
-
 <!-- Menu -->
-<div class="menublock">
-{% block menu %}
+
+    {% block menu %}
     {% if app.user %}
+        <div class="menublock">
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
         <a class="menubutton" href="http://www.google.com">Bouton test</a>
         <a class="menubutton" href={{ path('events') }}>Test Evènements</a>
         <a class="menubutton" href={{ path('profil_add') }}>Enregistrer un utilisateur</a>
+        </div>
     {% endif %}
-    </div>
 {% endblock %}
-</div>
+
 
 
 <!-- Main part of the page that will be edited  -->
 <div class="mainblock">
-{%  block main %}
-{% endblock %}
+    {% block main %}
+    {% endblock %}
 </div>
-
 
 
 <!-- Footer part  -->
@@ -50,9 +49,7 @@
         <div class="authors">Made by Samy, Laetitia, Raphael & Kevin</div>
         <div class="copyrights"> &copy {{ "now"|date("Y") }}</div>
     </div>
-{%  endblock %}
-
-
+{% endblock %}
 
 
 </body>
