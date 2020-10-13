@@ -17,7 +17,13 @@
  *
  *HTML basics
  */
-
+select{
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    letter-spacing: 1px;
+    font-weight: bold;
+    width: 5vw;
+}
 body{
     background-color: var(--second-background-color);
     font-family: var(--second-font-family);
@@ -137,13 +143,17 @@ button{
 *
 */
 
-.forminput{
+.forminput {
+    height: 2vh;
+    width: 15vw;
     border-radius: 30px;
     background-color: var(--main-background-color);
-    color:var(--third-background-color);
+    color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
+    text-align: center;
 }
+
 .formlabel{
     font: var(--first-font-family);
     color : var(--main-background-color);
@@ -165,8 +175,13 @@ button{
 * Event page
 */
 .eventdescription{
-    height: 150px;
-    width: 200px;
+    height: 20vh;
+    width: 15vw;
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+
 }
 
 .eventform{

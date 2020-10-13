@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\City;
 use App\Entity\Event;
+use App\Entity\Place;
 use App\Form\EventType;
+use App\Repository\CityRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +26,13 @@ class EventsController extends AbstractController
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished("false");
 
-        $eventForm = $this->createForm(EventType::class);
+
+
+
+
+
+
+        $eventForm = $this->createForm(EventType::class, $event);
 
 
         return $this->render('events/create_event.html.twig', [

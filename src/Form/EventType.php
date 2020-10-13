@@ -45,9 +45,13 @@ class EventType extends AbstractType
             ->add('description',
                   TextareaType::class,
                        ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
-            ->add('city',
-                  EntityType::class,
-                       ["class"=>"App\Entity\City", "choice_label"=>"name"])
+
+
+            //throw new \Exception('TODO: corriger les getters);
+            //->add('city',
+            //     EntityType::class,
+            //          ["class"=>"App\Entity\City", "choice_label"=>"name"])
+
             ->add('place',
                   EntityType::class,
                        ["class"=>"App\Entity\Place", "choice_label"=>"name"])

@@ -22,6 +22,7 @@ class UserController extends AbstractController
         //create new user
         $user = new User();
 
+
         //create form and get data
         $userForm = $this->createForm(UserType::class, $user);
         $userForm->handleRequest($request);

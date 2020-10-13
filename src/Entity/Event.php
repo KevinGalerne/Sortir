@@ -68,6 +68,12 @@ class Event
      */
     private $place;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Author;
+
     //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
     public function getId(): ?int
     {
@@ -212,6 +218,18 @@ class Event
     public function setIsPublished($isPublished): void
     {
         $this->isPublished = $isPublished;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->Author;
+    }
+
+    public function setAuthor(?User $Author): self
+    {
+        $this->Author = $Author;
+
+        return $this;
     }
 
 

@@ -1,7 +1,12 @@
 {% extends "layout.html.twig" %}
 
 {% block main %}
+
+
     <div class="eventform">
+
+
+
         <!-- Left Side -->
         <div class="eventside">
             <div class="formlabel">
@@ -32,6 +37,12 @@
             </div>
         </div>
 
+
+
+
+
+
+
         <!-- Right Side -->
         <div class="eventside">
             <div class="formlabel">
@@ -39,7 +50,7 @@
             </div>
 
             <div class="formlabel">
-                Ville : {{ form_widget(eventForm.city) }}
+                Ville :
 
             </div>
 
@@ -65,6 +76,13 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
     {#Div des boutons#}
     <div>
         {{ form_widget(eventForm.save) }}
