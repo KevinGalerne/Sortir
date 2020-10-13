@@ -16,14 +16,11 @@ class EventsController extends AbstractController
      */
     public function create(Request $request)
     {
-        /*
         //Création d'un nouvel évènement
         $event = new Event();
         //Hydratation des propriétés qui sont fixées automatiquement
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished("false");
-        $event->setCampus(this.campus
-        */
 
         $eventForm = $this->createForm(EventType::class);
 

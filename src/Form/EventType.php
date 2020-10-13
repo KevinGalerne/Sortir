@@ -25,11 +25,17 @@ class EventType extends AbstractType
                   TextType::class,
                        ["attr"=>["class"=>"forminput", "placeholder"=>"Entrez le nom de la sortie."]])
             ->add('eventDate',
-                  DateTimeType::class)
+                  DateTimeType::class,
+                       ["data" => new \DateTime('now')])
             ->add('duration',
-                  TimeType::class)
+                  TimeType::class,
+                       ["placeholder"=>[
+                           "hour"=>"Heures",
+                           "minute"=>"Minutes"
+                       ]])
             ->add('subscriptionLimitDate',
-                  DateType::class)
+                  DateType::class,
+                       ["data" => new \DateTime('now')])
             ->add('maxParticipants',
                   IntegerType::class,
                        ["attr"=>["class"=>"forminput"]])

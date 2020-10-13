@@ -56,6 +56,11 @@ class Event
      */
     private $description;
 
+    /**
+     * @ORM\Column (type="boolean")
+     */
+    private $isPublished;
+
     //RELATIONS -----------------------------------------------------------------------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="event")
@@ -192,6 +197,23 @@ class Event
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIsPublished()
+    {
+        return $this->isPublished;
+    }
+
+    /**
+     * @param mixed $isPublished
+     */
+    public function setIsPublished($isPublished): void
+    {
+        $this->isPublished = $isPublished;
+    }
+
 
 
 }

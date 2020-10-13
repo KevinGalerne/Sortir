@@ -2,7 +2,7 @@
 
 
 {%  block main %}
-
+{{ form_start(userForm) }}
     <div class="formlabel">
         Pseudo
     </div>
@@ -50,6 +50,6 @@
 
         {{  form_widget(userForm.cancel) }}
     </div>
-
+{{ form_end(userForm) }}
 
 {%  endblock  %}
