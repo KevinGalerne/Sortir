@@ -1,27 +1,71 @@
 {% extends "layout.html.twig" %}
 
 {% block main %}
+    <div class="eventform">
+        <!-- Left Side -->
+        <div class="eventside">
+            <div class="formlabel">
+                Nom de la sortie : <div class="eventfield">{{ form_widget(eventForm.name) }}</div>
 
+            </div>
 
+            <div class="formlabel">
+                Date et heure de la sortie : <div class="eventfield">{{ form_widget(eventForm.eventDate) }}</div>
+            </div>
 
-    <div class="formlabel">
-        Saisir le label ici
+            <div class="formlabel">
+                Date limite d'inscription : <div class="eventfield">{{ form_widget(eventForm.subscriptionLimitDate) }}</div>
+            </div>
+
+            <div class="formlabel">
+                Nombre de places : <div class="eventfield">{{ form_widget(eventForm.maxParticipants) }}</div>
+
+            </div>
+
+            <div class="formlabel">
+                Durée : <div class="eventfield">{{ form_widget(eventForm.duration) }}</div>
+
+            </div>
+
+            <div class="formlabel">
+                Description et infos : <div class="formdescription">{{ form_widget(eventForm.description) }}</div>
+
+            </div>
+        </div>
+
+        <div class="eventside">
+            <!-- Right Side -->
+            <div class="formlabel">
+                Campus :
+            </div>
+
+            <div class="formlabel">
+                Ville : {{ form_widget(eventForm.city) }}
+
+            </div>
+
+            <div class="formlabel">
+                Lieu : {{ form_widget(eventForm.place) }}
+
+            </div>
+
+            <div class="formlabel">
+                Rue :
+            </div>
+
+            <div class="formlabel">
+                Code Postal :
+            </div>
+
+            <div class="formlabel">
+                Latitude :
+            </div>
+
+            <div class="formlabel">
+                Longitude :
+            </div>
+        </div>
     </div>
-
-
-    <div class="forminput">
-        Saisir le widget ici
-    </div>
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
 
 

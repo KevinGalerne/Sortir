@@ -23,26 +23,23 @@ class EventType extends AbstractType
         $builder
             ->add('name',
                   TextType::class,
-                       ["attr"=>["class"=>"forminput", "placeholder"=>"Enter your event's name."]])
+                       ["attr"=>["class"=>"forminput", "placeholder"=>"Entrez le nom de la sortie."]])
             ->add('eventDate',
-                  DateTimeType::class,
-                       ["attr"=>["class"=>"forminput"]])
+                  DateTimeType::class)
             ->add('duration',
-                  TimeType::class,
-                       ["attr"=>["class"=>"forminput"]])
+                  TimeType::class)
             ->add('subscriptionLimitDate',
-                  DateType::class,
-                       ["attr"=>["class"=>"forminput"]])
+                  DateType::class)
             ->add('maxParticipants',
                   IntegerType::class,
                        ["attr"=>["class"=>"forminput"]])
             ->add('description',
                   TextareaType::class,
-                       ["attr"=>["class"=>"forminput", "placeholder"=>"Enter a description of the event."]])
-            ->add('ville',
+                       ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
+            ->add('city',
                   EntityType::class,
                        ["class"=>"App\Entity\City", "choice_label"=>"name"])
-            ->add('lieu',
+            ->add('place',
                   EntityType::class,
                        ["class"=>"App\Entity\Place", "choice_label"=>"name"])
         ;

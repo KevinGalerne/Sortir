@@ -66,8 +66,8 @@ button{
     border:solid 3px black;
     border-radius: 30px;
     margin-top: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
     background-color: var(--third-background-color);
 }
 
@@ -143,12 +143,42 @@ button{
     color : var(--main-background-color);
     padding-top: 20px;
 }
+.eventform .formlabel{
+    display: flex;
+    justify-content: space-between;
+}
+.eventfield{
+    text-align: left;
+    padding-left: 5vw;
+}
 .profilbuttons{
     padding: 50px;
 }
 
+/*
+* Event page
+*/
+.eventdescription{
+    height: 150px;
+    width: 200px;
+}
 
-
+.eventform{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.eventside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.date{
+    display: inline-flex;
+}
+.formdescription{
+    display: inline-flex;
+}
 /* Keyframes and animations */
 @keyframes logoanimation  {
     from{
