@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Event
 {
+    // PROPRIETES ---------------------------------------------------------------------------------------------------
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -55,6 +56,14 @@ class Event
      */
     private $description;
 
+    //RELATIONS -----------------------------------------------------------------------------------------------------
+    /**
+     * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $place;
+
+    //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +179,18 @@ class Event
     public function setDescription($description): void
     {
         $this->description = $description;
+    }
+
+    public function getPlace(): ?Place
+    {
+        return $this->place;
+    }
+
+    public function setPlace(?Place $place): self
+    {
+        $this->place = $place;
+
+        return $this;
     }
 
 

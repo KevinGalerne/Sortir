@@ -52,6 +52,7 @@ class User
      */
     private $passwordconfirmation;
 
+    //GETTER SETTER ------------------------------------------------------------------------------------------------
     public function getId(): ?int
     {
         return $this->id;
