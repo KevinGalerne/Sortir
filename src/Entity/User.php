@@ -33,14 +33,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\EqualTo($passwordConfirmation, message="Les mots de passe ne sont pas identiques.")
+     *
      * @Assert\NotBlank(message="Le mot de passe est obligatoire.")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\EqualTo($password, message="Les mots de passe ne sont pas identiques.")
+     *
      * @Assert\NotBlank(message="Veuillez confirmer le mot de passe")
      */
     private $passwordConfirmation;
@@ -167,7 +167,11 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->userName;
+    }
+    public function setUsername($userName): void
+    {
+        $this->userName = $userName;
     }
 
     /**

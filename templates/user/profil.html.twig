@@ -6,25 +6,25 @@
     <div class="formlabel">
         Pseudo
     </div>
-    {{  form_widget(userForm.username) }}
+    {{  form_widget(userForm.userName) }}
 
 
      <div class="formlabel">
         Prénom
     </div>
-    {{  form_widget(userForm.firstname) }}
+    {{  form_widget(userForm.firstName) }}
 
 
     <div class="formlabel">
         Nom
     </div>
-    {{  form_widget(userForm.name) }}
+    {{  form_widget(userForm.lastName) }}
 
 
     <div class="formlabel">
         Téléphone
     </div>
-    {{  form_widget(userForm.phonenumber) }}
+    {{  form_widget(userForm.phoneNumber) }}
 
 
     <div class="formlabel">
@@ -42,7 +42,7 @@
     <div class="formlabel">
         Confirmation du mot de passe
     </div>
-    {{  form_widget(userForm.passwordconfirmation) }}
+    {{  form_widget(userForm.passwordConfirmation) }}
 
 
     <div class="profilbuttons">
@@ -51,5 +51,8 @@
         {{  form_widget(userForm.cancel) }}
     </div>
 {{ form_end(userForm) }}
+
+
+
 
 {%  endblock  %}
