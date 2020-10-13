@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="login")
+     * @Route("/", name="welcome")
      */
     public function login()
     {
-        return $this->render('default/login.html.twig', [
+        return $this->render('default/welcome.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
     }
