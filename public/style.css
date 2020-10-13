@@ -1,8 +1,8 @@
 /* Variables */
 :root{
-    --main-background-color : #005AA7 ;
-    --second-background-color: #2c3e50;
-    --third-background-color: #ecf0f1;
+    --main-background-color : #0A0A0A /*#005AA7*/ ;
+    --second-background-color: #0A0A0A /*2c3e50*/;
+    --third-background-color: #FBFCD4;
     --first-font-family: 'Lobster', cursive;
     --second-font-family : 'Amatic SC', cursive;
 }
@@ -140,6 +140,9 @@ button{
 .forminput{
     border-radius: 30px;
     background-color: var(--main-background-color);
+    color:var(--third-background-color);
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 .formlabel{
     font: var(--first-font-family);
