@@ -1,13 +1,19 @@
 {% extends "layout.html.twig" %}
 
 
+
+
+
 {% block main %}
     <!-- Welcome page when not connected -->
 
 
-
     <!-- This part contain the form where user log (credentials)-->
     <form>
+        <div>
+            <img class="homeimg" src="{{ asset("img/login.svg") }}">
+        </div>
+
         <div class="credentials">
             <div class="homelabel">
                 Identifiant :
@@ -18,8 +24,6 @@
                 <input type="text" placeholder="Maxi mot de passe inviolable">
             </div>
         </div>
-
-
 
 
         <!-- Buttons part-->
@@ -34,4 +38,4 @@
     </form>
 
 
-{%  endblock %}
+{% endblock %}
