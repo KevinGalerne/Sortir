@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Form\EventType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,9 @@ class EventsController extends AbstractController
         //Hydratation des propriétés qui sont fixées automatiquement
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished("false");
+
+        $eventForm = $this->createForm(EventType::class, $event);
+
 
         return $this->render('events/create_event.html.twig', [
             'controller_name' => 'EventsController',
