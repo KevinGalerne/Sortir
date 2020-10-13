@@ -9,6 +9,15 @@
 
 
 
+button{
+    background-color: var(--second-background-color);
+    font-family: var(--first-font-family);
+    border-radius: 30px;
+    height: 60px;
+    width: 150px;
+    margin: 20px;
+}
+
 
 
 /*
@@ -24,17 +33,6 @@ body{
 a{
     text-decoration: none;
 }
-.button{
-    background-color: var(--second-background-color);
-    font-family: var(--first-font-family);
-    border-radius: 30px;
-    height: 60px;
-    width: 150px;
-}
-
-
-
-
 
 
 /*
@@ -125,10 +123,12 @@ a{
 }
 .formlabel{
     font: var(--first-font-family);
-    color : var(--main-background-color)
+    color : var(--main-background-color);
+    padding-top: 20px;
 }
-
-
+.profilbuttons{
+    padding: 50px;
+}
 
 
 

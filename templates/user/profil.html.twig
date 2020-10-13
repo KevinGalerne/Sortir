@@ -7,13 +7,13 @@
     <div class="formlabel">
         Pseudonyme
     </div>
-            {{ form_widget(userForm.username) }}
+    {{ form_widget(userForm.username) }}
 
 
     <div class="formlabel">
         Prénom
     </div>
-            {{  form_widget(userForm.firstname) }}
+    {{  form_widget(userForm.firstname) }}
 
 
     <div class="formlabel">
@@ -46,15 +46,11 @@
     {{  form_widget(userForm.passwordconfirmation) }}
 
 
-    <div class="button">
+    <div class="profilbuttons">
+        {{  form_widget(userForm.save) }}
 
+        {{  form_widget(userForm.cancel) }}
     </div>
-    {{  form_widget(userForm.save) }}
 
-
-    <div class="button">
-
-    </div>
-    {{  form_widget(userForm.cancel) }}
 
 {%  endblock  %}
