@@ -57,7 +57,11 @@ class Event
     private $description;
 
     //RELATIONS -----------------------------------------------------------------------------------------------------
-
+    /**
+     * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $place;
 
     //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
     public function getId(): ?int
@@ -175,6 +179,18 @@ class Event
     public function setDescription($description): void
     {
         $this->description = $description;
+    }
+
+    public function getPlace(): ?Place
+    {
+        return $this->place;
+    }
+
+    public function setPlace(?Place $place): self
+    {
+        $this->place = $place;
+
+        return $this;
     }
 
 
