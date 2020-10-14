@@ -9,12 +9,19 @@ use App\Form\EventType;
 use App\Repository\CityRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted("ROLE_STUDENT")
+ *
+ */
+
 class EventsController extends AbstractController
 {
+
     /**
      * @Route("/create_events", name="create_events")
      */
