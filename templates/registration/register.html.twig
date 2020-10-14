@@ -43,6 +43,10 @@
     </div>
     {{ form_widget(registrationForm.plainPassword) }}
 
+    <div class="formlabel">
+    Role
+    </div>
+    {{ form_widget(registrationForm.roles) }}
 
     <div class="formlabel">
         Campus
@@ -52,7 +56,6 @@
 
     <div class="profilbuttons">
         {{  form_widget(registrationForm.save) }}
-
     </div>
 
 
