@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\EditAccountType;
+use Doctrine\Persistence\ObjectManager;
+use http\Client\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,8 +27,14 @@ class UserController extends AbstractController
     /**
      * @Route("/account/edit", name="user_account_edit")
      */
-    public function editAccount()
+    public function editAccount(\Symfony\Component\HttpFoundation\Request $request )
     {
+        $user = $this->getUser();
+
+        $form = $this->createForm(EditAccountType::class, $user);
+        $form->handleRequest($request);
+
+
         return $this->render('user/account_edit.html.twig', [
             'controller_name' => 'UserController',
         ]);
