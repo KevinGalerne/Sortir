@@ -30,22 +30,29 @@ class RegistrationFormType extends AbstractType
             ->add('phoneNumber', TelType::class, ["attr" => ["class" => "forminput"]])
 
 
-            ->add('plainPassword', RepeatedType::class, ["attr" => ["class" => "forminput"],
+            ->add('plainPassword', RepeatedType::class, [
 
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Saissez un mot de passe',
+
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe ne sont pas identiques',
+                'options' =>  ['attr' => ['class' => 'forminput']],
+                'required' => true,
+                'first_options'  => ['label' => ' '],
+                'second_options' => ['label' => ' '],
+                        'mapped' => false,
+                      'constraints' => [
+                        new NotBlank([
+                            'message' => 'Saissez un mot de passe',
+                        ]),
+                        new Length([
+                            'min' => 8,
+                            'minMessage' => 'Votre mot de passe doit mesurer au moins 8 caractères',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
                     ]),
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => 'Votre mot de passe doit mesurer au moins 8 caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
+
+                         ]
+
             ])
 
 

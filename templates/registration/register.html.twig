@@ -41,7 +41,13 @@
     <div class="formlabel">
         Mot de passe
     </div>
-    {{ form_widget(registrationForm.plainPassword) }}
+    {{ form_row(registrationForm.plainPassword.first) }}
+
+
+    <div class="formlabel">
+       Confirmation du mot de passe
+    </div>
+    {{ form_row(registrationForm.plainPassword.second) }}
 
 
     <div class="formlabel">
