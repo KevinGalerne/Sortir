@@ -26,10 +26,9 @@
     {% block menu %}
     {% if app.user %}
         <div class="menublock">s
-        <a class="menubutton" href="http://www.google.com">Bouton test</a>
-        <a class="menubutton" href="http://www.google.com">Bouton test</a>
-        <a class="menubutton" href="">Test Evènements</a>
-        <a class="menubutton" href=""}>Enregistrer un utilisateur</a>
+        <a class="menubutton" href="http://www.google.com">Mon compte</a>
+        <a class="menubutton" href="{{ path("create_events") }}">Créer un évènement</a>
+
         </div>
     {% endif %}
 {% endblock %}
