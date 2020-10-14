@@ -38,7 +38,6 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      *
-     * @Assert\NotBlank(message="Le mot de passe est obligatoire.")
      */
     private $password;
 
@@ -47,7 +46,7 @@ class User implements UserInterface
      *
      * @Assert\NotBlank(message="Veuillez confirmer le mot de passe")
      */
-    private $passwordConfirmation;
+    /*private $passwordConfirmation;*/
 
     /**
      * @ORM\Column(type="string", length=50, unique=true)
