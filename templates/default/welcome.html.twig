@@ -12,3 +12,10 @@
     {% block welcome %}
 
 {% endblock %}
+
+{% block footer %}
+    <div class="animatedfooter">
+        <div class="authors">Made by Samy, Laetitia, Raphael & Kevin</div>
+        <div class="copyrights"> &copy {{ "now"|date("Y") }}</div>
+    </div>
+{% endblock %}

@@ -35,7 +35,7 @@ a{
 }
 button{
     background-color: var(--second-background-color);
-    font-family: var(--first-font-family);
+    font-family: var(--second-font-family);
     border-radius: 30px;
     height: 60px;
     width: 150px;
@@ -129,48 +129,32 @@ button{
     background-color: var(--second-background-color);
     border-color: var(--third-background-color);
     animation: stepinanimation 4s ;
-
-
     }
-
-
-
-
-
+.animatedfooter{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+    animation: footeranimation 4s;
+}
 
 
 
 /*
 *
-* Home page
+* Login page
 *
-*/
+ */
 
-.homelabel{
-    font-family: var(--second-font-family);
-    color: var(--main-background-color);
-    padding: 20px;
-    text-align: center;
+.userloggedmessage{
+    padding-top: 5vh;
 }
-.homebuttons{
-    padding: 20px;
-}
-.credentials{
 
-}
-.homebutton{
-    background-color: var(--second-background-color);
-    font-family: var(--first-font-family);
-    font-size: large;
-    color: var(--third-background-color);
-    border-radius: 30px;
-    height: 60px;
-    width: 150px;
-    margin: 20px;
-}
-.homeimg{
-    height: 300px;
-}
+
+
+
 
 
 
@@ -256,6 +240,15 @@ button{
 @keyframes stepinanimation  {
     from{
         transform: translateX(-1400px) scale(0.5);
+    }
+    to{
+        transform: translateY(0px) scale(1);
+    }
+}
+@keyframes footeranimation  {
+    from{
+        transform: translateY(-1400px) scale(0.5);
+
     }
     to{
         transform: translateY(0px) scale(1);

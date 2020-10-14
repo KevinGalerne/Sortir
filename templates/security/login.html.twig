@@ -4,22 +4,46 @@
 
 {% block main %}
 <form method="post">
+
+    <!--If error on credential -->
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+
+
+
+
+   <!-- If the user is connecter, this part will display the username -->
     {% if app.user %}
-        <div class="mb-3">
+
+        <div class="userloggedmessage">
             Vous êtes connecté en tant que {{ app.user.pseudo }}, <a href="{{ path('app_logout') }}">cliquez-ici</a> pour vous déconnecter.
         </div>
+
+        {% else %}
+
+            <!-- Credentiel input fields -->
+            <h1 class="h3 mb-3 font-weight-normal">Connectez vous</h1>
+
+            <div class="formlabel">Email</div>
+            <input type="email" value="{{ last_username }}" name="email"  class="forminput" required autofocus>
+
+            <div class="formlabel">Password</div>
+            <input type="password" name="password"  class="forminput" required>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary" type="submit">
+                Connexion
+            </button>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
 
+    <!-- CSRF blocker -->
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
@@ -28,15 +52,9 @@
        {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html #}
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
 
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+
+
 </form>
 {% endblock %}
