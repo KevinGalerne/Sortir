@@ -94,7 +94,7 @@ button{
     padding-top: 40px;
     padding-bottom: 40px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 .menubutton{
     background-color: var(--third-background-color);
