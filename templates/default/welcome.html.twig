@@ -7,34 +7,20 @@
 {% block main %}
     <!-- Welcome page when not connected -->
 
-    <h1>Cette page n'est plus une page de login, mais sera la nouvelle page d'accueil ! (ce message est à destination de Kévin)</h1>
+    <div><img class="homeimg" src="{{ asset("img/login.svg") }}"></div>
+    
+    
+    <div> Bienvenu sur Sortir.com, le site d'organisation d'évènements entre étudiants ENI.
+    </div>
+
+
+
+
     <!-- This part contain the form where user log (credentials)-->
-    <form>
-        <div>
-            <img class="homeimg" src="{{ asset("img/login.svg") }}">
-        </div>
 
-        <div class="credentials">
-            <div class="homelabel">
-                Identifiant :
-                <input class="forminput" type="text" placeholder="superZorro">
-            </div>
-            <div class="homelabel">
-                Mot de passe :
-                <input class="forminput" type="password" placeholder="Maxi mot de passe inviolable">
-            </div>
-        </div>
+            <a href="{{ path('app_login') }}"><input type="button" class="homebutton" value="Accéder au site !"></a>
 
 
-        <!-- Buttons part-->
-        <div class="homebuttons">
-            <input type="button" class="homebutton" value="Connexion">
-            <input type="checkbox" value="Se souvenir de moi">Se souvenir de moi
-        </div>
-
-
-        <a href="">Mot de passe oublié?</a>
-    </form>
 
 
 {% endblock %}
