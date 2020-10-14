@@ -37,15 +37,9 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\EqualTo(propertyPath="passwordConfirmation")
      */
     private $password;
 
-    /**
-     * @Assert\NotBlank(message="Veuillez confirmer le mot de passe")
-     * @Assert\EqualTo(propertyPath="password")
-     */
-    private $passwordConfirmation;
 
     /**
      * @ORM\Column(type="string", length=50, unique=true)
@@ -176,23 +170,6 @@ class User implements UserInterface
     {
         $this->pseudo = $pseudo;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getPasswordConfirmation()
-    {
-        return $this->passwordConfirmation;
-    }
-
-    /**
-     * @param mixed $passwordConfirmation
-     */
-    public function setPasswordConfirmation($passwordConfirmation): void
-    {
-        $this->passwordConfirmation = $passwordConfirmation;
-    }
-
 
 
 

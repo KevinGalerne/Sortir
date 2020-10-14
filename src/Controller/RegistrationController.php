@@ -31,7 +31,8 @@ class RegistrationController extends AbstractController
 
         // If form is submitted, and valid, then continue
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+                        // encode the plain password
+
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,

@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,7 +28,9 @@ class RegistrationFormType extends AbstractType
             ->add('firstName', TextType::class, ["attr" => ["class" => "forminput"]])
             ->add('lastName', TextType::class, ["attr" => ["class" => "forminput"]])
             ->add('phoneNumber', TelType::class, ["attr" => ["class" => "forminput"]])
-            ->add('plainPassword', PasswordType::class, ["attr" => ["class" => "forminput"],
+
+
+            ->add('plainPassword', RepeatedType::class, ["attr" => ["class" => "forminput"],
 
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -44,11 +47,13 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
+
             ->add('roles', ChoiceType::class, ["multiple" => true, "attr" => ["class" => "forminput"], "choices" => [
                 "Administrateur" => "ROLE_ADMIN",
                 "Utilisateur" => "ROLE_USER",
             ]])
-            ->add('passwordConfirmation', PasswordType::class, ["attr" => ["class" => "forminput"]])
+
             ->add('save', SubmitType::class, ['label' => 'Enregistrer'])
             ->add("campus", EntityType::class, ["attr" => ["class" => "forminput"], "class" => "App\Entity\Campus", "choice_label" => "name"]);
 
