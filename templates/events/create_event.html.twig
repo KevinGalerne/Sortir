@@ -37,12 +37,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
         <!-- Right Side -->
         <div class="eventside">
             <div class="formlabel">
@@ -50,13 +44,11 @@
             </div>
 
             <div class="formlabel">
-                Ville :
-
+                Ville : {{ form_widget(eventForm.city) }}
             </div>
 
             <div class="formlabel">
-                Lieu : {{ form_widget(eventForm.place) }}
-
+                Lieu : {#{{ form_widget(eventForm.place) }}#}
             </div>
 
             <div class="formlabel">
@@ -90,6 +82,23 @@
         {{ form_widget(eventForm.cancel) }}
     </div>
 {% endblock %}
+
+<!-- https://www.lewagon.com/fr/blog/tuto-google-place-autocomplete -->
+<!-- https://console.developers.google.com/apis/credentials/key/e6c797ec-2be2-43a1-9d4b-23239d5b3db5?folder=&organizationId=&project=sortirenip2 -->
+
+<!-- Include Google Maps JS API -->
+<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBEicCKpiiI6h6U1H9J_AiEriBcXYMI4k4"></script>
+
+<!-- Custom JS code to bind to Autocomplete API -->
+<!-- find it here: https://github.com/lewagon/google-place-autocomplete/blob/gh-pages/autocomplete.js -->
+<!-- We'll detail this file in the article -->
+<script type="text/javascript" src="autocomplete.js"></script><!-- Include Google Maps JS API -->
+<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBEicCKpiiI6h6U1H9J_AiEriBcXYMI4k4"></script>
+
+<!-- Custom JS code to bind to Autocomplete API -->
+<!-- find it here: https://github.com/lewagon/google-place-autocomplete/blob/gh-pages/autocomplete.js -->
+<!-- We'll detail this file in the article -->
+<script type="text/javascript" src="autocomplete.js"></script>
 
 
 

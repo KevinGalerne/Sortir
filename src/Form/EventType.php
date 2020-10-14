@@ -23,6 +23,10 @@ class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //Google Maps Geocoder
+        $geocoder = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false";
+        //Notre collection d'objets Address
+
         $builder
             ->add('name',
                   TextType::class,
@@ -45,16 +49,12 @@ class EventType extends AbstractType
             ->add('description',
                   TextareaType::class,
                        ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
-
-
-            //throw new \Exception('TODO: corriger les getters);
-            //->add('city',
-            //     EntityType::class,
-            //          ["class"=>"App\Entity\City", "choice_label"=>"name"])
-
-            ->add('place',
+            ->add('city',
+                  TextType::class,
+                       ["attr"=>["class"=>"forminput", "placeholder"=>"Entrez le nom d'une ville."]])
+            /*->add('place',
                   EntityType::class,
-                       ["class"=>"App\Entity\Place", "choice_label"=>"name"])
+                       ["class"=>"App\Entity\Place", "choice_label"=>"name"])*/
             ->add('save',
                   SubmitType::class,
                        ['label' => 'Enregistrer'])

@@ -61,6 +61,11 @@ class Event
      */
     private $isPublished;
 
+    /**
+     * @ORM\Column (type="text")
+     */
+    private $city;
+
     //RELATIONS -----------------------------------------------------------------------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="event")
@@ -232,6 +237,19 @@ class Event
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
 
-
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city): void
+    {
+        $this->city = $city;
+    }
 }
