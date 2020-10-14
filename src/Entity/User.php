@@ -41,6 +41,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @Assert\NotBlank(message="Veuillez confirmer le mot de passe")
+     * @Assert\EqualTo(propertyPath="password")
+     */
+    private $passwordConfirmation;
 
     /**
      * @ORM\Column(type="string", length=50, unique=true)
