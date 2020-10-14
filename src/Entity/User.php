@@ -37,15 +37,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     *
+     * @Assert\EqualTo(propertyPath="passwordConfirmation")
      * @Assert\NotBlank(message="Le mot de passe est obligatoire.")
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string")
-     *
      * @Assert\NotBlank(message="Veuillez confirmer le mot de passe")
+     * @Assert\EqualTo(propertyPath="passwordConfirmation")
      */
     private $passwordConfirmation;
 
@@ -161,6 +160,22 @@ class User implements UserInterface
     public function setPhoneNumber($phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordConfirmation()
+    {
+        return $this->passwordConfirmation;
+    }
+
+    /**
+     * @param mixed $passwordConfirmation
+     */
+    public function setPasswordConfirmation($passwordConfirmation): void
+    {
+        $this->passwordConfirmation = $passwordConfirmation;
     }
 
 
