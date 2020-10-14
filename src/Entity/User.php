@@ -37,22 +37,21 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     *
+     * @Assert\EqualTo(propertyPath="passwordConfirmation")
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string")
-     *
      * @Assert\NotBlank(message="Veuillez confirmer le mot de passe")
+     * @Assert\EqualTo(propertyPath="password")
      */
-    /*private $passwordConfirmation;*/
+    private $passwordConfirmation;
 
     /**
      * @ORM\Column(type="string", length=50, unique=true)
      * @Assert\NotBlank(message="Le pseudo est obligatoire")
      */
-    private $userName;
+    private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -162,6 +161,40 @@ class User implements UserInterface
         $this->phoneNumber = $phoneNumber;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param mixed $pseudo
+     */
+    public function setPseudo($pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordConfirmation()
+    {
+        return $this->passwordConfirmation;
+    }
+
+    /**
+     * @param mixed $passwordConfirmation
+     */
+    public function setPasswordConfirmation($passwordConfirmation): void
+    {
+        $this->passwordConfirmation = $passwordConfirmation;
+    }
+
+
+
 
     /**
      * A visual identifier that represents this user.
@@ -171,14 +204,6 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
-    }
-
-    /**
-     * @param mixed $userName
-     */
-    public function setUserName($userName): void
-    {
-        $this->userName = $userName;
     }
 
     /**

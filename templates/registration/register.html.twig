@@ -21,7 +21,7 @@
      <div class="formlabel">
         Pseudo
     </div>
-    {{  form_widget(registrationForm.userName) }}
+    {{  form_widget(registrationForm.pseudo) }}
 
     <div class="formlabel">
         Prénom
@@ -44,9 +44,16 @@
     {{ form_widget(registrationForm.plainPassword) }}
 
     <div class="formlabel">
+<<<<<<< Updated upstream
     Role
     </div>
     {{ form_widget(registrationForm.roles) }}
+=======
+        Confirmation du mot de passe
+    </div>
+    {{ form_widget(registrationForm.passwordConfirmation) }}
+
+>>>>>>> Stashed changes
 
     <div class="formlabel">
         Campus
