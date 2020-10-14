@@ -58,9 +58,7 @@ button{
     font-size: 10vh;
     font-weight: bold;
 }
-.logoanimation{
-    animation: logoanimation 4s;
-}
+
 .logo{
     color: var(--third-background-color);
 }
@@ -106,6 +104,41 @@ button{
     text-align: center;
     font-weight: bold;
 }
+
+/*
+*
+* Welcome page
+*
+*/
+
+.animatedlogo{
+    color: var(--third-background-color);
+    text-align: center;
+    font-family: var(--first-font-family);
+    font-size: 20vh;
+    font-weight: bold;
+    animation: logoanimation 4s;
+    margin-top: 10%;
+}
+.stepin{
+    color: var(--third-background-color);
+    text-align: center;
+    font-family: var(--first-font-family);
+    font-size: 5vh;
+    font-weight: bold;
+    background-color: var(--second-background-color);
+    border-color: var(--third-background-color);
+    animation: stepinanimation 4s ;
+
+
+    }
+
+
+
+
+
+
+
 
 /*
 *
@@ -214,9 +247,17 @@ button{
 /* Keyframes and animations */
 @keyframes logoanimation  {
     from{
-        transform: translateY(-400px) scale(3);
+        transform: translateY(-600px) scale(0.5);
     }
     to{
-        transform: translate(0px) scale(1);
+        transform: translateY(0px) scale(1);
+    }
+}
+@keyframes stepinanimation  {
+    from{
+        transform: translateX(-1400px) scale(0.5);
+    }
+    to{
+        transform: translateY(0px) scale(1);
     }
 }

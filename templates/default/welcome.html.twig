@@ -1,26 +1,13 @@
 {% extends "layout.html.twig" %}
 
 
+{% block logo %}
+
+    <div class="animatedlogo">Sortir.com</div>
+    <a href="{{ path("app_login") }}"><div class="stepin"> Accéder au site</div></a>
+{% endblock %}
 
 
-
-{% block main %}
-    <!-- Welcome page when not connected -->
-
-    <div><img class="homeimg" src="{{ asset("img/login.svg") }}"></div>
-    
-    
-    <div> Bienvenu sur Sortir.com, le site d'organisation d'évènements entre étudiants ENI.
-    </div>
-
-
-
-
-    <!-- This part contain the form where user log (credentials)-->
-
-            <a href="{{ path('app_login') }}"><input type="button" class="homebutton" value="Accéder au site !"></a>
-
-
-
+    {% block welcome %}
 
 {% endblock %}

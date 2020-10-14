@@ -37,11 +37,12 @@
 
 
 <!-- Main part of the page that will be edited  -->
+{% block welcome %}
 <div class="mainblock">
     {% block main %}
     {% endblock %}
 </div>
-
+{% endblock %}
 
 <!-- Footer part  -->
 {% block footer %}
