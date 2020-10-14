@@ -23,15 +23,17 @@
 
 <!-- Menu -->
 
-    {% block menu %}
+{% block menu %}
     {% if app.user %}
         <div class="menublock">
-        <a class="menubutton" href="http://www.google.com">Mon compte</a>
-        <a class="menubutton" href="{{ path("create_events") }}">Créer un évènement</a>
+
+            <a class="menubutton" href="http://www.google.com">Mon compte</a>
+            <a class="menubutton" href="{{ path("create_events") }}">Créer un évènement</a>
+            <a class="menubutton" href="{{ path("app_logout") }}">Déconnexion</a>
+
         </div>
     {% endif %}
 {% endblock %}
-
 
 
 <!-- Main part of the page that will be edited  -->
