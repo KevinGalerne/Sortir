@@ -44,16 +44,15 @@
     {{ form_widget(registrationForm.plainPassword) }}
 
     <div class="formlabel">
-<<<<<<< Updated upstream
-    Role
-    </div>
-    {{ form_widget(registrationForm.roles) }}
-=======
         Confirmation du mot de passe
     </div>
     {{ form_widget(registrationForm.passwordConfirmation) }}
 
->>>>>>> Stashed changes
+    <div class="formlabel">
+    Role
+    </div>
+    {{ form_widget(registrationForm.roles) }}
+
 
     <div class="formlabel">
         Campus
@@ -64,8 +63,6 @@
     <div class="profilbuttons">
         {{  form_widget(registrationForm.save) }}
     </div>
-
-
 
     {{ form_end(registrationForm) }}
 {% endblock %}
