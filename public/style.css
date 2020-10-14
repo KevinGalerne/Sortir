@@ -205,6 +205,12 @@ button{
     display: inline-flex;
 }
 
+
+.formcampus {
+    font-weight: bold;
+
+}
+
 /* Keyframes and animations */
 @keyframes logoanimation  {
     from{
