@@ -1,0 +1,7 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+    <div class="formlabel">Pseudo : </div>
+    {{ app.user.pseudo }}
+    <button><a href="{{ path('user_account_edit') }}">Modifier</a></button>
+{% endblock %}

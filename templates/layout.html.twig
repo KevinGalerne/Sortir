@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <title>Bienvenue sur Sortir.com !</title>
@@ -27,7 +27,7 @@
     {% if app.user %}
         <div class="menublock">
 
-            <a class="menubutton" href="http://www.google.com">Mon compte</a>
+            <a class="menubutton" href="{{ path('user_account_show') }}">Mon compte</a>
             <a class="menubutton" href="{{ path("create_events") }}">Créer un évènement</a>
             <a class="menubutton" href="{{ path("app_logout") }}">Déconnexion</a>
 
