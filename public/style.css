@@ -6,6 +6,7 @@
     --hover-font-color : #C0C0C0;
     --first-font-family: 'Lobster', cursive;
     --second-font-family : 'Amatic SC', cursive;
+    --halloween-font-familly : 'Pedira', cursive;
 }
 
 
@@ -139,8 +140,13 @@ button{
     color: var(--third-background-color);
     animation: footeranimation 4s;
 }
-
-
+/* Halloween part
+.witch{
+    height: 20vh;
+    animation: witchanimation 5s infinite;
+    animation-direction: alternate-reverse;
+}
+*/
 
 /*
 *
@@ -252,5 +258,14 @@ button{
     }
     to{
         transform: translateY(0px) scale(1);
+    }
+}
+@keyframes witchanimation  {
+    from{
+        transform: translateY(-1000px)translateX(-100px) scale(0.5)rotate(360deg)translateY(1000px);
+
+    }
+    to{
+        transform: translateY(500px)translateX(1000px) scale(1)rotate(-360deg);
     }
 }
