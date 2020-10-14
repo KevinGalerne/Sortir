@@ -1,0 +1,86 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+
+
+    <!--This flash serve if the user does not set the input fields correctly-->
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+
+
+
+    {{ form_start(registrationForm) }}
+    <div class="formlabel">
+    Email
+    </div>
+    {{ form_widget(registrationForm.email) }}
+
+
+     <div class="formlabel">
+        Pseudo
+    </div>
+    {{  form_widget(registrationForm.userName) }}
+
+    <div class="formlabel">
+        Prénom
+    </div>
+    {{  form_widget(registrationForm.firstName) }}
+
+    <div class="formlabel">
+        Nom
+    </div>
+    {{  form_widget(registrationForm.lastName) }}
+
+    <div class="formlabel">
+        Téléphone
+    </div>
+    {{  form_widget(registrationForm.phoneNumber) }}
+
+    <div class="formlabel">
+        Mot de passe
+    </div>
+    {{ form_widget(registrationForm.plainPassword) }}
+
+
+    <div class="formlabel">
+        Campus
+    </div>
+    {{  form_widget(registrationForm.campus) }}
+
+
+    <div class="profilbuttons">
+        {{  form_widget(registrationForm.save) }}
+
+    </div>
+
+
+
+    {{ form_end(registrationForm) }}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

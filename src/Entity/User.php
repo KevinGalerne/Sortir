@@ -6,11 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -116,22 +118,6 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getPasswordConfirmation()
-    {
-        return $this->passwordConfirmation;
-    }
-
-    /**
-     * @param mixed $passwordConfirmation
-     */
-    public function setPasswordConfirmation($passwordConfirmation): void
-    {
-        $this->passwordConfirmation = $passwordConfirmation;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLastName()
     {
         return $this->lastName;
@@ -188,6 +174,13 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
+    /**
+     * @param mixed $userName
+     */
+    public function setUserName($userName): void
+    {
+        $this->userName = $userName;
+    }
 
     /**
      * @see UserInterface
