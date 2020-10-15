@@ -1,7 +1,25 @@
 {% extends "layout.html.twig" %}
 
 {% block main %}
-    <div class="formlabel">Pseudo : </div>
-    {{ app.user.pseudo }}
+
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Mes informations</h1>
+
+    <div><p>Pseudo : {{ app.user.pseudo }}</p></div>
+    <div><p>Nom de famille : {{ app.user.lastName | upper }}</p></div>
+    <div><p>Prénom : {{ app.user.firstName  | capitalize }}</p></div>
+    <div><p>Numéro de téléphone : {{ app.user.phoneNumber }}</p></div>
+    <div><p>Email : {{ app.user.email }}</p></div>
+    <div><p>Mot de passe : ***************</p></div>
+
     <button><a href="{{ path('user_account_edit') }}">Modifier</a></button>
+
 {% endblock %}

@@ -1,7 +1,40 @@
 {% extends "layout.html.twig" %}
 
 {% block main %}
-    <h1>On est là pour modifier ton profil mammen</h1>
 
-    {{ form("editForm") }}
+    <h2>Modifier mon profil</h2>
+
+    {{ form_start(editForm) }}
+
+        <div class="formlabel">{{ form_label(editForm.pseudo) }}</div>
+        <div>{{  form_widget(editForm.pseudo) }}</div>
+        <div>{{ form_errors(editForm.pseudo) }}</div>
+
+        <div class="formlabel">{{ form_label(editForm.lastName, "Nom de famille") }}</div>
+        {{  form_widget(editForm.lastName) }}
+        <div>{{ form_errors(editForm.lastName) }}</div>
+
+        <div class="formlabel">{{ form_label(editForm.firstName, "Prénom") }}</div>
+        {{  form_widget(editForm.firstName) }}
+        <div>{{ form_errors(editForm.firstName) }}</div>
+
+        <div class="formlabel">{{ form_label(editForm.phoneNumber, "Numéro de téléphone") }}</div>
+        {{  form_widget(editForm.phoneNumber) }}
+        <div>{{ form_errors(editForm.phoneNumber) }}</div>
+
+        <div class="formlabel">{{ form_label(editForm.email) }}</div>
+        {{  form_widget(editForm.email) }}
+        <div>{{ form_errors(editForm.email) }}</div>
+
+
+        <button type="submit">Enregister les modifications</button>
+
+
+    {{ form_end(editForm) }}
+
+
+    <h2> Modifier mon mot de passe</h2>
+
+
+    <button><a href={{ path('user_account_show') }}>Revenir au profil</a></button>
 {% endblock %}

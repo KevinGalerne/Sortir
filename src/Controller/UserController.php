@@ -36,14 +36,22 @@ class UserController extends AbstractController
         $form = $this->createForm(EditAccountType::class, $user);
         $form->handleRequest($request);
 
+
         if ( $form->isSubmitted() && $form->isValid() ){
 
             $objectManager->persist($user);
             $objectManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Vos informations ont bien été modifiés ! '
+            );
+            return $this->redirectToRoute("user_account_show");
         }
+
+
         return $this->render('user/account_edit.html.twig', [
             'editForm'=> $form->createView(),
-            'user'=> $user
-        ]);
+                    ]);
     }
 }

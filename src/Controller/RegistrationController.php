@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 /**
  *
  */
@@ -20,7 +22,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator, ValidatorInterface $validator): Response
     {
 
 
@@ -32,10 +34,13 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
 
+
+
+
         // If form is submitted, and valid, then continue
         if ($form->isSubmitted() && $form->isValid()) {
-                        // encode the plain password
 
+            // We hash the password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -43,10 +48,11 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            //We save the data inside the database
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
@@ -56,9 +62,13 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
+
+            return $this->render('registration/register.html.twig', [
+                'registrationForm' => $form->createView(),
+            ]);
+
+
+
     }
 }
 

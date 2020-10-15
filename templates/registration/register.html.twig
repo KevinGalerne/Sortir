@@ -3,63 +3,82 @@
 {% block main %}
 
 
-    <!--This flash serve if the user does not set the input fields correctly-->
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-
-
 
     {{ form_start(registrationForm) }}
     <div class="formlabel">
     Email
     </div>
     {{ form_widget(registrationForm.email) }}
+    {{ form_errors(registrationForm.email) }}
 
 
      <div class="formlabel">
         Pseudo
     </div>
     {{  form_widget(registrationForm.pseudo) }}
+    <div>
+        {{ form_errors(registrationForm.pseudo) }}
+    </div>
+
+
 
     <div class="formlabel">
         Prénom
     </div>
     {{  form_widget(registrationForm.firstName) }}
+    <div>  {{ form_errors(registrationForm.firstName) }}</div>
+
+
 
     <div class="formlabel">
         Nom
     </div>
     {{  form_widget(registrationForm.lastName) }}
+    <div>{{ form_errors(registrationForm.lastName) }}</div>
+
+
 
     <div class="formlabel">
         Téléphone
+        <div>{{  form_widget(registrationForm.phoneNumber) }}</div>
+        <div class="errors">{{ form_errors(registrationForm.phoneNumber) }}</div>
     </div>
-    {{  form_widget(registrationForm.phoneNumber) }}
+
+
+
+
 
     <div class="formlabel">
         Mot de passe
     </div>
     {{ form_row(registrationForm.plainPassword.first) }}
+    <div class="errors">{{ form_errors(registrationForm.plainPassword.first) }}</div>
+
+
 
 
     <div class="formlabel">
        Confirmation du mot de passe
     </div>
     {{ form_row(registrationForm.plainPassword.second) }}
+    <div class="errors">{{ form_errors(registrationForm.plainPassword.second) }}</div>
+
 
 
     <div class="formlabel">
     Role
     </div>
     {{ form_widget(registrationForm.roles) }}
+    {{ form_errors(registrationForm.roles) }}
+
 
 
     <div class="formlabel">
         Campus
     </div>
     {{  form_widget(registrationForm.campus) }}
+    {{ form_errors(registrationForm.campus) }}
+
 
 
     <div class="profilbuttons">

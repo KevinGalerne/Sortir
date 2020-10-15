@@ -26,6 +26,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message="Veuillez s'il vous plaît entrer un email valide.")
+     * @Assert\NotBlank (message="Nous avons besoin de votre mail voyons")
      */
     private $email;
 
@@ -63,9 +64,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=10)
      * @Assert\Length(
      *     max="10",
-     *     maxMessage="Le numéro de téléphone doit être composé de 10 chiffres.",
      *     min="10",
-     *     minMessage="Le numéro de téléphone doit être composé de 10 chiffres."
+     *     exactMessage="Le numéro de téléphone doit être composé de 10 chiffres.",
      * )
      * @Assert\NotBlank(message="Le numéro de téléphone est obligatoire")
      */
