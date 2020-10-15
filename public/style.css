@@ -2,9 +2,9 @@
 :root{
     --main-background-color : #0A0A0A /*#005AA7*/ ;
     --second-background-color: #0A0A0A /*2c3e50*/;
-    --third-background-color: orange;
+    --third-background-color: #FBFCD4;
     --hover-font-color : #C0C0C0;
-    --first-font-family: 'Piedra', cursive;
+    --first-font-family: 'Lobster', cursive;
     --second-font-family : 'Amatic SC', cursive;
     --halloween-font-familly : 'Piedra', cursive;
 }
