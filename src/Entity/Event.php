@@ -239,12 +239,12 @@ class Event
         return $this;
     }
 
-    public function getStreetNumber(): ?int
+    public function getStreetNumber(): ?string
     {
         return $this->street_number;
     }
 
-    public function setStreetNumber(?int $street_number): self
+    public function setStreetNumber(string $street_number): self
     {
         $this->street_number = $street_number;
 
