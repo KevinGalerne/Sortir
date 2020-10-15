@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\EditAccountType;
+use App\Form\EditPasswordType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -53,5 +54,24 @@ class UserController extends AbstractController
         return $this->render('user/account_edit.html.twig', [
             'editForm'=> $form->createView(),
                     ]);
+    }
+
+
+    /**
+     * @Route("/account/edit/new_password", name="user_password_edit")
+     */
+    public function editPassword(Request $request)
+    {
+
+        $user = $this->getUser();
+
+        $form = $this->createForm(EditPasswordType::class, $user);
+        $form->handleRequest($request);
+
+
+        return $this->render('user/edit_password', [
+            'editPasswordForm'=> $form->createView(),
+        ]);
+
     }
 }
