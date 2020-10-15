@@ -1,0 +1,75 @@
+{% extends "layout.html.twig" %}
+
+{% block logo %}
+    <h1>Afficher une sortie</h1>
+{% endblock %}
+
+{% block main %}
+
+    <div class="eventform">
+
+        <!-- Left Side -->
+        <div class="eventside">
+            <div class="formlabel">
+                Nom de la sortie : <div class="formshow">{{ eventToShow.name }}</div>
+            </div>
+
+            <div class="formlabel">
+                Date et heure de la sortie : <div class="formshow">{{ eventToShow.eventDate|date('H:i:s d-m-Y') }}</div>
+            </div>
+
+            <div class="formlabel">
+                Date limite d'inscription : <div class="formshow">{{ eventToShow.subscriptionLimitDate|date('H:i:s d-m-Y') }}</div>
+            </div>
+
+            <div class="formlabel">
+                Nombre de places : <div class="formshow">{{ eventToShow.maxParticipants }}</div>
+            </div>
+
+            <div class="formlabel">
+                Durée : <div class="formshow">{{ eventToShow.duration }}</div>
+            </div>
+
+            <div class="formlabel">
+                Description et infos : <div class="formshow">{{ eventToShow.description }}</div>
+            </div>
+
+        </div>
+
+        <!-- Right Side -->
+        <div class="eventside">
+            <div class="formlabel">
+                Campus : <div class="formshow">{{ app.user.campus.getName }}</div>
+            </div>
+
+            <div class="formlabel">
+                Numéro : <div class="formshow">{{ eventToShow.streetNumber }}</div>
+            </div>
+
+            <div class="formlabel">
+                Rue : <div class="formshow">{{ eventToShow.route }}</div>
+            </div>
+
+
+            <div class="formlabel">
+                Code postal : <div class="formshow">{{ eventToShow.postalCode }}</div>
+            </div>
+
+            <div class="formlabel">
+                Ville : <div class="formshow">{{ eventToShow.locality }}</div>
+            </div>
+
+            <div class="formlabel">
+                Pays : <div class="formshow">{{ eventToShow.country }}</div>
+            </div>
+
+            {#<div class="formlabel">
+                Latitude : <input id="lat" name="lat" class="forminput">
+            </div>
+
+            <div class="formlabel">
+                Longitude : <input id="lng" name="lng" class="forminput">
+            </div>#}
+        </div>
+    </div>
+{% endblock %}

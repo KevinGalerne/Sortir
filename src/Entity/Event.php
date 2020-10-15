@@ -37,7 +37,7 @@ class Event
     private $eventDate;
 
     /**
-     * @ORM\Column (type="dateinterval")
+     * @ORM\Column (type="dateinterval", nullable=true)
      */
     private $duration;
 
@@ -62,17 +62,31 @@ class Event
     private $isPublished;
 
     /**
-     * @ORM\Column (type="text")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $city;
+    private $street_number;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $route;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $postal_code;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $locality;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $country;
 
     //RELATIONS -----------------------------------------------------------------------------------------------------
-    /**
-     * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="event")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $place;
-
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
@@ -197,18 +211,6 @@ class Event
         $this->description = $description;
     }
 
-    public function getPlace(): ?Place
-    {
-        return $this->place;
-    }
-
-    public function setPlace(?Place $place): self
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
     /**
      * @return mixed
      */
@@ -237,19 +239,63 @@ class Event
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCity()
+    public function getStreetNumber(): ?int
     {
-        return $this->city;
+        return $this->street_number;
     }
 
-    /**
-     * @param mixed $city
-     */
-    public function setCity($city): void
+    public function setStreetNumber(?int $street_number): self
     {
-        $this->city = $city;
+        $this->street_number = $street_number;
+
+        return $this;
+    }
+
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    public function setRoute(string $route): self
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?int
+    {
+        return $this->postal_code;
+    }
+
+    public function setPostalCode(int $postal_code): self
+    {
+        $this->postal_code = $postal_code;
+
+        return $this;
+    }
+
+    public function getLocality(): ?string
+    {
+        return $this->locality;
+    }
+
+    public function setLocality(string $locality): self
+    {
+        $this->locality = $locality;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 }

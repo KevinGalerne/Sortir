@@ -9,12 +9,6 @@
     --halloween-font-familly : 'Pedira', cursive;
 }
 
-
-
-
-
-
-
 /*
  *
  *HTML basics
@@ -49,7 +43,6 @@ button{
  *
  *Twig blocks
  */
-
 
 /*Logo block */
 .logoblock{
@@ -185,7 +178,17 @@ button{
     font: var(--first-font-family);
     color : var(--main-background-color);
     padding-top: 20px;
+    font-weight: bold;
 }
+
+.formshow {
+    font-weight: normal;
+    height: 2vh;
+    width: 15vw;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 .eventform .formlabel{
     display: flex;
     justify-content: space-between;
