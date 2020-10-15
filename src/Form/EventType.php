@@ -37,7 +37,7 @@ class EventType extends AbstractType
                            "minute"=>"Minutes"
                        ]])
             ->add('subscriptionLimitDate',
-                  DateType::class,
+                  DateTimeType::class,
                        ["data" => new \DateTime('now')])
             ->add('maxParticipants',
                   IntegerType::class,
@@ -45,21 +45,13 @@ class EventType extends AbstractType
             ->add('description',
                   TextareaType::class,
                        ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
-            ->add('city',
-                  TextType::class,
-                       ["attr"=>["class"=>"forminput", "placeholder"=>"Entrez le nom d'une ville."]])
             /*->add('place',
                   EntityType::class,
                        ["class"=>"App\Entity\Place", "choice_label"=>"name"])*/
             ->add('save',
                   SubmitType::class,
                        ['label' => 'Enregistrer'])
-            ->add('publish',
-                  SubmitType::class,
-                       ['label' => 'Publier'])
-            ->add('cancel',
-                  SubmitType::class,
-                       ['label' => 'Annuler'])
+
         ;
     }
 

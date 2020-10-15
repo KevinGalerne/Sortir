@@ -37,7 +37,7 @@ class Event
     private $eventDate;
 
     /**
-     * @ORM\Column (type="dateinterval")
+     * @ORM\Column (type="time")
      */
     private $duration;
 

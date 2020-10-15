@@ -8,7 +8,10 @@ use App\Entity\Place;
 use App\Form\EventType;
 use App\Repository\CityRepository;
 use App\Repository\UserRepository;
+use DateTime;
+use Doctrine\DBAL\Types\StringType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,25 +21,63 @@ use Symfony\Component\Routing\Annotation\Route;
  * @IsGranted("ROLE_STUDENT")
  *
  */
-
 class EventsController extends AbstractController
 {
 
     /**
-     * @Route("/create_events", name="create_events")
+     * @Route("/create_event", name="create_event")
      */
-    public function create(Request $request)
+    public function create(Request $request, EntityManagerInterface $entityManager)
     {
-        //Création d'un nouvel évènement
+        // Creatin an instance of Event
         $event = new Event();
+
+        // Creating the form
+        $eventForm = $this->createForm(EventType::class, $event);
+        $eventForm->handleRequest($request);
+
         //Hydratation des propriétés qui sont fixées automatiquement
         $event->setCreationDate(new \DateTime());
-        $event->setIsPublished("false");
 
-        $eventForm = $this->createForm(EventType::class, $event);
+        // Setting the place parameters
+        $event->setCity($request->get("event_city"));
+
+
+        if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
+            $entityManager->persist($event);
+            $entityManager->flush();
+            return $this->redirectToRoute("welcome");
+
+        }
 
         return $this->render('events/create_event.html.twig', [
             "eventForm" => $eventForm->createView()
         ]);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
