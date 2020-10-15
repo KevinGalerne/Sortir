@@ -37,7 +37,7 @@ class Event
     private $eventDate;
 
     /**
-     * @ORM\Column (type="dateinterval", nullable=true)
+     * @ORM\Column (type="time", nullable=true)
      */
     private $duration;
 
@@ -62,7 +62,7 @@ class Event
     private $isPublished;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $street_number;
 
@@ -72,7 +72,7 @@ class Event
     private $route;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $postal_code;
 

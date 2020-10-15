@@ -2,11 +2,11 @@
 :root{
     --main-background-color : #0A0A0A /*#005AA7*/ ;
     --second-background-color: #0A0A0A /*2c3e50*/;
-    --third-background-color: #FBFCD4;
+    --third-background-color: orange;
     --hover-font-color : #C0C0C0;
-    --first-font-family: 'Lobster', cursive;
+    --first-font-family: 'Piedra', cursive;
     --second-font-family : 'Amatic SC', cursive;
-    --halloween-font-familly : 'Pedira', cursive;
+    --halloween-font-familly : 'Piedra', cursive;
 }
 
 /*
@@ -133,13 +133,13 @@ button{
     color: var(--third-background-color);
     animation: footeranimation 4s;
 }
-/* Halloween part
+/* Halloween part*/
 .witch{
     height: 20vh;
     animation: witchanimation 5s infinite;
     animation-direction: alternate-reverse;
 }
-*/
+
 
 
 

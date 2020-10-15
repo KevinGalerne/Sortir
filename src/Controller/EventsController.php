@@ -39,12 +39,19 @@ class EventsController extends AbstractController
 
         //Hydratation des propriétés qui sont fixées automatiquement
         $event->setCreationDate(new \DateTime());
-
-        // Setting the place parameters
-        $event->setCity($request->get("event_city"));
-
+        $event->setIsPublished(false);
+        $event->setAuthor($this->getUser());
 
         if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
+
+            // Setting the place parameters
+        $event->setName($request->get("name"));
+            $event->setStreetNumber($request->get("event_street_number"));
+            $event->setRoute($request->get("event_route"));
+            $event->setPostalCode($request->get("event_postal_code"));
+            $event->setLocality($request->get("event_locality"));
+            $event->setCountry($request->get("event_country"));
+
             $entityManager->persist($event);
             $entityManager->flush();
             return $this->redirectToRoute("welcome");
