@@ -141,6 +141,10 @@ button{
 }
 */
 
+
+
+
+
 /*
 *
 * Login page
@@ -204,6 +208,7 @@ button{
 /*
 * Event page
 */
+
 .eventdescription{
     height: 20vh;
     width: 15vw;
@@ -211,6 +216,7 @@ button{
     color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
+    border-radius: 30px;
 
 }
 
