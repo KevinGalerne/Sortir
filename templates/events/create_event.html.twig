@@ -44,27 +44,35 @@
             </div>
 
             <div class="formlabel">
-                Ville : {{ form_widget(eventForm.city) }}
+                Lieu : <input id="user_input_autocomplete_address" placeholder="Commencez à chercher un lieu pour votre sortie..." type="text">
             </div>
 
             <div class="formlabel">
-                Lieu : {#{{ form_widget(eventForm.place) }}#}
+                N° : <input id="street_number" name="street_number">
             </div>
 
             <div class="formlabel">
-                Rue :
+                Rue : <input id="route" name="route">
             </div>
 
             <div class="formlabel">
-                Code Postal :
+                Code Postal : <input id="postal_code" name="postal_code">
             </div>
 
             <div class="formlabel">
-                Latitude :
+                Ville : <input id="locality" name="locality">
             </div>
 
             <div class="formlabel">
-                Longitude :
+                Pays : <input id="country" name="country">
+            </div>
+
+            <div class="formlabel">
+                Latitude : <input id="latitude" name="latitude">
+            </div>
+
+            <div class="formlabel">
+                Longitude : <input id="longitude" name="longitude">
             </div>
         </div>
     </div>

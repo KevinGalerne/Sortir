@@ -23,10 +23,6 @@ class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        //Google Maps Geocoder
-        $geocoder = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false";
-        //Notre collection d'objets Address
-
         $builder
             ->add('name',
                   TextType::class,
