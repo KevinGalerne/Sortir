@@ -12,9 +12,13 @@
                 <a href="{{ path('details_event', {'id': event.id }) }}">
                     <!-- Image -->
                     <div class="card-image">
-{#
-                        TODO: Peut etre mettre une image
-#}
+                        {% if event.author.id == 7 %}
+                            <img src="{{ asset('img/magnum.jpg') }}" alt="" />
+                        {% elseif event.author.id == 1 %}
+                            <img src="{{ asset('img/manix.jpg') }}" alt="" />
+                        {% else %}
+                            <img src="{{ asset('img/card-img.jpg') }}" alt="" />
+                        {% endif %}
                     </div>
                     <!-- Fin de l'image -->
 
