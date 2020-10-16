@@ -108,6 +108,12 @@ class Event
      */
     private $Author;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $campus;
+
 
 
     //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
@@ -348,6 +354,18 @@ class Event
     public function setLongitude(float $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
 
         return $this;
     }

@@ -22,16 +22,22 @@ class Campus
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $Name;
+    private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="campus")
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="campus")
+     */
+    private $events;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -41,12 +47,12 @@ class Campus
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
@@ -76,6 +82,37 @@ class Campus
             // set the owning side to null (unless already changed)
             if ($user->getCampus() === $this) {
                 $user->setCampus(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+            // set the owning side to null (unless already changed)
+            if ($event->getCampus() === $this) {
+                $event->setCampus(null);
             }
         }
 

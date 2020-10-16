@@ -234,6 +234,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+
     public function getCampus(): ?Campus
     {
         return $this->campus;

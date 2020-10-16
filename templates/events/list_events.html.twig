@@ -3,6 +3,15 @@
 
 {% block main %}
 
+    <form action="{{ path('get_event') }}" method="get">
+    <input name="param" type="text">
+        <button type="submit">Envoyer</button>
+    </form>
+
+
+
+
+
     <div class="card-container">
         {% for event in allEvents  %}
             <div class="card">
