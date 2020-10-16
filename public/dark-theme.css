@@ -248,10 +248,18 @@ button{
     width: 15vw;
     font-weight: bold;
     padding-top: 2vh;
-
 }
 
+/*
+* Password Edit Page
+*
+ */
 
+form ul {
+    list-style: none;
+    padding-left: 0;
+    color: red;
+}
 
 
 /*
