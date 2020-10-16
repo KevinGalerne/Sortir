@@ -73,7 +73,7 @@
     /*Récupération des données*/
     function onPlaceChanged() {
         var place = this.getPlace();
-        var place_name = place.name;
+        document.getElementById("place_name").value = place.name;
         for (var i in place.address_components) {
             var component = place.address_components[i];
 
