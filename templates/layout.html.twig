@@ -28,7 +28,7 @@
     <div class="logoblock">
         <div class="logoanimation">
             <a href={{ path('welcome') }}>
-                <div class="logo"> Sortir.com</div>
+                <div class="logo">Sortir.com</div>
             </a>
         </div>
     </div>
@@ -41,7 +41,9 @@
     {% if app.user %}
         <div class="menublock">
 
+
             <a class="menubutton" href="{{ path('user_account_show') }}">Mon compte</a>
+            <a class="menubutton" href="{{ path('list_events') }}">Voir les évènements</a>
             <a class="menubutton" href="{{ path("create_event") }}">Créer un évènement</a>
             <a class="menubutton" href="{{ path("app_logout") }}">Déconnexion</a>
 
