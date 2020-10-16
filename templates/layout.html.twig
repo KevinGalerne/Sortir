@@ -53,6 +53,15 @@
 <!-- Main part of the page that will be edited  -->
 {% block welcome %}
     <div class="mainblock">
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {% block main %}
         {% endblock %}
     </div>
