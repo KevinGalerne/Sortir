@@ -21,6 +21,7 @@
 </label>
 
 {% block header %}
+    <div class="username">Bonjour, {{ app.user.firstName }}</div>
     <div class="actualdate">Nous sommes le {{ ('now')|date('d-m-Y') }}</div>
 {% endblock %}
 
