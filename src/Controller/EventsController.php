@@ -66,14 +66,28 @@ class EventsController extends AbstractController
     }
 
     /**
-     * @Route("/details_event", name="details_event")
+     * @Route("/details_event/{id}", name="details_event")
      */
-    public function details(EventRepository $eventRepository)
+    public function details($id, EventRepository $eventRepository)
     {
-        $eventToShow = $eventRepository->find(1);
+        $eventToShow = $eventRepository->find($id);
 
         return $this->render('events/details_event.html.twig', [
             "eventToShow" => $eventToShow
+        ]);
+    }
+
+    /**
+     * @Route("/list_events", name="liste_events")
+     */
+    public function list(EntityManagerInterface $em)
+    {
+        $eventRepository = $em->getRepository(Event::class);
+        $allEvents = $eventRepository->findAll();
+
+
+        return $this->render('events/list_events.html.twig', [
+            "allEvents" => $allEvents
         ]);
     }
 }

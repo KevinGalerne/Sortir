@@ -7,12 +7,14 @@
 {% block main %}
 
     <div class="card-container">
-        {% for  in  %}
+        {% for event in allEvents  %}
             <div class="card">
-                <a href="{{ path('', {'id': }) }}">
+                <a href="{{ path('details_event', {'id': event.id }) }}">
                     <!-- Image -->
                     <div class="card-image">
-
+{#
+                        TODO: Peut etre mettre une image
+#}
                     </div>
                     <!-- Fin de l'image -->
 
@@ -20,15 +22,15 @@
                     <div class="card-body">
                         <!-- Auteur et Date de publication-->
                         <div class="card-date">
-                            Posted by {{ idea.author }} - {{ idea.dateCreated | format_datetime(locale='fr') }}
+                            Posted by {{ event.author.firstName}} {{ event.author.lastName }} - {{ event.creationDate | date('H:i:s d-m-Y') }}
                         </div>
                         <!-- Titre de l'article -->
                         <div class="card-title">
-                            <h3>{{ idea.title }}</h3>
+                            <h3>{{ event.name }}</h3>
                         </div>
                         <!-- Extrait de l'article -->
                         <div class="card-excerpt">
-                            <p>{{ idea.description }}</p>
+                            <p>{{ event.description }}</p>
                         </div>
 
                     </div>
