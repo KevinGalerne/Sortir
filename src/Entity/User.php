@@ -71,6 +71,7 @@ class User implements UserInterface
      */
     private $phoneNumber;
 
+    // RELATIONS ---------------------------------------------------------------------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
@@ -82,9 +83,15 @@ class User implements UserInterface
      */
     private $events;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="registeredParticipants")
+     */
+    private $eventsRegisteredTo;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->eventsRegisteredTo = new ArrayCollection();
     }
 
 
@@ -273,6 +280,34 @@ class User implements UserInterface
             if ($event->getAuthor() === $this) {
                 $event->setAuthor(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEventsRegisteredTo(): Collection
+    {
+        return $this->eventsRegisteredTo;
+    }
+
+    public function addEventsRegisteredTo(Event $eventsRegisteredTo): self
+    {
+        if (!$this->eventsRegisteredTo->contains($eventsRegisteredTo)) {
+            $this->eventsRegisteredTo[] = $eventsRegisteredTo;
+            $eventsRegisteredTo->addRegisteredParticipant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsRegisteredTo(Event $eventsRegisteredTo): self
+    {
+        if ($this->eventsRegisteredTo->contains($eventsRegisteredTo)) {
+            $this->eventsRegisteredTo->removeElement($eventsRegisteredTo);
+            $eventsRegisteredTo->removeRegisteredParticipant($this);
         }
 
         return $this;

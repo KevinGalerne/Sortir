@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -109,10 +111,14 @@ class Event
     private $Author;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="events")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="eventsRegisteredTo")
      */
-    private $campus;
+    private $registeredParticipants;
+
+    public function __construct()
+    {
+        $this->registeredParticipants = new ArrayCollection();
+    }
 
 
 
@@ -358,14 +364,28 @@ class Event
         return $this;
     }
 
-    public function getCampus(): ?Campus
+    /**
+     * @return Collection|User[]
+     */
+    public function getRegisteredParticipants(): Collection
     {
-        return $this->campus;
+        return $this->registeredParticipants;
     }
 
-    public function setCampus(?Campus $campus): self
+    public function addRegisteredParticipant(User $registeredParticipant): self
     {
-        $this->campus = $campus;
+        if (!$this->registeredParticipants->contains($registeredParticipant)) {
+            $this->registeredParticipants[] = $registeredParticipant;
+        }
+
+        return $this;
+    }
+
+    public function removeRegisteredParticipant(User $registeredParticipant): self
+    {
+        if ($this->registeredParticipants->contains($registeredParticipant)) {
+            $this->registeredParticipants->removeElement($registeredParticipant);
+        }
 
         return $this;
     }
