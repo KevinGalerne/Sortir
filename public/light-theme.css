@@ -1,0 +1,341 @@
+/*
+* Theme name : Sortir Dark Theme
+* Author : Kevin GALERNE, Samy-Lee LEVY, Laetitia PINOT, Raphael POIRON
+*
+ */
+
+
+
+/* Variables */
+:root{
+    --main-background-color : white /*#005AA7*/ ;
+    --second-background-color: silver /*2c3e50*/;
+    --third-background-color: black;
+    --hover-font-color : #C0C0C0;
+    --first-font-family: 'Lobster', cursive;
+    --second-font-family : 'Work', sans-serif;
+    --halloween-font-familly : 'Piedra', cursive;
+}
+
+/*
+ *
+ *HTML basics
+ */
+select{
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    letter-spacing: 1px;
+    font-weight: bold;
+    width: 5vw;
+}
+body{
+    background-color: var(--main-background-color);
+    font-family: var(--second-font-family);
+    color: var(--main-background-color);
+}
+a{
+    text-decoration: none;
+}
+button{
+    background-color: var(--main-background-color);
+    font-family: var(--second-font-family);
+    border-radius: 30px;
+    height: 60px;
+    width: 150px;
+    margin: 20px;
+    color: var(--third-background-color);
+}
+
+/*
+ *
+ *Twig blocks
+ */
+
+/*Logo block */
+.logoblock{
+    padding-top: 5vh;
+    text-align: center;
+    font-family: var(--first-font-family);
+    font-size: 10vh;
+    font-weight: bold;
+}
+
+.logo{
+    color: var(--third-background-color);
+}
+.logo:hover{
+    color:var(--hover-font-color);
+    transition-duration: 4s;
+}
+
+/* Main block */
+.mainblock{
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+}
+
+/*Footer block */
+.footerblock{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+}
+.menublock{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+.menubutton{
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-family: var(--second-font-family);
+    font-size: large;
+    height: 50px;
+    width: 200px;
+    padding-top:15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*
+*
+* Welcome page
+*
+*/
+
+.animatedlogo{
+    color: var(--third-background-color);
+    text-align: center;
+    font-family: var(--first-font-family);
+    font-size: 20vh;
+    font-weight: bold;
+    animation: logoanimation 4s;
+    margin-top: 10%;
+}
+.stepin{
+    color: var(--third-background-color);
+    font-family: var(--first-font-family);
+    font-size: 5vh;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15vh;
+    animation: stepinanimation 4s ;
+    }
+.animatedfooter{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+    animation: footeranimation 4s;
+}
+
+/* Halloween part*/
+.witch{
+    height: 20vh;
+    animation: witchanimation 5s infinite;
+    animation-direction: alternate-reverse;
+}
+
+
+
+
+
+
+/*
+*
+* Login page
+*
+ */
+
+.userloggedmessage{
+    padding-top: 5vh;
+}
+.loginbutton{
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-family: var(--second-font-family);
+    justify-content: center;
+    font-weight: bold;
+    height: 50px;
+    width: 200px;
+
+}
+
+
+
+
+
+
+/*
+*
+* Create User page
+*
+*/
+
+.forminput {
+    height: 2vh;
+    width: 15vw;
+    border-radius: 5px;
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.forminput2 {
+    height: 2vh;
+    width: 15vw;
+    border-radius: 5px;
+    background-color: var(--second-background-color);
+    color: var(--third-background-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.formlabel{
+    font: var(--first-font-family);
+    color : var(--third-background-color);
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.formshow {
+    font-weight: normal;
+    height: 2vh;
+    width: 15vw;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.eventform .formlabel{
+    display: flex;
+    justify-content: space-between;
+}
+.eventfield{
+    text-align: left;
+    padding-left: 5vw;
+}
+.profilbuttons{
+    padding: 50px;
+}
+
+/*
+*
+* Create event page
+*
+*/
+
+.eventdescription{
+    height: 20vh;
+    width: 15vw;
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.eventform{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.eventside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.date{
+    display: inline-flex;
+}
+.formdescription{
+    display: inline-flex;
+}
+
+
+.formcampus {
+    font-weight: bold;
+
+}
+
+/* Keyframes and animations */
+@keyframes logoanimation  {
+    from{
+        transform: translateY(-600px) scale(0.5);
+    }
+    to{
+        transform: translateY(0px) scale(1);
+    }
+}
+@keyframes stepinanimation  {
+    from{
+        transform: translateX(-1400px) scale(0.5);
+    }
+    to{
+        transform: translateY(0px) scale(1);
+    }
+}
+@keyframes footeranimation  {
+    from{
+        transform: translateY(-1400px) scale(0.5);
+
+    }
+    to{
+        transform: translateY(0px) scale(1);
+    }
+}
+@keyframes witchanimation  {
+    from{
+        transform: translateY(-1000px)translateX(-100px) scale(0.5)rotate(360deg)translateY(1000px);
+
+    }
+    to{
+        transform: translateY(500px)translateX(1000px) scale(1)rotate(-360deg);
+    }
+}
+
+/* Form general template */
+
+.errors{
+    display: inline-block;
+    color: red;
+    position: relative;
+}
+
+.flash-success{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: green;
+    width: fit-content;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF;
+
+}
+
+
+
+
+/*
+*
+* Theme button
+*
+ */
+
+

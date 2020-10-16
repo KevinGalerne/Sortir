@@ -2,8 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('darktheme.css') }}">
-    <link rel="stylesheet" href="{{ asset('lighttheme.css') }}">
+    <link id="theme-link" rel="stylesheet" href="light-theme.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
@@ -13,6 +12,11 @@
 
 </head>
 <body>
+<!-- Rounded switch -->
+<label class="toggle_theme_button">
+    <input type="checkbox">
+    <span class="slider round"></span>
+</label>
 
 
 {% block logo %}
@@ -95,5 +99,38 @@
     })
 </script>
 
+
+
+
+{#Creating a dark-mode#}
+<script>
+// Select the button
+const btn = document.querySelector(".toggle_theme_button");
+// Select the stylesheet <link>
+const theme = document.querySelector("#theme-link");
+// Read the storage from the user navigator (F12 -> Application -> localstorage to see the value)
+if (localStorage.getItem("userTheme")) {
+    theme.href = localStorage.getItem("userTheme");
+}
+// Listen for a click on the button
+btn.addEventListener("click", function() {
+// If the current URL contains "ligh-theme.css"
+if (theme.getAttribute("href") === "light-theme.css") {
+// ... then switch it to "dark-theme.css"
+theme.href = "dark-theme.css";
+// Otherwise...
+} else {
+// ... switch it to "light-theme.css"
+theme.href = "light-theme.css";
+}
+
+// Creating a variable that is set with the user theme choice
+let userTheme = theme.href;
+
+// Sending the user choice to the navigator localstorage
+localStorage.setItem("userTheme", userTheme);
+});
+
+</script>
 </body>
 </html>
