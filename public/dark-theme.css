@@ -48,7 +48,9 @@ button{
     color: var(--third-background-color);
     height: 5vh;
     width: 10vw;
-    font: bold;
+    font-weight: bold;
+    border: solid 1px var(--third-background-color);
+    border-radius: 20px;
 }
 
 /*--------------------------------------------------  TWIG BLOCKS ------------------------------------------------*/
@@ -186,10 +188,11 @@ button{
     font-family: var(--second-font-family);
     justify-content: center;
     font-weight: bold;
-    height: 50px;
-    width: 200px;
+    height: 10vh;
+    width: 20vw;
 
 }
+
 
 /*
 *
@@ -205,9 +208,48 @@ button{
 .credentials{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5vh;
+}
+.profilbutton{
+    height: 4vh;
+    width: 15vw;
+
+    border :solid 1px var(--third-background-color);
+    font-weight: bold;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 5vh;
+    padding-top: 2vh;
+
+
 }
 
+/*
+*
+* Account edit page
+*
+*/
+.infotitle{
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+}
+.edit_buttondiv{
+    display: flex;
+    justify-content: space-around;
+}
+.editbutton{
+    background-color: var(--main-background-color);
+    font-family: var(--second-font-family);
+    border: solid 1px var(--third-background-color);
+    border-radius: 20px;
+    color: var(--third-background-color);
+    height: 4vh;
+    width: 15vw;
+    font-weight: bold;
+    padding-top: 2vh;
 
+}
 
 
 

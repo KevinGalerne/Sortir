@@ -2,7 +2,9 @@
 
 {% block main %}
 
-    <h2>Modifier mon profil</h2>
+    <div class="infotitle">    Modifier mon profil    </div>
+
+    <div class="credentials">
 
     {{ form_start(editForm) }}
 
@@ -10,15 +12,15 @@
         <div>{{  form_widget(editForm.pseudo) }}</div>
         <div>{{ form_errors(editForm.pseudo) }}</div>
 
-        <div class="formlabel">{{ form_label(editForm.lastName, "Nom de famille") }}</div>
+        <div class="formlabel">{{ form_label(editForm.lastName) }}</div>
         {{  form_widget(editForm.lastName) }}
         <div>{{ form_errors(editForm.lastName) }}</div>
 
-        <div class="formlabel">{{ form_label(editForm.firstName, "Prénom") }}</div>
+        <div class="formlabel">{{ form_label(editForm.firstName) }}</div>
         {{  form_widget(editForm.firstName) }}
         <div>{{ form_errors(editForm.firstName) }}</div>
 
-        <div class="formlabel">{{ form_label(editForm.phoneNumber, "Numéro de téléphone") }}</div>
+        <div class="formlabel">{{ form_label(editForm.phoneNumber) }}</div>
         {{  form_widget(editForm.phoneNumber) }}
         <div>{{ form_errors(editForm.phoneNumber) }}</div>
 
@@ -26,16 +28,15 @@
         {{  form_widget(editForm.email) }}
         <div>{{ form_errors(editForm.email) }}</div>
 
-
-        <button type="submit">Enregister les modifications</button>
-
-
+    </div>
+    <button type="submit">Enregister les modifications</button>
     {{ form_end(editForm) }}
 
 
-    <h2> Modifier mon mot de passe</h2>
+    <div  class="infotitle">Modifier mon mot de passe</div>
+    <div class="edit_buttondiv">
+    <a class="editbutton" href={{ path('user_account_show') }}>Revenir au profil</a>
+    <a class="editbutton" href="{{ path('user_password_edit') }}">Modifier le mot de passe</a>
 
-
-    <button><a href={{ path('user_account_show') }}>Revenir au profil</a></button>
-    <button><a href={{ path('user_password_edit') }}>Modifier le mot de passe</a></button>
+    </div>
 {% endblock %}
