@@ -56,7 +56,9 @@ class EventsController extends AbstractController
 
             $entityManager->persist($event);
             $entityManager->flush();
-            return $this->redirectToRoute("list_events");
+
+            $id=$event->getId();
+            return $this->redirectToRoute("details_event",['id'=>$id]);
 
         }
 
