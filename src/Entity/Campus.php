@@ -36,9 +36,10 @@ class Campus
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -118,4 +119,5 @@ class Campus
 
         return $this;
     }
+
 }

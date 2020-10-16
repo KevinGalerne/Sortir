@@ -115,6 +115,13 @@ class Event
      */
     private $registeredParticipants;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $campus;
+
+
     public function __construct()
     {
         $this->registeredParticipants = new ArrayCollection();
@@ -297,7 +304,7 @@ class Event
         return $this->postal_code;
     }
 
-    public function setPostalCode(int $postal_code): self
+    public function setPostalCode(string $postal_code): self
     {
         $this->postal_code = $postal_code;
 
@@ -386,6 +393,30 @@ class Event
         if ($this->registeredParticipants->contains($registeredParticipant)) {
             $this->registeredParticipants->removeElement($registeredParticipant);
         }
+
+        return $this;
+    }
+
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
+
+        return $this;
+    }
+    public function setCampusName(?Campus $campus): self
+    {
+        $this->campus = $campus->getName();
+
+        return $this;
+    }
+    public function setCampusId(?Campus $campus): self
+    {
+        $this->campusid = $campus->getId();
 
         return $this;
     }

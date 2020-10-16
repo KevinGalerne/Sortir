@@ -42,20 +42,24 @@ class EventsController extends AbstractController
         $event = new Event();
         $campus = new Campus();
 
+        // Getting the user campus, $user is initially typed UserInterface, we retype it to User
         /** @var User $user */
         $user = $this->getUser();
         $campus = $user->getCampus();
 
 
+
         // Creating the form
         $eventForm = $this->createForm(EventType::class, $event);
         $eventForm->handleRequest($request);
-        $event->setCampus($campus);
+
+
 
         //Hydratation des propriétés qui sont fixées automatiquement
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished(false);
-
+        $event->setCampusId($campus->getId());
+        $event->setAuthor($user);
 
 
 
