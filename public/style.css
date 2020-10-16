@@ -5,7 +5,7 @@
     --third-background-color: #FBFCD4;
     --hover-font-color : #C0C0C0;
     --first-font-family: 'Lobster', cursive;
-    --second-font-family : 'Amatic SC', cursive;
+    --second-font-family : '';
     --halloween-font-familly : 'Piedra', cursive;
 }
 
@@ -29,14 +29,13 @@ a{
     text-decoration: none;
 }
 button{
-    background-color: var(--second-background-color);
+    background-color: var(--main-background-color);
     font-family: var(--second-font-family);
     border-radius: 30px;
     height: 60px;
     width: 150px;
     margin: 20px;
     color: var(--third-background-color);
-
 }
 
 /*
@@ -66,11 +65,10 @@ button{
     text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    border:solid 3px black;
-    border-radius: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: var(--third-background-color);
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
 }
 
 /*Footer block */
@@ -89,11 +87,12 @@ button{
     justify-content: space-around;
 }
 .menubutton{
-    background-color: var(--third-background-color);
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-family: var(--second-font-family);
+    font-size: large;
     height: 50px;
     width: 200px;
-    border:solid 3px black;
-    border-radius: 30px;
     padding-top:15px;
     text-align: center;
     font-weight: bold;
@@ -116,10 +115,11 @@ button{
 }
 .stepin{
     color: var(--third-background-color);
-    text-align: center;
     font-family: var(--first-font-family);
     font-size: 5vh;
+    text-align: center;
     font-weight: bold;
+    margin-top: 15vh;
     background-color: var(--second-background-color);
     border-color: var(--third-background-color);
     animation: stepinanimation 4s ;
@@ -133,6 +133,7 @@ button{
     color: var(--third-background-color);
     animation: footeranimation 4s;
 }
+
 /* Halloween part*/
 .witch{
     height: 20vh;
@@ -154,7 +155,16 @@ button{
 .userloggedmessage{
     padding-top: 5vh;
 }
+.loginbutton{
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-family: var(--second-font-family);
+    justify-content: center;
+    font-weight: bold;
+    height: 50px;
+    width: 200px;
 
+}
 
 
 
@@ -170,7 +180,7 @@ button{
 .forminput {
     height: 2vh;
     width: 15vw;
-    border-radius: 30px;
+    border-radius: 5px;
     background-color: var(--main-background-color);
     color: var(--third-background-color);
     font-weight: bold;
@@ -180,7 +190,7 @@ button{
 
 .formlabel{
     font: var(--first-font-family);
-    color : var(--main-background-color);
+    color : var(--third-background-color);
     padding-top: 20px;
     font-weight: bold;
 }
@@ -206,7 +216,9 @@ button{
 }
 
 /*
-* Event page
+*
+* Create event page
+*
 */
 
 .eventdescription{
@@ -216,7 +228,8 @@ button{
     color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
-    border-radius: 30px;
+    border-radius: 5px;
+    text-align: center;
 
 }
 
@@ -229,6 +242,7 @@ button{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
 }
 .date{
     display: inline-flex;
