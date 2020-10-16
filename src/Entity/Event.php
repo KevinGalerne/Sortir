@@ -62,6 +62,11 @@ class Event
     private $isPublished;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $place_name;
+
+    /**
      * @ORM\Column(type="string", nullable=true)
      */
     private $street_number;
@@ -86,12 +91,24 @@ class Event
      */
     private $country;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $longitude;
+
     //RELATIONS -----------------------------------------------------------------------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
      */
     private $Author;
+
+
 
     //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
     public function getId(): ?int
@@ -295,6 +312,42 @@ class Event
     public function setCountry(string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getPlaceName(): ?string
+    {
+        return $this->place_name;
+    }
+
+    public function setPlaceName(?string $place_name): self
+    {
+        $this->place_name = $place_name;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(float $longitude): self
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }

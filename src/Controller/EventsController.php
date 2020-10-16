@@ -45,12 +45,14 @@ class EventsController extends AbstractController
         if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
 
             // Setting the place parameters
-        $event->setName($request->get("name"));
+
             $event->setStreetNumber($request->get("event_street_number"));
             $event->setRoute($request->get("event_route"));
             $event->setPostalCode($request->get("event_postal_code"));
             $event->setLocality($request->get("event_locality"));
             $event->setCountry($request->get("event_country"));
+            $event->setLatitude($request->get("latitude"));
+            $event->setLongitude($request->get("longitude"));
 
             $entityManager->persist($event);
             $entityManager->flush();

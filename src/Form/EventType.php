@@ -45,9 +45,6 @@ class EventType extends AbstractType
             ->add('description',
                   TextareaType::class,
                        ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
-            /*->add('place',
-                  EntityType::class,
-                       ["class"=>"App\Entity\Place", "choice_label"=>"name"])*/
             ->add('save',
                   SubmitType::class,
                        ['label' => 'Enregistrer'])
