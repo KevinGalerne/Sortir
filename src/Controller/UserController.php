@@ -9,8 +9,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @IsGranted ("ROLE_STUDENT")
@@ -60,18 +62,63 @@ class UserController extends AbstractController
     /**
      * @Route("/account/edit/new_password", name="user_password_edit")
      */
-    public function editPassword(Request $request)
+    public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em)
     {
 
-        $user = $this->getUser();
+        {
+            $user = $this->getUser();
+            $form = $this->createForm(EditPasswordType::class, $user);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+
+                $oldPassword = $form->get('oldPassword')->getData();
+
+
+                // Si l'ancien mot de passe est bon
+                if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
+                    $newEncodedPassword = $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData());
+                    $user->setPassword($newEncodedPassword);
+
+                    $em->persist($user);
+                    $em->flush();
+
+                    $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
+
+                    return $this->render('user/account_show.html.twig');
+                } else {
+                    $form->addError(new FormError('Ancien mot de passe incorrect'));
+                }
+            }
+
+
+            return $this->render('user/edit_password.html.twig', [
+                'editPasswordForm'=> $form->createView(),
+            ]);
+        }
+
+        /*$user = $this->getUser();
 
         $form = $this->createForm(EditPasswordType::class, $user);
         $form->handleRequest($request);
 
+        $old_pwd = $request->get('oldPassword');
 
-        return $this->render('user/edit_password', [
-            'editPasswordForm'=> $form->createView(),
-        ]);
+        $user = $this->getUser();
+        $checkPass = $userPasswordEncoder->isPasswordValid($user, $old_pwd);
+        if($checkPass === true) {
+
+        } else {
+            return new jsonresponse(array('error' => 'The current password is incorrect.'));
+        }*/
+
+
+
+
 
     }
 }
