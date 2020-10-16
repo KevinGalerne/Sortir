@@ -1,11 +1,19 @@
+/*
+* Theme name : Sortir Dark Theme
+* Author : Kevin GALERNE, Samy-Lee LEVY, Laetitia PINOT, Raphael POIRON
+*
+ */
+
+
+
 /* Variables */
 :root{
     --main-background-color : #0A0A0A /*#005AA7*/ ;
-    --second-background-color: #0A0A0A /*2c3e50*/;
+    --second-background-color: silver /*2c3e50*/;
     --third-background-color: #FBFCD4;
     --hover-font-color : #C0C0C0;
     --first-font-family: 'Lobster', cursive;
-    --second-font-family : '';
+    --second-font-family : 'Work', sans-serif;
     --halloween-font-familly : 'Piedra', cursive;
 }
 
@@ -21,7 +29,7 @@ select{
     width: 5vw;
 }
 body{
-    background-color: var(--second-background-color);
+    background-color: var(--main-background-color);
     font-family: var(--second-font-family);
     color: var(--main-background-color);
 }
@@ -120,8 +128,6 @@ button{
     text-align: center;
     font-weight: bold;
     margin-top: 15vh;
-    background-color: var(--second-background-color);
-    border-color: var(--third-background-color);
     animation: stepinanimation 4s ;
     }
 .animatedfooter{
@@ -182,6 +188,16 @@ button{
     width: 15vw;
     border-radius: 5px;
     background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.forminput2 {
+    height: 2vh;
+    width: 15vw;
+    border-radius: 5px;
+    background-color: var(--second-background-color);
     color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
