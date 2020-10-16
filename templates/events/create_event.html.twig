@@ -10,6 +10,10 @@
         <!-- Left Side -->
         <div class="eventside">
             <div class="formlabel">
+                Campus : <div class="formcampus">{{ app.user.campus.getName }}</div>
+            </div>
+
+            <div class="formlabel">
                 Nom de la sortie : <div class="eventfield">{{ form_widget(eventForm.name) }}</div>
             </div>
 
@@ -23,26 +27,19 @@
 
             <div class="formlabel">
                 Nombre de places : <div class="eventfield">{{ form_widget(eventForm.maxParticipants) }}</div>
-
             </div>
 
             <div class="formlabel">
                 Durée : <div class="eventfield">{{ form_widget(eventForm.duration) }}</div>
-
             </div>
 
             <div class="formlabel">
                 Description et infos : <div class="formdescription">{{ form_widget(eventForm.description) }}</div>
-
             </div>
         </div>
 
         <!-- Right Side -->
         <div class="eventside">
-            <div class="formlabel">
-                Campus : <div class="formcampus">{{ app.user.campus.getName }}</div>
-            </div>
-
             <div class="formlabel">
                 Lieu : <input id="user_input_autocomplete_address" placeholder="Commencez à chercher un lieu pour votre sortie..." type="text" class="forminput">
             </div>
@@ -71,13 +68,13 @@
                 Pays : <input id="country" name="event_country" class="forminput" type="text">
             </div>
 
-            {#<div class="formlabel">
-                Latitude : <input id="lat" name="lat" class="forminput">
+            <div class="formlabel">
+                Latitude : <input id="latitude" name="latitude" class="forminput">
             </div>
 
             <div class="formlabel">
-                Longitude : <input id="lng" name="lng" class="forminput">
-            </div>#}
+                Longitude : <input id="longitude" name="longitude" class="forminput">
+            </div>
         </div>
     </div>
 
