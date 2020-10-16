@@ -4,9 +4,15 @@
 *
  */
 
+/* Halloween part*/
+.witch{
+    height: 20vh;
+    animation: witchanimation 5s infinite;
+    animation-direction: alternate-reverse;
+}
 
+/*--------------------------------------------------  VARIABLES ------------------------------------------------*/
 
-/* Variables */
 :root{
     --main-background-color : #0b090a /*#005AA7*/ ;
     --second-background-color: silver /*2c3e50*/;
@@ -17,10 +23,8 @@
     --halloween-font-familly : 'Piedra', cursive;
 }
 
-/*
- *
- *HTML basics
- */
+/*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
+
 select{
     background-color: var(--main-background-color);
     color: var(--third-background-color);
@@ -35,21 +39,19 @@ body{
 }
 a{
     text-decoration: none;
+    color: var(--third-background-color);
 }
 button{
     background-color: var(--main-background-color);
     font-family: var(--second-font-family);
-    border-radius: 30px;
-    height: 60px;
-    width: 150px;
-    margin: 20px;
+    border-radius: 20px;
     color: var(--third-background-color);
+    height: 5vh;
+    width: 10vw;
+    font: bold;
 }
 
-/*
- *
- *Twig blocks
- */
+/*--------------------------------------------------  TWIG BLOCKS ------------------------------------------------*/
 
 /* Header block */
 
@@ -130,6 +132,10 @@ button{
     font-weight: bold;
 }
 
+
+
+/*--------------------------------------------------  PAGES ------------------------------------------------*/
+
 /*
 *
 * Welcome page
@@ -165,18 +171,6 @@ button{
 }
 
 
-/* Halloween part*/
-.witch{
-    height: 20vh;
-    animation: witchanimation 5s infinite;
-    animation-direction: alternate-reverse;
-}
-
-
-
-
-
-
 /*
 *
 * Login page
@@ -195,6 +189,22 @@ button{
     height: 50px;
     width: 200px;
 
+}
+
+/*
+*
+* Account show page
+*
+*/
+.infotitle{
+    color: var(--third-background-color);
+    font-family: var(--first-font-family);
+    font-size: 4vh;
+    padding-bottom: 4vh;
+}
+.credentials{
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -228,14 +238,12 @@ button{
     letter-spacing: 1px;
     text-align: center;
 }
-
 .formlabel{
     font: var(--first-font-family);
     color : var(--third-background-color);
     padding-top: 20px;
     font-weight: bold;
 }
-
 .formshow {
     font-weight: normal;
     height: 2vh;
@@ -243,7 +251,6 @@ button{
     letter-spacing: 1px;
     text-align: center;
 }
-
 .eventform .formlabel{
     display: flex;
     justify-content: space-between;
@@ -255,6 +262,8 @@ button{
 .profilbuttons{
     padding: 50px;
 }
+
+
 
 /*
 *
@@ -271,9 +280,7 @@ button{
     letter-spacing: 1px;
     border-radius: 5px;
     text-align: center;
-
 }
-
 .eventform{
     display: flex;
     flex-direction: row;
@@ -283,7 +290,6 @@ button{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
 .date{
     display: inline-flex;
@@ -291,8 +297,6 @@ button{
 .formdescription{
     display: inline-flex;
 }
-
-
 .formcampus {
     font-weight: bold;
 

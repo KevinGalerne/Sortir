@@ -11,15 +11,29 @@
         {% endfor %}
     {% endfor %}
 
-    <h1>Mes informations</h1>
+    <div class="infotitle">Mes informations</div>
 
-    <div><p>Pseudo : {{ app.user.pseudo }}</p></div>
-    <div><p>Nom de famille : {{ app.user.lastName | upper }}</p></div>
-    <div><p>Prénom : {{ app.user.firstName  | capitalize }}</p></div>
-    <div><p>Numéro de téléphone : {{ app.user.phoneNumber }}</p></div>
-    <div><p>Email : {{ app.user.email }}</p></div>
-    <div><p>Mot de passe : ***************</p></div>
+<div class="credentials">
 
-    <button><a href="{{ path('user_account_edit') }}">Modifier</a></button>
+    <div class="formlabel">Pseudo :</div>
+    {{ app.user.pseudo }}
+
+    <div class="formlabel">Nom de famille :</div>
+    {{ app.user.lastName | upper }}
+
+    <div class="formlabel">Prénom :</div>
+    {{ app.user.firstName  | capitalize }}
+
+    <div class="formlabel">Numéro de téléphone :</div>
+    {{ app.user.phoneNumber }}
+
+    <div class="formlabel">Email :</div>
+    {{ app.user.email }}
+
+    <div class="formlabel">Mot de passe :</div>
+    ***************
+</div>
+    <div class="profilbuttons"><button><a href="{{ path('user_account_edit') }}">Modifier</a></button></div>
+
 
 {% endblock %}
