@@ -56,7 +56,7 @@ class EventsController extends AbstractController
 
             $entityManager->persist($event);
             $entityManager->flush();
-            return $this->redirectToRoute("welcome");
+            return $this->redirectToRoute("list_events");
 
         }
 
@@ -78,7 +78,7 @@ class EventsController extends AbstractController
     }
 
     /**
-     * @Route("/list_events", name="liste_events")
+     * @Route("/list_events", name="list_events")
      */
     public function list(EntityManagerInterface $em)
     {
