@@ -87,38 +87,17 @@ class UserController extends AbstractController
                     $em->persist($user);
                     $em->flush();
 
-                    $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
+                    $this->addFlash('success', 'Votre mot de passe à bien été changé !');
 
                     return $this->render('user/account_show.html.twig');
                 } else {
-                    $form->addError(new FormError('Ancien mot de passe incorrect'));
+                    $form->get('oldPassword')->addError(new FormError('Ancien mot de passe incorrect'));
                 }
             }
-
 
             return $this->render('user/edit_password.html.twig', [
                 'editPasswordForm'=> $form->createView(),
             ]);
         }
-
-        /*$user = $this->getUser();
-
-        $form = $this->createForm(EditPasswordType::class, $user);
-        $form->handleRequest($request);
-
-        $old_pwd = $request->get('oldPassword');
-
-        $user = $this->getUser();
-        $checkPass = $userPasswordEncoder->isPasswordValid($user, $old_pwd);
-        if($checkPass === true) {
-
-        } else {
-            return new jsonresponse(array('error' => 'The current password is incorrect.'));
-        }*/
-
-
-
-
-
     }
 }
