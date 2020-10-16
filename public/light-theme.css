@@ -51,6 +51,25 @@ button{
  *Twig blocks
  */
 
+/* Header block */
+
+.actualdate{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 30px;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+}
+.toggle_theme_button{
+    position: fixed;
+    top: 2%;
+    left: 1%;
+    padding: 30px;
+    font-family: var(--first-font-family);
+    color: var(--third-background-color);
+
+}
 /*Logo block */
 .logoblock{
     padding-top: 5vh;
@@ -62,6 +81,10 @@ button{
 
 .logo{
     color: var(--third-background-color);
+    position: fixed;
+    top: 0;
+    left: 2%;
+    font-size: 4vh;
 }
 .logo:hover{
     color:var(--hover-font-color);
@@ -139,6 +162,7 @@ button{
     color: var(--third-background-color);
     animation: footeranimation 4s;
 }
+
 
 /* Halloween part*/
 .witch{
@@ -282,6 +306,7 @@ button{
         transform: translateY(0px) scale(1);
     }
 }
+
 @keyframes stepinanimation  {
     from{
         transform: translateX(-1400px) scale(0.5);

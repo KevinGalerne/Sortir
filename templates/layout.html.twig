@@ -12,12 +12,17 @@
 
 </head>
 <body>
-<!-- Rounded switch -->
+<!-- Theme switch -->
+
 <label class="toggle_theme_button">
+    Changer le theme
     <input type="checkbox">
     <span class="slider round"></span>
 </label>
 
+{% block header %}
+    <div class="actualdate">Nous sommes le {{ ('now')|date('d-m-Y') }}</div>
+{% endblock %}
 
 {% block logo %}
     <div class="logoblock">
@@ -47,10 +52,10 @@
 
 <!-- Main part of the page that will be edited  -->
 {% block welcome %}
-<div class="mainblock">
-    {% block main %}
-    {% endblock %}
-</div>
+    <div class="mainblock">
+        {% block main %}
+        {% endblock %}
+    </div>
 {% endblock %}
 
 <!-- Footer part  -->
@@ -61,9 +66,18 @@
     </div>
 {% endblock %}
 
-{#Inclusion de Google Maps JS API#}
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAgHMYyQyz3bRKsvHc8W-o-B12ctxR6EdA"></script>
-{#Script pour l'autocomplétion#}
+
+
+
+
+
+<!-- THE FOLLOWINGS ARE ONLY SCRIPTS -->
+
+
+{# Inclusion de Google Maps JS API #}
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAgHMYyQyz3bRKsvHc8W-o-B12ctxR6EdA"></script>
+{# Script pour l'autocomplétion #}
 <script>
     /*Recherche lieu*/
     function initializeAutocomplete(id) {
@@ -76,6 +90,7 @@
             google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
         }
     }
+
     /*Récupération des données*/
     function onPlaceChanged() {
         var place = this.getPlace();
@@ -93,43 +108,42 @@
         }
 
     }
+
     /*Exécution du code*/
-    google.maps.event.addDomListener(window, 'load', function() {
+    google.maps.event.addDomListener(window, 'load', function () {
         initializeAutocomplete('user_input_autocomplete_address');
     })
 </script>
 
 
-
-
-{#Creating a dark-mode#}
+{# Creating a dark-mode #}
 <script>
-// Select the button
-const btn = document.querySelector(".toggle_theme_button");
-// Select the stylesheet <link>
-const theme = document.querySelector("#theme-link");
-// Read the storage from the user navigator (F12 -> Application -> localstorage to see the value)
-if (localStorage.getItem("userTheme")) {
-    theme.href = localStorage.getItem("userTheme");
-}
-// Listen for a click on the button
-btn.addEventListener("click", function() {
+    // Select the button
+    const btn = document.querySelector(".toggle_theme_button");
+    // Select the stylesheet <link>
+    const theme = document.querySelector("#theme-link");
+    // Read the storage from the user navigator (F12 -> Application -> localstorage to see the value)
+    if (localStorage.getItem("userTheme")) {
+        theme.href = localStorage.getItem("userTheme");
+    }
+    // Listen for a click on the button
+    btn.addEventListener("click", function () {
 // If the current URL contains "ligh-theme.css"
-if (theme.getAttribute("href") === "light-theme.css") {
+        if (theme.getAttribute("href") === "light-theme.css") {
 // ... then switch it to "dark-theme.css"
-theme.href = "dark-theme.css";
+            theme.href = "dark-theme.css";
 // Otherwise...
-} else {
+        } else {
 // ... switch it to "light-theme.css"
-theme.href = "light-theme.css";
-}
+            theme.href = "light-theme.css";
+        }
 
 // Creating a variable that is set with the user theme choice
-let userTheme = theme.href;
+        let userTheme = theme.href;
 
 // Sending the user choice to the navigator localstorage
-localStorage.setItem("userTheme", userTheme);
-});
+        localStorage.setItem("userTheme", userTheme);
+    });
 
 </script>
 </body>
