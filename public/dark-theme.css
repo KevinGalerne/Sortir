@@ -89,7 +89,7 @@ button{
     color: var(--third-background-color);
 }
 .menublock{
-    padding-top: 40px;
+    padding-top: 10%;
     padding-bottom: 40px;
     display: flex;
     justify-content: space-around;
