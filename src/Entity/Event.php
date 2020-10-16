@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -107,6 +109,16 @@ class Event
      * @ORM\JoinColumn(nullable=false)
      */
     private $Author;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="eventsRegisteredTo")
+     */
+    private $registeredParticipants;
+
+    public function __construct()
+    {
+        $this->registeredParticipants = new ArrayCollection();
+    }
 
 
 
@@ -348,6 +360,32 @@ class Event
     public function setLongitude(float $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getRegisteredParticipants(): Collection
+    {
+        return $this->registeredParticipants;
+    }
+
+    public function addRegisteredParticipant(User $registeredParticipant): self
+    {
+        if (!$this->registeredParticipants->contains($registeredParticipant)) {
+            $this->registeredParticipants[] = $registeredParticipant;
+        }
+
+        return $this;
+    }
+
+    public function removeRegisteredParticipant(User $registeredParticipant): self
+    {
+        if ($this->registeredParticipants->contains($registeredParticipant)) {
+            $this->registeredParticipants->removeElement($registeredParticipant);
+        }
 
         return $this;
     }
