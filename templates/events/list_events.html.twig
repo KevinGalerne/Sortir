@@ -39,7 +39,7 @@
     <div class="card-container">
         {% for event in allEvents %}
             <div class="card">
-                <!-- Image -->
+                <!-- Card's Picture -->
                 <div class="card-image">
                     {% if event.author.id == 7 %}
                         <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
@@ -49,46 +49,46 @@
                         <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
                     {% endif %}
                 </div>
-                <!-- Fin de l'image -->
+                <!-- End of the Picture -->
 
-                <!-- Corp de la carte -->
+                <!-- Card's Body -->
                 <div class="card-body">
-                    <!-- Auteur et Date de publication-->
+                    <!-- Author & Event's Date -->
                     <div class="card-date">
                         Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
                         Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
                     </div>
-                    <!-- Titre de la sortie -->
+                    <!-- Event's Name -->
                     <div class="card-title">
                         <h3>{{ event.name }}</h3>
                     </div>
-                    <!-- Description de la sortie -->
+                    <!-- Event's Description -->
                     <div class="card-excerpt">
                         <p>{{ event.description }}</p>
                         <p></p>
                     </div>
-                    <!-- Date limite inscription -->
+                    <!-- Registration Limit Date -->
                     <div class="card-limit-date">
                         Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
                     </div>
-                    <!-- Nombre d'inscrits / Nombre participants max -->
+                    <!-- Registered Participants / Max Participants -->
                     {#<div class="card-participants">
                         Nombre de participants : {{ event.registeredParticipants }} / {{ event.maxParticipants }}
                     </div>#}
-                    <!-- Actions possibles sur cette sortie -->
+                    <!-- Possible actions for this event -->
                     <div class="cart-actions">
                         <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
-                        {# Affichage conditionnel des boutons "S'inscrire" ou "Se désister" #}
+                        {# Conditionnal display of "S'inscrire" ou "Se désister" #}
                         {% if event.registeredParticipants.contains(app.user) %}
-                            {# Si l'utilisateur en cours est déjà inscrit à la sortie lui affiche le bouton "Se désister" #}
+                            {# If the user is already registered for this event display "Se désister" #}
                             <a href="#" class="style_bouton">Se désister</a>
                         {% else %}
-                            {# Si il n'est pas inscrit à la sortie lui affiche le bouton "S'inscrire" #}
+                            {# If he's not registered, display "S'inscrire" #}
                             <a href="#" class="style_bouton">S'inscrire</a>
                         {% endif %}
-                        {# Si la date actuelle est inférieur à la date de la sortie et que l'utilisateur connecté est l'auteur de la sortie #}
+                        {# If the actual date is before the event's date AND the actual user is the event's author #}
                         {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
-                            {# Lui affiche les boutons "Modifier" et "Annuler" #}
+                            {# Display "Modifier" & "Annuler" buttons #}
                             <a href="#" class="style_bouton">Modifier</a>
                             <a href="#" class="style_bouton">Annuler</a>
                         {% else %}
@@ -97,7 +97,7 @@
                     </div>
 
                 </div>
-                <!-- Fin du corp de notre carte -->
+                <!-- End of the card's body -->
             </div>
         {% endfor %}
     </div>
