@@ -135,6 +135,7 @@ button {
 .menublock {
     padding-top: 5vh;
     padding-bottom: 5vh;
+
     display: flex;
     justify-content: space-around;
 }
@@ -427,10 +428,12 @@ form ul {
 .card {
     background-color: var(--main-background-color);
     color: var(--third-background-color);
-    width: 400px;
-    margin: 25px auto;
+    width: 20vw;
+    margin: 1vw auto;
     box-shadow: 0px 5px 20px var(--third-background-color);
     border-radius: 25px;
+    padding-bottom: 2vh;
+    margin-bottom: 5vh;
 }
 
 .card-date hr {
@@ -444,8 +447,8 @@ form ul {
 }
 
 .card:hover {
-    /*transform: scale(1.1);
-    transition-duration: 1s;*/
+    transform: scale(1.05);
+    transition-duration: 1s;
 }
 
 .card-body {
@@ -464,6 +467,11 @@ a.style_bouton {
     color: var(--third-background-color);
     border: 1px solid var(--third-background-color);
     border-radius: 10px;
+}
+a.style_bouton:hover{
+    background-color: var(--second-background-color);
+    transition-duration: 1s;
+
 }
 
 /* Card image */
