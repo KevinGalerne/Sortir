@@ -16,6 +16,7 @@ use DateTime;
 use Doctrine\DBAL\Types\StringType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,33 +37,30 @@ class EventsController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request, EntityManagerInterface $entityManager, CampusRepository $campus)
+    public function create(Request $request, EntityManagerInterface $entityManager)
     {
         // Creatin an instance of Event
         $event = new Event();
-        $campus = new Campus();
+
 
         // Getting the user campus, $user is initially typed UserInterface, we retype it to User
         /** @var User $user */
         $user = $this->getUser();
+
+
+        /** @var Campus $campus */
         $campus = $user->getCampus();
-
-
 
         // Creating the form
         $eventForm = $this->createForm(EventType::class, $event);
         $eventForm->handleRequest($request);
 
-
-
         //Hydratation des propriétés qui sont fixées automatiquement
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished(false);
-        $event->setCampusId($campus->getId());
+        $event->setCampus($campus);
+
         $event->setAuthor($user);
-
-
-
 
         if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
 
@@ -119,6 +117,26 @@ class EventsController extends AbstractController
 
 
     /**
+     * This function return a list of events based on the selected campus
+     * @param EventRepository $eventRepository
+     * @param Request $request
+     * @param : String
+     * @return \Symfony\Component\HttpFoundation\Response : [events]
+     * @Route ("/get_event", name="get_event_by_campus")
+     */
+    public function getEventBycampus(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
+    {
+
+        $allCampus = $campusRepository->findAll();
+
+        $param = $request->get('campus');
+        $allEvents = $eventRepository->findBy(['campus' => $param]);
+
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus'=>$allCampus]);
+    }
+
+
+    /**
      * This function return a list of events based on a criteria
      * @param EventRepository $eventRepository
      * @param Request $request
@@ -130,13 +148,12 @@ class EventsController extends AbstractController
     {
 
         $param = $request->get('param');
-        $campus = $campusRepository->findOneBy(['name' => $param]);
 
 
-        $allEvents = $eventRepository->findBy(['Author' => $campus]);
+        $allEvents = $eventRepository->findBy(['Author' => $criteria]);
 
 
-        return $this->render('events/list_events', ["allEvents" => $allEvents]);
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents]);
     }
 
 
