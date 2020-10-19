@@ -96,7 +96,7 @@
                     </div>
                     <!-- Possible actions for this event -->
                     <div class="card-actions">
-                        <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
+                        <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détails</a>
                         {# Conditionnal display of "S'inscrire" ou "Se désister" #}
                         {% if event.registeredParticipants.contains(app.user) %}
                             {# If the user is already registered for this event display "Se désister" #}
