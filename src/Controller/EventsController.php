@@ -164,17 +164,13 @@ class EventsController extends AbstractController
         $keyword = $request->get('keyword');
 
         // Calling the function in the repository and passing the parameters
-<<<<<<< Updated upstream
+
         $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus);
-=======
-        $allEvents = $eventRepository->findByDate($startDate, $endDate);
->>>>>>> Stashed changes
-
-
+        
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
-<<<<<<< Updated upstream
-=======
+
+
 
 
     /**
@@ -197,7 +193,7 @@ class EventsController extends AbstractController
             'id' => $eventToShow->getId()
         ]);
     }
->>>>>>> Stashed changes
+
 }
 
 
