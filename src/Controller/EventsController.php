@@ -16,6 +16,7 @@ use DateTime;
 use Doctrine\DBAL\Types\StringType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\ResultSetMapping;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,7 +89,7 @@ class EventsController extends AbstractController
         }
 
         return $this->render('events/create_event.html.twig', [
-            "eventForm" => $eventForm->createView(), 'allCampus'=>$allCampus
+            "eventForm" => $eventForm->createView(), 'allCampus' => $allCampus
         ]);
     }
 
@@ -119,7 +120,7 @@ class EventsController extends AbstractController
 
 
         return $this->render('events/list_events.html.twig', [
-            "allEvents" => $allEvents, 'allCampus'=>$allCampus
+            "allEvents" => $allEvents, 'allCampus' => $allCampus
         ]);
     }
 
@@ -130,7 +131,7 @@ class EventsController extends AbstractController
      * @param Request $request
      * @param : String
      * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event", name="get_event_by_campus")
+     * @Route ("/get_event_by_campus", name="get_event_by_campus")
      */
     public function getEventBycampus(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
@@ -140,7 +141,7 @@ class EventsController extends AbstractController
         $param = $request->get('campus');
         $allEvents = $eventRepository->findBy(['campus' => $param]);
 
-        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus'=>$allCampus]);
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus' => $allCampus]);
     }
 
 
@@ -150,18 +151,22 @@ class EventsController extends AbstractController
      * @param Request $request
      * @param : String
      * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event", name="get_event")
+     * @Route ("/get_event_by", name="get_event_by")
      */
     public function getEventBy(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
 
+        // Get all the campus in the database and return it to the twig templates
+        $allCampus = $campusRepository->findAll();
+
+        // Get the parameter sent by the user
         $param = $request->get('param');
 
+        // Calling the function in the repository
+        $allEvents = $eventRepository->findByDescription($param);
 
-        $allEvents = $eventRepository->findBy(['Author' => $criteria]);
 
-
-        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents]);
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
 
 
