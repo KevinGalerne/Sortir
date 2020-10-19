@@ -44,8 +44,9 @@
                     <div class="card-body">
                         <!-- Auteur et Date de publication-->
                         <div class="card-date">
-                            Posted by {{ event.author.firstName }} {{ event.author.lastName }}
-                            - {{ event.creationDate | date('H:i:s d-m-Y') }}
+                            Posted by {{ event.author.firstName }} {{ event.author.lastName }} - {{ event.creationDate|date('H:i:s d-m-Y') }}
+                            <hr>
+                            Registration deadline : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
                         </div>
                         <!-- Titre de la sortie -->
                         <div class="card-title">
@@ -54,6 +55,7 @@
                         <!-- Description de la sortie -->
                         <div class="card-excerpt">
                             <p>{{ event.description }}</p>
+                            <p></p>
                         </div>
                         <!-- Actions possibles sur cette sortie -->
                         <div class="cart-actions">
