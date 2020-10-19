@@ -420,4 +420,10 @@ class Event
 
         return $this;
     }
+
+    public function isOpen()
+    {
+        return /*$this->getSubscriptionLimitDate() > new \DateTime() &&*/
+            $this->getMaxParticipants() <= $this->getRegisteredParticipants()->count();
+    }
 }

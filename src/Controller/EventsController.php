@@ -20,6 +20,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\ResultSetMapping;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use phpDocumentor\Reflection\Types\This;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -163,11 +164,40 @@ class EventsController extends AbstractController
         $keyword = $request->get('keyword');
 
         // Calling the function in the repository and passing the parameters
+<<<<<<< Updated upstream
         $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus);
+=======
+        $allEvents = $eventRepository->findByDate($startDate, $endDate);
+>>>>>>> Stashed changes
 
 
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
+<<<<<<< Updated upstream
+=======
+
+
+    /**
+     * @Route ("/participate/{id}", name="participate_event")
+     * @param EventRepository $eventRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
+    {
+        $user = $this->getUser();
+        $eventToShow = $eventRepository->find($id);
+
+        if ($eventToShow->getRegisteredParticipants()->count() < $eventToShow->getMaxParticipants()) {
+            $eventToShow->addRegisteredParticipant($user);
+            $em->persist($eventToShow);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('details_event', [
+            'id' => $eventToShow->getId()
+        ]);
+    }
+>>>>>>> Stashed changes
 }
 
 

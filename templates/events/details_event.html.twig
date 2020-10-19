@@ -67,6 +67,36 @@
             <div class="formlabel">
                 Longitude : <input id="lng" name="lng" class="forminput">
             </div>#}
+
+             <div>
+                <h2>{{ eventToShow.registeredParticipants|length }} participants inscrits :</h2>
+
+                 <table>
+                     <thead>
+                        <tr>
+                            <th>Pseudo</th>
+                            <th>Prénom</th>
+                            <th>Nom de famille</th>
+                            <th>Campus</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     {% for participant in eventToShow.registeredParticipants  %}
+                         <tr>
+                            <td>{{ participant.pseudo }}</td>
+                            <td>{{ participant.firstName | capitalize}}</td>
+                            <td>{{ participant.lastName | upper}}</td>
+                            <td>{{ participant.campus.name }}</td>
+                        </tr>
+                     {% endfor %}
+                     </tbody>
+                 </table>
+            </div>
+            <div>
+                <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
+                    <input type="submit" value="Participer à l'évenement !" {% if eventToShow.open %}disabled{% endif %}>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
