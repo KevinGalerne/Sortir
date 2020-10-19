@@ -27,7 +27,7 @@ class EventRepository extends ServiceEntityRepository
 
 
     public
-    function findByCriteria($startDate, $endDate, $keyword, $userId, $campus)
+    function findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now)
     {
         $builder = $this->createQueryBuilder('e');
 
@@ -54,6 +54,15 @@ class EventRepository extends ServiceEntityRepository
             $builder->andWhere('e.description LIKE :description')
                 ->orWhere('e.name LIKE :description')
                 ->setParameter('description', '%' . $keyword . '%');
+        }
+        if ($participant){
+            $builder->join('e.registeredParticipants','rp')
+                ->andWhere('rp = :participant')
+                ->setParameter('participant', $participant);
+        }
+        if($now){
+            $builder->andWhere('e.eventDate < :now')
+                ->setParameter('now', $now);
         }
 
 
