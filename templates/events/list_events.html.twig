@@ -3,9 +3,11 @@
 
 {% block main %}
 
+
+    <!------------------------------------------------- RESEARCH PART ------------------------------------------------>
     <!-- This part allow the user to select the campus -->
-    <form action="{{ path('get_event_by_campus') }}" method="get" >
-        <select name="campus" id="selectcampus" onchange="this.form.submit();">
+    <form action="{{ path('get_event_by_campus') }}" method="get">
+        <select name="campus" class="forminput" id="selectcampus" onchange="this.form.submit();">
             <option value="">Campus</option>
             {% for campus in allCampus %}
                 <option value="{{ campus.id }}">{{ campus.name }}</option>
@@ -14,8 +16,15 @@
     </form>
 
     <!-- This part allow the user to select events on keywords -->
-    <form action="{{ path('get_event_by') }}" method="get">
-        <input type="text" class="forminput" name="param" placeholder="Recherchez par mot-clef">
+    <form action="{{ path('get_event_by_keyword') }}" method="get">
+        <input type="text" class="forminput" name="keyword" placeholder="Recherchez par mot-clef">
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <form action ={{ path('get_event_by_date') }} method="get">
+    <!-- This part allow the user to select between to dates -->
+    Début :<input type="date" class="forminput" name="startdate">
+    Fin : <input type="date" class="forminput" name="enddate">
         <input type="submit" value="Envoyer">
     </form>
 
@@ -23,6 +32,7 @@
 
 
 
+    <!------------------------------------------------- DISPLAY PART ------------------------------------------------>
 
 
     <div class="card-container">
@@ -34,20 +44,16 @@
                         {% if event.author.id == 7 %}
                             <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
                         {% elseif event.author.id == 1 %}
-                            <img src="{{ asset('img/manix.jpg') }}" alt=""/>
+                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
                         {% else %}
-                            <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
+                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
                         {% endif %}
                     </div>
                     <!-- Fin de l'image -->
 
                     <!-- Corp de la carte -->
                     <div class="card-body">
-                        <!-- Auteur et Date de publication-->
-                        <div class="card-date">
-                            Posted by {{ event.author.firstName }} {{ event.author.lastName }}
-                            - {{ event.creationDate | date('H:i:s d-m-Y') }}
-                        </div>
+
                         <!-- Titre de l'article -->
                         <div class="card-title">
                             <h3>{{ event.name }}</h3>
@@ -55,6 +61,13 @@
                         <!-- Extrait de l'article -->
                         <div class="card-excerpt">
                             <p>{{ event.description }}</p>
+                        </div>
+                        <!-- Auteur et Date de publication-->
+                        <div class="card-date">
+                            Proposé par {{ event.author.firstName }} du campus de {{ event.campus.name }}
+                        </div>
+                        <div class="card-author">
+                            {{ event.creationDate | date('d-m-Y') }}
                         </div>
 
                     </div>
