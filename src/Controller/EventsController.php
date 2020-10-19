@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\EventRepository;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Campus;
 use App\Entity\City;
 use App\Entity\Event;
@@ -10,7 +12,6 @@ use App\Entity\User;
 use App\Form\EventType;
 use App\Repository\CampusRepository;
 use App\Repository\CityRepository;
-use App\Repository\EventRepository;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\DBAL\Types\StringType;
@@ -20,8 +21,8 @@ use Doctrine\ORM\Query\ResultSetMapping;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 /**
  * @IsGranted("ROLE_STUDENT")
@@ -189,12 +190,38 @@ class EventsController extends AbstractController
         $endDate = date_create($request->get('enddate'));
 
         // Calling the function in the repository and passing the parameters
-        $allEvents = $eventRepository->findByDate($startDate,$endDate);
+        $allEvents = $eventRepository->findByDate($startDate, $endDate);
 
 
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
 
+
+    /**
+     * This function return a list of events based on a date choice
+     * @param EventRepository $eventRepository
+     * @param Request $request
+     * @param : String
+     * @return \Symfony\Component\HttpFoundation\Response : [events]
+     * @Route ("/get_my_event", name="get_my_event")
+     */
+    public function getMyEvent(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
+    {
+
+        // Get all the campus in the database and return it to the twig templates
+        $allCampus = $campusRepository->findAll();
+
+        // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
+        /** @var User $user */
+        $user = $this->getUser();
+        $userId = $user->getId();
+
+        // Calling the function in the repository and passing the parameters
+        $allEvents = $eventRepository->findMyEvent($userId);
+
+
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
+    }
 }
 
 
