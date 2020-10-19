@@ -37,8 +37,13 @@ class EventsController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request, EntityManagerInterface $entityManager)
+    public function create(Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository)
     {
+
+        // Get all the campus in the database and return it to the twig templates
+        $allCampus = $campusRepository->findAll();
+
+
         // Creatin an instance of Event
         $event = new Event();
 
@@ -83,7 +88,7 @@ class EventsController extends AbstractController
         }
 
         return $this->render('events/create_event.html.twig', [
-            "eventForm" => $eventForm->createView()
+            "eventForm" => $eventForm->createView(), 'allCampus'=>$allCampus
         ]);
     }
 
@@ -104,14 +109,17 @@ class EventsController extends AbstractController
      * Access to the event list
      * @Route("/list_events", name="list_events")
      */
-    public function list(EntityManagerInterface $em)
+    public function list(EntityManagerInterface $em, CampusRepository $campusRepository)
     {
+        // Get all the campus in the database and return it to the twig templates
+        $allCampus = $campusRepository->findAll();
+
         $eventRepository = $em->getRepository(Event::class);
         $allEvents = $eventRepository->findAll();
 
 
         return $this->render('events/list_events.html.twig', [
-            "allEvents" => $allEvents
+            "allEvents" => $allEvents, 'allCampus'=>$allCampus
         ]);
     }
 
@@ -126,7 +134,7 @@ class EventsController extends AbstractController
      */
     public function getEventBycampus(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
-
+        // Get all the campus in the database and return it to the twig templates
         $allCampus = $campusRepository->findAll();
 
         $param = $request->get('campus');
