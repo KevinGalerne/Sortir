@@ -91,9 +91,9 @@
                         Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
                     </div>
                     <!-- Registered Participants / Max Participants -->
-                    {#<div class="card-participants">
-                        Nombre de participants : {{ event.registeredParticipants }} / {{ event.maxParticipants }}
-                    </div>#}
+                    <div class="card-participants">
+                        Nombre de participants : {{ event.registeredParticipants.count }} / {{ event.maxParticipants }}
+                    </div>
                     <!-- Possible actions for this event -->
                     <div class="card-actions">
                         <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
