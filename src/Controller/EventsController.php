@@ -191,7 +191,7 @@ class EventsController extends AbstractController
      * @param EventRepository $eventRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
+    public function participate(EventRepository $eventRepository, $id, EntityManagerInterface $em)
     {
         $user = $this->getUser();
         $eventToShow = $eventRepository->find($id);
