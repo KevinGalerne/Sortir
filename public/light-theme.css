@@ -23,6 +23,8 @@
     --halloween-font-familly: 'Piedra', cursive;
 }
 
+
+
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
 
 select {
@@ -392,6 +394,28 @@ form ul {
 *
 */
 
+.filterform{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+.formpart1{
+
+}
+.formcheckbox{
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+}
+.checkboxdiv{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+
+
 
 /* Card Container */
 .card-container {
@@ -428,6 +452,9 @@ form ul {
 
 .card-body {
     padding-bottom: 15px;
+}
+.card-limit-date{
+    padding-bottom: 4vh;
 }
 
 /* Card link */

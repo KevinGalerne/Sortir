@@ -401,10 +401,15 @@ form ul {
 }
 .formcheckbox{
     padding-top: 3vh;
+    padding-bottom: 3vh;
     display: flex;
-flex-direction: column;
-    max-width: 20vw;
+    flex-direction: column;
 
+    text-align: left;
+}
+.checkboxdiv{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 
 
@@ -445,6 +450,9 @@ flex-direction: column;
 
 .card-body {
     padding-bottom: 15px;
+}
+.card-limit-date{
+    padding-bottom: 4vh;
 }
 
 /* Card link */

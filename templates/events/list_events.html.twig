@@ -3,6 +3,7 @@
 
 {% block main %}
 
+<!--------------------------------------------------- Filter form -------------------------------------------->
 
     <form class="filterform" action="{{ path('get_event') }}" method="get">
         <div class="formpart1">
@@ -24,17 +25,35 @@
         </div>
 
         <div class="formcheckbox">
+            <div class="checkboxdiv">
+                <label for="usercheckbox">Evènements que j'organise</label>
+                <input type="checkbox" id="usercheckbox" name="usercheckbox">
+            </div>
 
-            <label for="usercheckbox">Evènements que j'organise</label>
-            <input type="checkbox" id="usercheckbox "name="usercheckbox">
-            <label for="registeredevents">Evènements auxquels je participe</label>
-            <input type="checkbox" id="registeredevents" name="registeredevents">
+
+            <div class="checkboxdiv">
+                <label for="registeredevents">Evènements auxquels je participe</label>
+                <input type="checkbox" id="registeredevents" name="registeredevents">
+            </div>
+
+            <div class="checkboxdiv">
+                <label for="passed">Sorties passées</label>
+                <input type="checkbox" id="passed" name="passed">
+            </div>
+
+            <div class="checkboxdiv">
+                <label for="nonregisteredevents">Evènements auxquels je participe pas</label>
+                <input type="checkbox" id="nonregisteredevents" name="nonregisteredevents">
+            </div>
 
 
         </div>
 
         <input type="submit" value="Envoyer">
     </form>
+
+<!------------------------------------------------------- Cards ----------------------------------------------------->
+
 
     <div class="card-container">
         {% for event in allEvents %}
