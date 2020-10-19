@@ -24,12 +24,11 @@
     <div class="card-container">
         {% for event in allEvents %}
             <div class="card">
-                <a href="{{ path('details_event', {'id': event.id }) }}">
                     <!-- Image -->
                     <div class="card-image">
                         {% if event.author.id == 7 %}
                             <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
-                        {% elseif event.author.id == 1 %}
+                        {% elseif event.author.id == 2 %}
                             <img src="{{ asset('img/manix.jpg') }}" alt=""/>
                         {% else %}
                             <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
@@ -44,18 +43,24 @@
                             Posted by {{ event.author.firstName }} {{ event.author.lastName }}
                             - {{ event.creationDate | date('H:i:s d-m-Y') }}
                         </div>
-                        <!-- Titre de l'article -->
+                        <!-- Titre de la sortie -->
                         <div class="card-title">
                             <h3>{{ event.name }}</h3>
                         </div>
-                        <!-- Extrait de l'article -->
+                        <!-- Description de la sortie -->
                         <div class="card-excerpt">
                             <p>{{ event.description }}</p>
+                        </div>
+                        <!-- Actions possibles sur cette sortie -->
+                        <div class="cart-actions">
+                            <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
+                            {% if "now" < event.eventDate %}
+                                <a href="#" class="style_bouton">Annuler</a>
+                            {% endif %}
                         </div>
 
                     </div>
                     <!-- Fin du corp de notre carte -->
-                </a>
             </div>
         {% endfor %}
     </div>
