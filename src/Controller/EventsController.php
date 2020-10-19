@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Form\EventType;
 use App\Repository\CampusRepository;
 use App\Repository\CityRepository;
+
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\DBAL\Types\StringType;
@@ -21,6 +22,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -127,97 +129,41 @@ class EventsController extends AbstractController
 
 
     /**
-     * This function return a list of events based on the selected campus
+     * This function return a list of events based on a date choice
      * @param EventRepository $eventRepository
      * @param Request $request
      * @param : String
      * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event_by_campus", name="get_event_by_campus")
+     * @Route ("/get_event", name="get_event")
      */
-    public function getEventBycampus(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
+    public function getEvent(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
+        $userId = null;
         // Get all the campus in the database and return it to the twig templates
         $allCampus = $campusRepository->findAll();
 
-        $param = $request->get('campus');
-        $allEvents = $eventRepository->findBy(['campus' => $param]);
-
-        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus' => $allCampus]);
-    }
+        // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
+        $startDate = empty($request->get('enddate')) ? null :date_create($request->get('startdate'));
+        $endDate = empty($request->get('enddate')) ? null : date_create($request->get('enddate'));
 
 
-    /**
-     * This function return a list of events based on a criteria
-     * @param EventRepository $eventRepository
-     * @param Request $request
-     * @param : String
-     * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event_by_keyword", name="get_event_by_keyword")
-     */
-    public function getEventByKeyword(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
-    {
+        // Get the other parameters
+        $userCheckBox = $request->get('usercheckbox');
 
-        // Get all the campus in the database and return it to the twig templates
-        $allCampus = $campusRepository->findAll();
+        if ($userCheckBox) {
+            /** @var User $user */
+            $user = $this->getUser();
+            $userId = $user->getId();
+        } else {
+            $userId = 0;
+        }
 
-        // Get the parameter sent by the user
+
+        $campus = $request->get('campus');
         $keyword = $request->get('keyword');
 
-        // Calling the function in the repository
-        $allEvents = $eventRepository->findByKeyword($keyword);
-
-
-        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
-    }
-
-
-    /**
-     * This function return a list of events based on a date choice
-     * @param EventRepository $eventRepository
-     * @param Request $request
-     * @param : String
-     * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event_by_date", name="get_event_by_date")
-     */
-    public function getEventByDate(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
-    {
-
-        // Get all the campus in the database and return it to the twig templates
-        $allCampus = $campusRepository->findAll();
-
-        // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
-        $startDate = date_create($request->get('startdate'));
-        $endDate = date_create($request->get('enddate'));
-
         // Calling the function in the repository and passing the parameters
-        $allEvents = $eventRepository->findByDate($startDate, $endDate);
-
-
-        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
-    }
-
-
-    /**
-     * This function return a list of events based on a date choice
-     * @param EventRepository $eventRepository
-     * @param Request $request
-     * @param : String
-     * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_my_event", name="get_my_event")
-     */
-    public function getMyEvent(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
-    {
-
-        // Get all the campus in the database and return it to the twig templates
-        $allCampus = $campusRepository->findAll();
-
-        // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
-        /** @var User $user */
-        $user = $this->getUser();
-        $userId = $user->getId();
-
-        // Calling the function in the repository and passing the parameters
-        $allEvents = $eventRepository->findMyEvent($userId);
+        $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus);
 
 
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);

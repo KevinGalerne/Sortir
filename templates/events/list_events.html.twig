@@ -3,81 +3,74 @@
 
 {% block main %}
 
+
+<form action="{{ path('get_event') }}" method="get">
+
     <!-- This part allow the user to select the campus -->
-    <form action="{{ path('get_event_by_campus') }}" method="get" >
-        <select name="campus" id="selectcampus" onchange="this.form.submit();">
-            <option value="">Campus</option>
-            {% for campus in allCampus %}
-                <option value="{{ campus.id }}">{{ campus.name }}</option>
-            {% endfor %}
-        </select>
-    </form>
+    <select name="campus" id="selectcampus">
+        <option value="">Campus</option>
+        {% for campus in allCampus %}
+            <option value="{{ campus.id }}">{{ campus.name }}</option>
+        {% endfor %}
+    </select>
 
     <!-- This part allow the user to select events on keywords -->
-    <form action="{{ path('get_event_by') }}" method="get">
-        <input type="text" class="forminput" name="param" placeholder="Recherchez par mot-clef">
-        <input type="submit" value="Envoyer">
-    </form>
-
-    <form action="{{ path('get_my_event') }}">
-        <input type="checkbox"  value="Voir mes évènements" placeholder="Events">
-        <input type="submit" value="Envoyer">
-
-    </form>
+    <input type="text" class="forminput" name="keyword" placeholder="Recherchez par mot-clef">
 
 
-
-
-
+    <!-- This part allow the user to select events on date -->
+    <input type="date" name="startdate" value="{{ 'now'|date('Y-m-d') }}">
+    <input type="date" name="enddate" value="null">
+    <input type="checkbox" name="usercheckbox" placeholder="Events">Voir les évènements que j'organise
+    <input type="submit" value="Envoyer">
+</form>
 
     <div class="card-container">
         {% for event in allEvents %}
             <div class="card">
-                    <!-- Image -->
-                    <div class="card-image">
-                        {% if event.author.id == 7 %}
-                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
-                        {% elseif event.author.id == 2 %}
-                            <img src="{{ asset('img/manix.jpg') }}" alt=""/>
-                        {% else %}
-                            <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
+                <!-- Image -->
+                <div class="card-image">
+                    {% if event.author.id == 7 %}
+                        <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
+                    {% elseif event.author.id == 2 %}
+                        <img src="{{ asset('img/manix.jpg') }}" alt=""/>
+                    {% else %}
+                        <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
+                    {% endif %}
+                </div>
+                <!-- Fin de l'image -->
+
+                <!-- Corp de la carte -->
+                <div class="card-body">
+                    <!-- Auteur et Date de publication-->
+                    <div class="card-date">
+                        Posted by {{ event.author.firstName }} {{ event.author.lastName }}
+                        - {{ event.creationDate|date('H:i:s d-m-Y') }}
+                        <hr>
+                        Registration deadline : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                    </div>
+                    <!-- Titre de la sortie -->
+                    <div class="card-title">
+                        <h3>{{ event.name }}</h3>
+                    </div>
+                    <!-- Description de la sortie -->
+                    <div class="card-excerpt">
+                        <p>{{ event.description }}</p>
+                        <p></p>
+                    </div>
+                    <!-- Actions possibles sur cette sortie -->
+                    <div class="cart-actions">
+                        <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
+                        {% if "now" < event.eventDate %}
+                            <a href="#" class="style_bouton">Annuler</a>
                         {% endif %}
                     </div>
-                    <!-- Fin de l'image -->
 
-                    <!-- Corp de la carte -->
-                    <div class="card-body">
-                        <!-- Auteur et Date de publication-->
-                        <div class="card-date">
-                            Posted by {{ event.author.firstName }} {{ event.author.lastName }} - {{ event.creationDate|date('H:i:s d-m-Y') }}
-                            <hr>
-                            Registration deadline : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
-                        </div>
-                        <!-- Titre de la sortie -->
-                        <div class="card-title">
-                            <h3>{{ event.name }}</h3>
-                        </div>
-                        <!-- Description de la sortie -->
-                        <div class="card-excerpt">
-                            <p>{{ event.description }}</p>
-                            <p></p>
-                        </div>
-                        <!-- Actions possibles sur cette sortie -->
-                        <div class="cart-actions">
-                            <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
-                            {% if "now" < event.eventDate %}
-                                <a href="#" class="style_bouton">Annuler</a>
-                            {% endif %}
-                        </div>
-
-                    </div>
-                    <!-- Fin du corp de notre carte -->
+                </div>
+                <!-- Fin du corp de notre carte -->
             </div>
         {% endfor %}
     </div>
 
 
-
-
-
-{% endblock %}
+    {% endblock %}
