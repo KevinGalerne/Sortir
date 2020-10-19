@@ -468,8 +468,26 @@ form ul {
 }
 
 .card:hover {
-    transform: scale(1.1);
-    transition-duration: 1s;
+    /*transform: scale(1.1);
+    transition-duration: 1s;*/
+}
+
+.card-body {
+    padding-bottom: 15px;
+}
+
+a.style_bouton {
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+a.style_bouton:hover {
+    background-color: lightgray;
+    color: black;
+
 }
 
 .card:hover .card-image img {
