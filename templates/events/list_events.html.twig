@@ -4,15 +4,19 @@
 {% block main %}
 
     <!-- This part allow the user to select the campus -->
-    <form action="{{ path('get_event_by_campus') }}" method="get">
-        <select name="campus" id="selectcampus">
+    <form action="{{ path('get_event_by_campus') }}" method="get" >
+        <select name="campus" id="selectcampus" onchange="this.form.submit();">
+            <option value="">Campus</option>
             {% for campus in allCampus %}
-            <option value="{{ campus.id}}">{{ campus.name }}</option>
+                <option value="{{ campus.id }}">{{ campus.name }}</option>
             {% endfor %}
-
-
         </select>
-        <button type="submit">Envoyer</button>
+    </form>
+
+    <!-- This part allow the user to select events on keywords -->
+    <form action="{{ path('get_event_by') }}" method="get">
+        <input type="text" class="forminput" name="param" placeholder="Recherchez par mot-clef">
+        <input type="submit" value="Envoyer">
     </form>
 
 
