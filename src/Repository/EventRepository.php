@@ -25,27 +25,32 @@ class EventRepository extends ServiceEntityRepository
     //  * @return Event[] Returns an array of Event objects
     //  */
 
-    public function findByKeyword(string $keyword)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.description LIKE :description')
-            ->orWhere('e.name LIKE :description')
-            ->setParameter('description', '%'.$keyword.'%')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
 
-    public function findBydate(DateTime $startDate, DateTime $endDate)
+    public
+    function findBydate(DateTime $startDate, DateTime $endDate, string $keyword, string $userId)
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.eventDate BETWEEN :startdate AND :enddate')
-            ->setParameter('startdate',$startDate)
-            ->setParameter('enddate', $endDate)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
+        $builder = $this->createQueryBuilder('e');
+        if ($startDate) {
+            $builder->andWhere('e.eventDate >= : startDate')
+                ->setParameter('startdate', $startDate);
+        }
+        if ($endDate) {
+            $builder->andWhere('e.eventDate <= : endDate')
+                ->setParameter('enddate', $endDate);
+        }
+        if ($keyword) {
+            $builder->andWhere('e.description LIKE :description')
+                ->orWhere('e.name LIKE :description')
+                ->setParameter('description', '%' . $keyword . '%');
+        }
+        if ($userId) {
+            $builder->andWhere('e.Author = :userId')
+                ->setParameter('userId', $userId);
+        }
 
-    
+        $builder->getQuery()
+            ->getResult();
+
+
+    }
 }
