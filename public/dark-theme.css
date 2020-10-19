@@ -125,8 +125,7 @@ button {
 
 /*Footer block */
 .footerblock {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
     right: 0;
     padding: 30px;
     font-family: var(--first-font-family);
@@ -134,8 +133,8 @@ button {
 }
 
 .menublock {
-    padding-top: 10%;
-    padding-bottom: 40px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     display: flex;
     justify-content: space-around;
 }
@@ -392,14 +391,16 @@ form ul {
 *
 */
 
-.filterform{
+.filterform {
     padding-top: 5vh;
     padding-bottom: 5vh;
 }
-.formpart1{
+
+.formpart1 {
 
 }
-.formcheckbox{
+
+.formcheckbox {
     padding-top: 3vh;
     padding-bottom: 3vh;
     display: flex;
@@ -407,12 +408,11 @@ form ul {
 
     text-align: left;
 }
-.checkboxdiv{
+
+.checkboxdiv {
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
-
-
 
 
 /* Card Container */
@@ -451,7 +451,8 @@ form ul {
 .card-body {
     padding-bottom: 15px;
 }
-.card-limit-date{
+
+.card-limit-date {
     padding-bottom: 4vh;
 }
 
@@ -490,11 +491,6 @@ a.style_bouton {
     transition-duration: .3s;
     transition-timing-function: ease;
 }
-
-
-
-
-
 
 
 /* Keyframes and animations */
