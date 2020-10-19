@@ -151,24 +151,49 @@ class EventsController extends AbstractController
      * @param Request $request
      * @param : String
      * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event_by", name="get_event_by")
+     * @Route ("/get_event_by_keyword", name="get_event_by_keyword")
      */
-    public function getEventBy(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
+    public function getEventByKeyword(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
 
         // Get all the campus in the database and return it to the twig templates
         $allCampus = $campusRepository->findAll();
 
         // Get the parameter sent by the user
-        $param = $request->get('param');
+        $keyword = $request->get('keyword');
 
         // Calling the function in the repository
-        $allEvents = $eventRepository->findByDescription($param);
+        $allEvents = $eventRepository->findByKeyword($keyword);
 
 
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
 
+
+    /**
+     * This function return a list of events based on a date choice
+     * @param EventRepository $eventRepository
+     * @param Request $request
+     * @param : String
+     * @return \Symfony\Component\HttpFoundation\Response : [events]
+     * @Route ("/get_event_by_date", name="get_event_by_date")
+     */
+    public function getEventByDate(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
+    {
+
+        // Get all the campus in the database and return it to the twig templates
+        $allCampus = $campusRepository->findAll();
+
+        // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
+        $startDate = date_create($request->get('startdate'));
+        $endDate = date_create($request->get('enddate'));
+
+        // Calling the function in the repository and passing the parameters
+        $allEvents = $eventRepository->findByDate($startDate,$endDate);
+
+
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
+    }
 
 }
 

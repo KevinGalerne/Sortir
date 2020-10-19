@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -23,27 +25,27 @@ class EventRepository extends ServiceEntityRepository
     //  * @return Event[] Returns an array of Event objects
     //  */
 
-    public function findByDescription(string $description)
+    public function findByKeyword(string $keyword)
     {
         return $this->createQueryBuilder('e')
             ->andWhere('e.description LIKE :description')
             ->orWhere('e.name LIKE :description')
-            ->setParameter('description', '%'.$description.'%')
+            ->setParameter('description', '%'.$keyword.'%')
             ->getQuery()
             ->getResult()
         ;
     }
 
-
-    /*
-    public function findOneBySomeField($value): ?Event
+    public function findBydate(DateTime $startDate, DateTime $endDate)
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('e.eventDate BETWEEN :startdate AND :enddate')
+            ->setParameter('startdate',$startDate)
+            ->setParameter('enddate', $endDate)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult()
+            ;
     }
-    */
+
+    
 }
