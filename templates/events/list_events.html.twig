@@ -55,10 +55,8 @@
                 <div class="card-body">
                     <!-- Auteur et Date de publication-->
                     <div class="card-date">
-                        Posted by {{ event.author.firstName }} {{ event.author.lastName }}
-                        - {{ event.creationDate|date('H:i:s d-m-Y') }}
-                        <hr>
-                        Registration deadline : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                        Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
+                        Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
                     </div>
                     <!-- Titre de la sortie -->
                     <div class="card-title">
@@ -69,11 +67,24 @@
                         <p>{{ event.description }}</p>
                         <p></p>
                     </div>
+                    <!-- Date limite inscription -->
+                    <div class="card-limit-date">
+                        Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                    </div>
                     <!-- Actions possibles sur cette sortie -->
                     <div class="cart-actions">
                         <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détail</a>
-                        {% if "now" < event.eventDate %}
+                        {# Affiche "S'inscrire" ou "Se désister" #}
+                        {% if event.registeredParticipants.contains(app.user) %}
+                            <a href="#" class="style_bouton">Se désister</a>
+                        {% else %}
+                            <a href="#" class="style_bouton">S'inscrire</a>
+                        {% endif %}
+                        {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
+                            <a href="#" class="style_bouton">Modifier</a>
                             <a href="#" class="style_bouton">Annuler</a>
+                        {% else %}
+
                         {% endif %}
                     </div>
 
