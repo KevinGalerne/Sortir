@@ -143,7 +143,7 @@ class EventsController extends AbstractController
         $allCampus = $campusRepository->findAll();
 
         // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
-        $startDate = empty($request->get('enddate')) ? null :date_create($request->get('startdate'));
+        $startDate = empty($request->get('startdate')) ? null :date_create($request->get('startdate'));
         $endDate = empty($request->get('enddate')) ? null : date_create($request->get('enddate'));
 
 
