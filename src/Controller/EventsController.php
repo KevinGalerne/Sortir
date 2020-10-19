@@ -148,8 +148,12 @@ class EventsController extends AbstractController
         $endDate = empty($request->get('enddate')) ? null : date_create($request->get('enddate'));
 
 
-        // Get the other parameters
+        // Get the checkbox parameters
         $userCheckBox = $request->get('usercheckbox');
+        $registeredEvent = $request->get('registeredevents');
+        $passedEvent = $request->get('passed');
+        $participant = null;
+        $now=null;
 
         if ($userCheckBox) {
             /** @var User $user */
@@ -158,6 +162,15 @@ class EventsController extends AbstractController
         } else {
             $userId = 0;
         }
+        if ($registeredEvent) {
+            $participant = $this->getUser();;
+        }
+        if($passedEvent){
+            $now = date_create(date('m/d/Y h:i:s a', time()));
+        }
+        var_dump($passedEvent);
+        var_dump($now);
+
 
 
         $campus = $request->get('campus');
@@ -165,7 +178,7 @@ class EventsController extends AbstractController
 
         // Calling the function in the repository and passing the parameters
 
-        $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus);
+        $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now);
         
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
