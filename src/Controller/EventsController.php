@@ -36,7 +36,6 @@ class EventsController extends AbstractController
 
     /**
      * Create a new event
-     *
      * @Route("/create_event", name="create_event")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
@@ -183,10 +182,8 @@ class EventsController extends AbstractController
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
 
-
-
-
     /**
+     * This function allows users to register themselves to an event
      * @Route ("/participate/{id}", name="participate_event")
      * @param EventRepository $eventRepository
      * @return \Symfony\Component\HttpFoundation\Response
@@ -205,6 +202,26 @@ class EventsController extends AbstractController
         return $this->redirectToRoute('details_event', [
             'id' => $eventToShow->getId()
         ]);
+    }
+
+    /**
+     * This function allows the user to cancel an event he created
+     * @Route ("/cancel/{id}", name="cancel_event")
+     * @param EventRepository $eventRepository
+     * @param $id
+     */
+    public function cancel(EventRepository $eventRepository, $id)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $eventToCancel = $eventRepository->find($id);
+
+        if ($eventToCancel->getAuthor()->getId() == $user->getId())
+        {
+            $eventRepository->cancelEvent($id);
+        }
+
+        return $this->redirectToRoute('list_events');
     }
 
 }

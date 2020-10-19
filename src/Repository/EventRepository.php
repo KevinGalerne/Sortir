@@ -25,7 +25,6 @@ class EventRepository extends ServiceEntityRepository
     //  * @return Event[] Returns an array of Event objects
     //  */
 
-
     public
     function findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now)
     {
@@ -69,5 +68,16 @@ class EventRepository extends ServiceEntityRepository
         $query = $builder->getQuery();
 
         return $query->getResult();
+    }
+
+    public function cancelEvent($eventId)
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb->delete()
+            ->where('e.id = :id')
+            ->setParameter('id', $eventId);
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+        return $result;
     }
 }

@@ -103,13 +103,13 @@
                             <a href="#" class="style_bouton">Se désister</a>
                         {% else %}
                             {# If he's not registered, display "S'inscrire" #}
-                            <a href="#" class="style_bouton">S'inscrire</a>
+                            <a href="{{ path('participate_event', {'id' : event.id} ) }}" class="style_bouton">S'inscrire</a>
                         {% endif %}
                         {# If the actual date is before the event's date AND the actual user is the event's author #}
                         {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
                             {# Display "Modifier" & "Annuler" buttons #}
                             <a href="#" class="style_bouton">Modifier</a>
-                            <a href="#" class="style_bouton">Annuler</a>
+                            <a href="{{ path('cancel_event', {'id': event.id }) }}" class="style_bouton">Annuler</a>
                         {% else %}
 
                         {% endif %}
