@@ -4,26 +4,37 @@
 {% block main %}
 
 
-<form action="{{ path('get_event') }}" method="get">
+    <form class="filterform" action="{{ path('get_event') }}" method="get">
+        <div class="formpart1">
+            <!-- This part allow the user to select the campus -->
+            <select name="campus" id="selectcampus">
+                <option value="">Campus</option>
+                {% for campus in allCampus %}
+                    <option value="{{ campus.id }}">{{ campus.name }}</option>
+                {% endfor %}
+            </select>
 
-    <!-- This part allow the user to select the campus -->
-    <select name="campus" id="selectcampus">
-        <option value="">Campus</option>
-        {% for campus in allCampus %}
-            <option value="{{ campus.id }}">{{ campus.name }}</option>
-        {% endfor %}
-    </select>
-
-    <!-- This part allow the user to select events on keywords -->
-    <input type="text" class="forminput" name="keyword" placeholder="Recherchez par mot-clef">
+            <!-- This part allow the user to select events on keywords -->
+            <input type="text" class="forminput" name="keyword" placeholder="Recherchez par mot-clef">
 
 
-    <!-- This part allow the user to select events on date -->
-    <input type="date" name="startdate" value="{{ 'now'|date('Y-m-d') }}">
-    <input type="date" name="enddate" value="null">
-    <input type="checkbox" name="usercheckbox" placeholder="Events">Voir les évènements que j'organise
-    <input type="submit" value="Envoyer">
-</form>
+            <!-- This part allow the user to select events on date -->
+            <input type="date" name="startdate" value="{{ 'now'|date('Y-m-d') }}">
+            <input type="date" name="enddate" value="null">
+        </div>
+
+        <div class="formcheckbox">
+
+            <label for="usercheckbox">Evènements que j'organise</label>
+            <input type="checkbox" id="usercheckbox "name="usercheckbox">
+            <label for="registeredevents">Evènements auxquels je participe</label>
+            <input type="checkbox" id="registeredevents" name="registeredevents">
+
+
+        </div>
+
+        <input type="submit" value="Envoyer">
+    </form>
 
     <div class="card-container">
         {% for event in allEvents %}
@@ -92,4 +103,4 @@
     </div>
 
 
-    {% endblock %}
+{% endblock %}

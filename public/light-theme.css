@@ -1,5 +1,5 @@
 /*
-* Theme name : Sortir Light Theme
+* Theme name : Sortir Dark Theme
 * Author : Kevin GALERNE, Samy-Lee LEVY, Laetitia PINOT, Raphael POIRON
 *
  */
@@ -14,9 +14,9 @@
 /*--------------------------------------------------  VARIABLES ------------------------------------------------*/
 
 :root {
-    --main-background-color: #white /*#005AA7*/;
+    --main-background-color: white /*#005AA7*/;
     --second-background-color: silver /*2c3e50*/;
-    --third-background-color: #black;
+    --third-background-color: black;
     --hover-font-color: #C0C0C0;
     --first-font-family: 'Lobster', cursive;
     --second-font-family: 'Work', sans-serif;
@@ -53,6 +53,7 @@ button {
     width: 10vw;
     font-weight: bold;
     border: solid 1px var(--third-background-color);
+    border-radius: 20px;
 }
 
 /*--------------------------------------------------  TWIG BLOCKS ------------------------------------------------*/
@@ -385,6 +386,92 @@ form ul {
 
 }
 
+/*
+*
+* Event list page
+*
+*/
+
+
+/* Card Container */
+.card-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* CSS List Card */
+
+.card {
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+    width: 400px;
+    margin: 25px auto;
+    box-shadow: 0px 5px 20px var(--third-background-color);
+    border-radius: 25px;
+}
+
+.card-date hr {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.card a {
+    color: var(--third-background-color);
+    text-decoration: none;
+}
+
+.card:hover {
+    /*transform: scale(1.1);
+    transition-duration: 1s;*/
+}
+
+.card-body {
+    padding-bottom: 15px;
+}
+
+/* Card link */
+a.style_bouton {
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: transparent;
+    color: var(--third-background-color);
+    border: 1px solid var(--third-background-color);
+    border-radius: 10px;
+}
+
+/* Card image */
+.card-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    -moz-border-radius: 25px 25px 0px 0px;
+    -webkit-border-radius: 25px 25px 0px 0px;
+    border-radius: 25px 25px 0px 0px;
+    margin-bottom: 10px;
+    /*box-shadow: 0px 5px 20px gray;*/
+}
+
+.card-image img {
+    width: 100%;
+    /* Méthode de centrage en fonction de la taille de l'image */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: grayscale(0);
+    /* Transition */
+    /*transition-property: filter width;*/
+    transition-duration: .3s;
+    transition-timing-function: ease;
+}
+
+
+
+
+
+
+
 /* Keyframes and animations */
 @keyframes logoanimation {
     from {
@@ -444,80 +531,3 @@ form ul {
 
 }
 
-/* ------------------- Page liste de tout les évènements --------------- */
-/* CSS DU CONTAINER DES CARTES */
-.card-container {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-}
-
-/* CSS BASE CARTES DE LA LISTE */
-
-.card {
-    width: 400px;
-    margin: 25px auto;
-    background-color: white;
-    box-shadow: 0px 5px 20px #999;
-    border-radius: 25px;
-}
-
-.card-date hr {
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-.card a {
-    color: #333;
-    text-decoration: none;
-}
-
-.card:hover {
-    /*transform: scale(1.1);
-    transition-duration: 1s;*/
-}
-
-.card-body {
-    padding-bottom: 15px;
-}
-
-/* CSS des liens des cartes */
-a.style_bouton {
-    text-decoration: none;
-    padding: 5px 15px;
-    background-color: transparent;
-    color: black;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-a.style_bouton:hover {
-    background-color: lightgray;
-    color: black;
-
-}
-
-/* IMAGE DES CARTES DE LA LISTE */
-.card-image {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-    -moz-border-radius: 25px 25px 0px 0px;
-    -webkit-border-radius: 25px 25px 0px 0px;
-    border-radius: 25px 25px 0px 0px;
-    margin-bottom: 10px;
-    /*box-shadow: 0px 5px 20px gray;*/
-}
-
-.card-image img {
-    width: 100%;
-    /* Méthode de centrage en fonction de la taille de l'image */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: grayscale(0);
-    /* Transition */
-    /*transition-property: filter width;*/
-    transition-duration: .3s;
-    transition-timing-function: ease;
-}
