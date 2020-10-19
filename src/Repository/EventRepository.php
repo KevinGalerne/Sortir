@@ -27,7 +27,7 @@ class EventRepository extends ServiceEntityRepository
 
 
     public
-    function findByCriteria(DateTime $startDate, DateTime $endDate, $keyword, $userId, $campus)
+    function findByCriteria($startDate, $endDate, $keyword, $userId, $campus)
     {
         $builder = $this->createQueryBuilder('e');
 
