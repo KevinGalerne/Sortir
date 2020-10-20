@@ -22,9 +22,14 @@ class Event
     public const CURRENT_TO_PAST = 'current_to_past';
     public const PAST_TO_ARCHIVED = 'past_to_archived';
 
+    //To erase after test
+    public const OPENED_TO_PAST = 'opened_to_past';
+
+
     // PROPRIETES ---------------------------------------------------------------------------------------------------
     /**
-     * @var
+     * @ORM\Column (type="string")
+     *
      */
     private $currentPlace;
 
@@ -70,11 +75,6 @@ class Event
      * @ORM\Column (type="text")
      */
     private $description;
-
-    /**
-     * @ORM\Column (type="boolean")
-     */
-    private $isPublished;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

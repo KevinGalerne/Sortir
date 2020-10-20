@@ -3,27 +3,16 @@
 namespace App\Controller;
 
 use App\Repository\EventRepository;
+use AppBundle\Service\CurrentPlaceService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Campus;
-use App\Entity\City;
 use App\Entity\Event;
-use App\Entity\Place;
 use App\Entity\User;
 use App\Form\EventType;
 use App\Repository\CampusRepository;
-use App\Repository\CityRepository;
-
-use App\Repository\UserRepository;
-use DateTime;
-use Doctrine\DBAL\Types\StringType;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query\ResultSetMapping;
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
-use phpDocumentor\Reflection\Types\This;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Workflow\WorkflowInterface;
 
@@ -79,7 +68,6 @@ class EventsController extends AbstractController
         // Getting the workflow (statemachine because only one value possible), and setting the initial value
         // getMarking(parameter) is used to set the instance to the initial value /**/
         $eventPublishingStateMachine->getMarking($event);
-
 
 
         if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
@@ -138,7 +126,6 @@ class EventsController extends AbstractController
         ]);
     }
 
-
     /**
      * This function return a list of events based on a date choice
      * @param EventRepository $eventRepository
@@ -165,10 +152,10 @@ class EventsController extends AbstractController
         // Get the checkbox parameters
         $userCheckBox = $request->get('usercheckbox');
         $registeredEvent = $request->get('registeredevent');
-        $nonRegisteredEvent =$request->get('nonregisteredevent');
+        $nonRegisteredEvent = $request->get('nonregisteredevent');
         $passedEvent = $request->get('passed');
         $participant = null;
-        $nonRegistered=null;
+        $nonRegistered = null;
         $now = null;
         $userId = null;
 
@@ -199,7 +186,6 @@ class EventsController extends AbstractController
 
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
-
 
     /**
      * @Route ("/participate/{id}", name="participate_event")
@@ -236,8 +222,7 @@ class EventsController extends AbstractController
         $user = $this->getUser();
         $eventToCancel = $eventRepository->find($id);
 
-        if ($eventToCancel->getAuthor()->getId() == $user->getId())
-        {
+        if ($eventToCancel->getAuthor()->getId() == $user->getId()) {
             $eventRepository->cancelEvent($id);
         }
 
@@ -250,23 +235,36 @@ class EventsController extends AbstractController
      * @param EventRepository $eventRepository
      * @param $id
      */
-    public function open(EventRepository $eventRepository, $id, WorkflowInterface $eventPublishingStateMachine){
+    public function open(
+        EventRepository $eventRepository,
+        CampusRepository $campusRepository,
+        CurrentPlaceService $currentPlaceService, $id)
+
+    {
+
+        // Get all the campus and all events in the database and return it to the twig templates
+        $allCampus = $campusRepository->findAll();
+        $allEvents = $eventRepository->findAll();
 
         // Getting the user
         /** @var User $user */
         $user = new User();
-
         $user = $this->getUser();
 
-        // Getting the event
-        $eventToPublish = $eventRepository->findOneBy($id);
+        // Call the opener function
+        $currentPlaceService->open($id);
+        return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus' => $allCampus]);
+    }
 
-        //
-        $eventPublishingStateMachine->apply($eventToPublish, EVENT::IC_TO_OPENED);
+    /**
+     * @Route ("/past_event", name="past_event")
+     */
+    public function past(EventRepository $eventRepository, CurrentPlaceService $currentPlaceService)
+    {
+        //Get all the events it the database
+        $allEvents = $eventRepository->findAll();
 
-
-
-
+        $currentPlaceService->past($allEvents);
 
     }
 

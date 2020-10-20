@@ -34,6 +34,9 @@ framework:
                 closed_to_current:
                     from: closed
                     to: current_activity
+                opened_to_past:
+                    from: opened
+                    to: past_activity
                 current_to_past:
                     from: current_activity
                     to: past_activity
