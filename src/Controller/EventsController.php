@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\EventRepository;
-use AppBundle\Service\CurrentPlaceService;
+use App\Service\CurrentPlaceService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Campus;
 use App\Entity\Event;
@@ -24,6 +24,8 @@ use Symfony\Component\Workflow\WorkflowInterface;
 class EventsController extends AbstractController
 {
 
+
+    /*************************************************************** EVENT CRUD *******************************************/
     /**
      * Create a new event
      *
@@ -112,10 +114,21 @@ class EventsController extends AbstractController
      * Access to the event list
      * @Route("/list_events", name="list_events")
      */
-    public function list(EntityManagerInterface $em, CampusRepository $campusRepository)
+    public function list(EntityManagerInterface $em, CampusRepository $campusRepository, CurrentPlaceService $currentPlaceService, EventRepository $eventRepository)
     {
-        // Get all the campus in the database and return it to the twig templates
+        // Get all the campus and all events in the database and return it to the twig templates
         $allCampus = $campusRepository->findAll();
+        $allEvents = $eventRepository->findAll();
+
+        // Setting a parameter now
+        $now = new \DateTime();
+
+        foreach ($allEvents as $event) {
+            if ($event->getEventDate() < $now) {
+                $currentPlaceService->past($event->getId());
+            }
+        }
+
 
         $eventRepository = $em->getRepository(Event::class);
         $allEvents = $eventRepository->findAll();
@@ -229,6 +242,13 @@ class EventsController extends AbstractController
         return $this->redirectToRoute('list_events');
     }
 
+
+
+
+
+    /************************************************ EVENT STATE ******************************************************/
+
+
     /**
      * This function allows the user to open an event he created
      * @Route ("/open/{id}", name="open_event")
@@ -239,9 +259,7 @@ class EventsController extends AbstractController
         EventRepository $eventRepository,
         CampusRepository $campusRepository,
         CurrentPlaceService $currentPlaceService, $id)
-
     {
-
         // Get all the campus and all events in the database and return it to the twig templates
         $allCampus = $campusRepository->findAll();
         $allEvents = $eventRepository->findAll();
@@ -255,20 +273,10 @@ class EventsController extends AbstractController
         $currentPlaceService->open($id);
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus' => $allCampus]);
     }
-
-    /**
-     * @Route ("/past_event", name="past_event")
-     */
-    public function past(EventRepository $eventRepository, CurrentPlaceService $currentPlaceService)
-    {
-        //Get all the events it the database
-        $allEvents = $eventRepository->findAll();
-
-        $currentPlaceService->past($allEvents);
-
-    }
-
 }
+
+
+
 
 
 
