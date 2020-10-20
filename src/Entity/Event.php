@@ -121,6 +121,12 @@ class Event
      */
     private $campus;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etat;
+
 
     public function __construct()
     {
@@ -425,5 +431,17 @@ class Event
     {
         return /*$this->getSubscriptionLimitDate() > new \DateTime() &&*/
             $this->getMaxParticipants() <= $this->getRegisteredParticipants()->count();
+    }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
     }
 }

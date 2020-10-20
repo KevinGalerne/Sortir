@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Etat;
 use App\Repository\EventRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Campus;

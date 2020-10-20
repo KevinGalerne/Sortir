@@ -1,0 +1,42 @@
+framework:
+    workflows:
+        event_publishing:
+            type: 'workflow'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'currentPlace'
+            supports:
+                - App\Entity\Event
+            initial_marking: in_creation
+            places:
+                - in_creation
+                - opened
+                - closed
+                - current_activity
+                - past_activity
+                - archived_activity
+                - canceled
+            transitions:
+                ic_to_opened:
+                    from: in_creation
+                    to: opened
+                ic_to_canceled:
+                    from: in_creation
+                    to: canceled
+                opened_to_closed:
+                    from: opened
+                    to: closed
+                opened_to_canceled:
+                    from: opened
+                    to: canceled
+                closed_to_current:
+                    from: closed
+                    to: current_activity
+                current_to_past:
+                    from: current_activity
+                    to: past_activity
+                past_to_archived:
+                    from: past_activity
+                    to: archived_activity
