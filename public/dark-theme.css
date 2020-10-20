@@ -578,3 +578,17 @@ table a:hover{
 
 }
 
+/* Profil Images*/
+
+.cropImage{
+    width: 15vw;
+    border-radius: 100px;
+    border: solid 2px var(--third-background-color);
+    margin-bottom: 5vh;
+    transition-duration: 2s;
+}
+
+.cropImage:hover{
+    transform: scale(1.3);
+    transition-duration: 2s;
+}
