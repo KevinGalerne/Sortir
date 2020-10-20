@@ -32,8 +32,8 @@
 
 
             <div class="checkboxdiv">
-                <label for="registeredevents">Evènements auxquels je participe</label>
-                <input type="checkbox" id="registeredevents" name="registeredevents">
+                <label for="registeredevent">Evènements auxquels je participe</label>
+                <input type="checkbox" id="registeredevent" name="registeredevent">
             </div>
 
             <div class="checkboxdiv">
@@ -42,8 +42,8 @@
             </div>
 
             <div class="checkboxdiv">
-                <label for="nonregisteredevents">Evènements auxquels je participe pas</label>
-                <input type="checkbox" id="nonregisteredevents" name="nonregisteredevents">
+                <label for="nonregisteredevent">Evènements auxquels je participe pas</label>
+                <input type="checkbox" id="nonregisteredevent" name="nonregisteredevent">
             </div>
 
 
@@ -63,7 +63,7 @@
                     {% if event.author.id == 7 %}
                         <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
                     {% elseif event.author.id == 2 %}
-                        <img src="{{ asset('img/manix.jpg') }}" alt=""/>
+                        <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
                     {% else %}
                         <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
                     {% endif %}
