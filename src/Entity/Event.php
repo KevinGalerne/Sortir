@@ -15,6 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Event
 {
     // PROPRIETES ---------------------------------------------------------------------------------------------------
+    /**
+     * @var
+     */
     private $currentPlace;
 
     /**
@@ -446,4 +449,21 @@ class Event
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentPlace()
+    {
+        return $this->currentPlace;
+    }
+
+    /**
+     * @param mixed $currentPlace
+     */
+    public function setCurrentPlace($currentPlace): void
+    {
+        $this->currentPlace = $currentPlace;
+    }
+
 }
