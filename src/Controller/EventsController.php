@@ -25,6 +25,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Workflow\Workflow;
 
 
 /**
@@ -42,7 +43,7 @@ class EventsController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository)
+    public function create(Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository, Workflow $workflow)
     {
 
         // Get all the campus in the database and return it to the twig templates
@@ -69,8 +70,10 @@ class EventsController extends AbstractController
         $event->setCreationDate(new \DateTime());
         $event->setIsPublished(false);
         $event->setCampus($campus);
-
         $event->setAuthor($user);
+
+        $workflow = $this->container->get('workflow.event_publishing');
+        dd($workflow->can($event, 'ic_to_canceled'));
 
         if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
 
