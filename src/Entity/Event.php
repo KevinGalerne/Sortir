@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Event
 {
     // PROPRIETES ---------------------------------------------------------------------------------------------------
+    private $currentPlace;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
