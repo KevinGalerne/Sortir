@@ -198,7 +198,9 @@ class EventsController extends AbstractController
      */
     public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
     {
+        /** @var User $user */
         $user = $this->getUser();
+
         $eventToShow = $eventRepository->find($id);
 
         if ($eventToShow->getRegisteredParticipants()->count() < $eventToShow->getMaxParticipants()) {

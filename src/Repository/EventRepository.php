@@ -80,4 +80,15 @@ class EventRepository extends ServiceEntityRepository
         $query = $builder->getQuery();
         return $query->getResult();
     }
+
+    public function cancelEvent($eventId)
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb->delete()
+            ->where('e.id = :id')
+            ->setParameter('id', $eventId);
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+        return $result;
+    }
 }
