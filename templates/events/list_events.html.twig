@@ -3,7 +3,7 @@
 
 {% block main %}
 
-<!--------------------------------------------------- Filter form -------------------------------------------->
+    <!--------------------------------------------------- Filter form -------------------------------------------->
 
     <form class="filterform" action="{{ path('get_event') }}" method="get">
         <div class="formpart1">
@@ -52,72 +52,78 @@
         <input type="submit" value="Envoyer">
     </form>
 
-<!------------------------------------------------------- Cards ----------------------------------------------------->
+    <!------------------------------------------------------- Cards ----------------------------------------------------->
 
 
     <div class="card-container">
         {% for event in allEvents %}
-            <div class="card">
-                <!-- Card's Picture -->
-                <div class="card-image">
-                    {% if event.author.id == 7 %}
-                        <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
-                    {% elseif event.author.id == 2 %}
-                        <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
-                    {% else %}
-                        <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
-                    {% endif %}
-                </div>
-                <!-- End of the Picture -->
 
-                <!-- Card's Body -->
-                <div class="card-body">
-                    <!-- Author & Event's Date -->
-                    <div class="card-date">
-                        Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
-                        Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
-                    </div>
-                    <!-- Event's Name -->
-                    <div class="card-title">
-                        <h3>{{ event.name }}</h3>
-                    </div>
-                    <!-- Event's Description -->
-                    <div class="card-excerpt">
-                        <p>{{ event.description }}</p>
-                        <p></p>
-                    </div>
-                    <!-- Registration Limit Date -->
-                    <div class="card-limit-date">
-                        Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
-                    </div>
-                    <!-- Registered Participants / Max Participants -->
-                    <div class="card-participants">
-                        Nombre de participants : {{ event.registeredParticipants.count }} / {{ event.maxParticipants }}
-                    </div>
-                    <!-- Possible actions for this event -->
-                    <div class="card-actions">
-                        <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détails</a>
-                        {# Conditionnal display of "S'inscrire" ou "Se désister" #}
-                        {% if event.registeredParticipants.contains(app.user) %}
-                            {# If the user is already registered for this event display "Se désister" #}
-                            <a href="#" class="style_bouton">Se désister</a>
+                <div class="card">
+                    <!-- Card's Picture -->
+                    <div class="card-image">
+                        {% if event.author.id == 7 %}
+                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
+                        {% elseif event.author.id == 2 %}
+                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
                         {% else %}
-                            {# If he's not registered, display "S'inscrire" #}
-                            <a href="{{ path('participate_event', {'id' : event.id} ) }}" class="style_bouton">S'inscrire</a>
-                        {% endif %}
-                        {# If the actual date is before the event's date AND the actual user is the event's author #}
-                        {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
-                            {# Display "Modifier" & "Annuler" buttons #}
-                            <a href="#" class="style_bouton">Modifier</a>
-                            <a href="{{ path('cancel_event', {'id': event.id }) }}" class="style_bouton">Annuler</a>
-                        {% else %}
-
+                            <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
                         {% endif %}
                     </div>
+                    <!-- End of the Picture -->
 
+                    <!-- Card's Body -->
+                    <div class="card-body">
+                        <!-- Author & Event's Date -->
+                        <div class="card-date">
+                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
+
+                            Date de la sortie :{{ event.currentPlace }} {{ event.eventDate|date('H:i:s d-m-Y') }}
+                        </div>
+                        <!-- Event's Name -->
+                        <div class="card-title">
+                            <h3>{{ event.name }}</h3>
+                        </div>
+                        <!-- Event's Description -->
+                        <div class="card-excerpt">
+                            <p>{{ event.description }}</p>
+                            <p></p>
+                        </div>
+                        <!-- Registration Limit Date -->
+                        <div class="card-limit-date">
+                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                        </div>
+                        <!-- Registered Participants / Max Participants -->
+                        <div class="card-participants">
+                            Nombre de participants : {{ event.registeredParticipants.count }}
+                            / {{ event.maxParticipants }}
+                        </div>
+                        <!-- Possible actions for this event -->
+                        <div class="card-actions">
+                            <a href="{{ path('details_event', {'id': event.id }) }}" class="style_bouton">Détails</a>
+                            {# Conditionnal display of "S'inscrire" ou "Se désister" #}
+                            {% if event.registeredParticipants.contains(app.user) %}
+                                {# If the user is already registered for this event display "Se désister" #}
+                                <a href="#" class="style_bouton">Se désister</a>
+                            {% else %}
+                                {# If he's not registered, display "S'inscrire" #}
+                                <a href="{{ path('participate_event', {'id' : event.id} ) }}" class="style_bouton">S'inscrire</a>
+                            {% endif %}
+                            {# If the actual date is before the event's date AND the actual user is the event's author #}
+                            {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
+                                {# Display "Modifier" & "Annuler" buttons #}
+                                <a href="#" class="style_bouton">Modifier</a>
+                                <a href="{{ path('cancel_event', {'id': event.id }) }}" class="style_bouton">Annuler</a>
+                                <a href="{{ path('open_event', {'id': event.id }) }}" class="style_bouton">Publier</a>
+
+                            {% else %}
+
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <!-- End of the card's body -->
                 </div>
-                <!-- End of the card's body -->
-            </div>
+
         {% endfor %}
     </div>
 

@@ -25,7 +25,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Workflow\Workflow;
+use Symfony\Component\Workflow\WorkflowInterface;
 
 
 /**
@@ -43,7 +43,11 @@ class EventsController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository, Workflow $workflow)
+    public function create(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        CampusRepository $campusRepository,
+        WorkflowInterface $eventPublishingStateMachine)
     {
 
         // Get all the campus in the database and return it to the twig templates
@@ -72,8 +76,11 @@ class EventsController extends AbstractController
         $event->setCampus($campus);
         $event->setAuthor($user);
 
-        $workflow = $this->container->get('workflow.event_publishing');
-        dd($workflow->can($event, 'ic_to_canceled'));
+        // Getting the workflow (statemachine because only one value possible), and setting the initial value
+        // getMarking(parameter) is used to set the instance to the initial value /**/
+        $eventPublishingStateMachine->getMarking($event);
+
+
 
         if (($eventForm->isSubmitted()) && $eventForm->isValid()) {
 
@@ -235,6 +242,32 @@ class EventsController extends AbstractController
         }
 
         return $this->redirectToRoute('list_events');
+    }
+
+    /**
+     * This function allows the user to open an event he created
+     * @Route ("/open/{id}", name="open_event")
+     * @param EventRepository $eventRepository
+     * @param $id
+     */
+    public function open(EventRepository $eventRepository, $id, WorkflowInterface $eventPublishingStateMachine){
+
+        // Getting the user
+        /** @var User $user */
+        $user = new User();
+
+        $user = $this->getUser();
+
+        // Getting the event
+        $eventToPublish = $eventRepository->findOneBy($id);
+
+        //
+        $eventPublishingStateMachine->apply($eventToPublish, EVENT::IC_TO_OPENED);
+
+
+
+
+
     }
 
 }

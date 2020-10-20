@@ -14,6 +14,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Event
 {
+    public const IC_TO_CANCELED = 'ic_to_canceled';
+    public const IC_TO_OPENED = 'ic_to_opened';
+    public const OPENED_TO_CLOSED = 'opened_to_closed';
+    public const OPENED_TO_CANCELED = 'opened_to_canceled';
+    public const CLOSED_TO_CURRENT = 'closed_to_current';
+    public const CURRENT_TO_PAST = 'current_to_past';
+    public const PAST_TO_ARCHIVED = 'past_to_archived';
+
     // PROPRIETES ---------------------------------------------------------------------------------------------------
     /**
      * @var
@@ -126,18 +134,11 @@ class Event
      */
     private $campus;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="events")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $etat;
-
 
     public function __construct()
     {
         $this->registeredParticipants = new ArrayCollection();
     }
-
 
 
     //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
@@ -419,12 +420,14 @@ class Event
 
         return $this;
     }
+
     public function setCampusName(?Campus $campus): self
     {
         $this->campus = $campus->getName();
 
         return $this;
     }
+
     public function setCampusId(?Campus $campus): self
     {
         $this->campusid = $campus->getId();
@@ -461,7 +464,7 @@ class Event
     /**
      * @param mixed $currentPlace
      */
-    public function setCurrentPlace($currentPlace): void
+    public function setCurrentPlace($currentPlace, $context = []): void
     {
         $this->currentPlace = $currentPlace;
     }
