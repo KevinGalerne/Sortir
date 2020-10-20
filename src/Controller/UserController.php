@@ -44,7 +44,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/account/edit", name="user_account_edit")
+     * @Route("/account/edit", name="user_account_edit", priority="100")
      */
     public function editAccount(Request $request, EntityManagerInterface $objectManager)
     {
