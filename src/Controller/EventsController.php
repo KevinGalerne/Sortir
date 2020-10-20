@@ -212,6 +212,26 @@ class EventsController extends AbstractController
         ]);
     }
 
+    /**
+     * This function allows the user to cancel an event he created
+     * @Route ("/cancel/{id}", name="cancel_event")
+     * @param EventRepository $eventRepository
+     * @param $id
+     */
+    public function cancel(EventRepository $eventRepository, $id)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $eventToCancel = $eventRepository->find($id);
+
+        if ($eventToCancel->getAuthor()->getId() == $user->getId())
+        {
+            $eventRepository->cancelEvent($id);
+        }
+
+        return $this->redirectToRoute('list_events');
+    }
+
 }
 
 
