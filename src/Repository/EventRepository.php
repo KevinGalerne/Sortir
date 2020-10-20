@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Validator\Constraints\Date;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,8 +27,7 @@ class EventRepository extends ServiceEntityRepository
     //  */
 
 
-    public
-    function findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now)
+    public function findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now, $nonParticipant)
     {
         $builder = $this->createQueryBuilder('e');
 
@@ -55,19 +55,29 @@ class EventRepository extends ServiceEntityRepository
                 ->orWhere('e.name LIKE :description')
                 ->setParameter('description', '%' . $keyword . '%');
         }
-        if ($participant){
-            $builder->join('e.registeredParticipants','rp')
+        if ($participant) {
+            $builder->join('e.registeredParticipants', 'rp')
                 ->andWhere('rp = :participant')
                 ->setParameter('participant', $participant);
         }
-        if($now){
+        if ($now) {
             $builder->andWhere('e.eventDate < :now')
                 ->setParameter('now', $now);
         }
-
-
+        if ($nonParticipant) {
+            $builder->where(
+                $builder->expr()->notIn(
+                    'e.id',
+                    $this
+                        ->createQueryBuilder('sq')
+                        ->select('sq.id')
+                        ->join('sq.registeredParticipants', 'rp2')
+                        ->where('rp2 = :nonparticipant')
+                        ->getDQL()
+                )
+            )->setParameter('nonparticipant', $nonParticipant);
+        }
         $query = $builder->getQuery();
-
         return $query->getResult();
     }
 }
