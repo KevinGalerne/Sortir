@@ -37,7 +37,6 @@ class EventsController extends AbstractController
 
     /**
      * Create a new event
-     *
      * @Route("/create_event", name="create_event")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
@@ -140,32 +139,25 @@ class EventsController extends AbstractController
      */
     public function getEvent(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
-
-        // Getting the connected user
-        $user = $this->getUser();
-
-
+        $userId = null;
         // Get all the campus in the database and return it to the twig templates
         $allCampus = $campusRepository->findAll();
 
         // Get the parameter sent by the user and convert it into DateTime object (database used DateTime)
-        $startDate = empty($request->get('startdate')) ? null : date_create($request->get('startdate'));
+        $startDate = empty($request->get('startdate')) ? null :date_create($request->get('startdate'));
         $endDate = empty($request->get('enddate')) ? null : date_create($request->get('enddate'));
 
 
         // Get the checkbox parameters
         $userCheckBox = $request->get('usercheckbox');
-        $registeredEvent = $request->get('registeredevent');
-        $nonRegisteredEvent =$request->get('nonregisteredevent');
+        $registeredEvent = $request->get('registeredevents');
         $passedEvent = $request->get('passed');
         $participant = null;
-        $nonRegistered=null;
-        $now = null;
-        $userId = null;
+        $now=null;
 
         if ($userCheckBox) {
             /** @var User $user */
-
+            $user = $this->getUser();
             $userId = $user->getId();
         } else {
             $userId = 0;
@@ -173,12 +165,12 @@ class EventsController extends AbstractController
         if ($registeredEvent) {
             $participant = $this->getUser();;
         }
-        if ($passedEvent) {
+        if($passedEvent){
             $now = date_create(date('m/d/Y h:i:s a', time()));
         }
-        if ($nonRegisteredEvent) {
-            $nonRegistered = $user;
-        }
+        var_dump($passedEvent);
+        var_dump($now);
+
 
 
         $campus = $request->get('campus');
@@ -186,18 +178,18 @@ class EventsController extends AbstractController
 
         // Calling the function in the repository and passing the parameters
 
-        $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now, $nonRegistered);
+        $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now);
 
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, "allCampus" => $allCampus]);
     }
 
-
     /**
+     * This function allows users to register themselves to an event
      * @Route ("/participate/{id}", name="participate_event")
      * @param EventRepository $eventRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
+    public function participate(EventRepository $eventRepository, $id, EntityManagerInterface $em)
     {
         $user = $this->getUser();
         $eventToShow = $eventRepository->find($id);
@@ -211,6 +203,26 @@ class EventsController extends AbstractController
         return $this->redirectToRoute('details_event', [
             'id' => $eventToShow->getId()
         ]);
+    }
+
+    /**
+     * This function allows the user to cancel an event he created
+     * @Route ("/cancel/{id}", name="cancel_event")
+     * @param EventRepository $eventRepository
+     * @param $id
+     */
+    public function cancel(EventRepository $eventRepository, $id)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $eventToCancel = $eventRepository->find($id);
+
+        if ($eventToCancel->getAuthor()->getId() == $user->getId())
+        {
+            $eventRepository->cancelEvent($id);
+        }
+
+        return $this->redirectToRoute('list_events');
     }
 
 }
