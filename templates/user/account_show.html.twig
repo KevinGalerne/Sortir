@@ -4,7 +4,10 @@
 
     <h1>Mes informations</h1>
 
-<div class="credentials">
+    <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ app.user.imageFileName)}}"></div>
+
+
+    <div class="credentials">
 
     <div class="formlabel">Pseudo :</div>
     {{ app.user.pseudo }}
@@ -27,9 +30,6 @@
 
     <a class="profilbutton" href="{{ path('user_account_edit') }}">Modifier</a>
 </div>
-
-
-
 
 
 {% endblock %}

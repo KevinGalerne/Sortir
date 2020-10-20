@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\EditAccountType;
 use App\Form\EditPasswordType;
+use App\Repository\EventRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -29,8 +30,21 @@ class UserController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/account/edit", name="user_account_edit")
+     * @Route("/account/{pseudo}", name="user_showProfil")
+     */
+    public function showProfil(UserRepository $userRepository, $pseudo, EventRepository $eventRepository)
+    {
+        $profil = $userRepository->findOneBy(['pseudo' => $pseudo]);
+
+        return $this->render('user/show_profil.html.twig', [
+            'profilToShow' => $profil,
+        ]);
+    }
+
+    /**
+     * @Route("/account/edit", name="user_account_edit", priority="100")
      */
     public function editAccount(Request $request, EntityManagerInterface $objectManager)
     {

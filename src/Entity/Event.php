@@ -14,7 +14,25 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Event
 {
+    public const IC_TO_CANCELED = 'ic_to_canceled';
+    public const IC_TO_OPENED = 'ic_to_opened';
+    public const OPENED_TO_CLOSED = 'opened_to_closed';
+    public const OPENED_TO_CANCELED = 'opened_to_canceled';
+    public const CLOSED_TO_CURRENT = 'closed_to_current';
+    public const CURRENT_TO_PAST = 'current_to_past';
+    public const PAST_TO_ARCHIVED = 'past_to_archived';
+
+    //To erase after test
+    public const OPENED_TO_PAST = 'opened_to_past';
+
+
     // PROPRIETES ---------------------------------------------------------------------------------------------------
+    /**
+     * @ORM\Column (type="string")
+     *
+     */
+    private $currentPlace;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -57,11 +75,6 @@ class Event
      * @ORM\Column (type="text")
      */
     private $description;
-
-    /**
-     * @ORM\Column (type="boolean")
-     */
-    private $isPublished;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -126,7 +139,6 @@ class Event
     {
         $this->registeredParticipants = new ArrayCollection();
     }
-
 
 
     //GETTERS & SETTERS ---------------------------------------------------------------------------------------------
@@ -408,12 +420,14 @@ class Event
 
         return $this;
     }
+
     public function setCampusName(?Campus $campus): self
     {
         $this->campus = $campus->getName();
 
         return $this;
     }
+
     public function setCampusId(?Campus $campus): self
     {
         $this->campusid = $campus->getId();
@@ -426,4 +440,33 @@ class Event
         return /*$this->getSubscriptionLimitDate() > new \DateTime() &&*/
             $this->getMaxParticipants() <= $this->getRegisteredParticipants()->count();
     }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentPlace()
+    {
+        return $this->currentPlace;
+    }
+
+    /**
+     * @param mixed $currentPlace
+     */
+    public function setCurrentPlace($currentPlace, $context = []): void
+    {
+        $this->currentPlace = $currentPlace;
+    }
+
 }
