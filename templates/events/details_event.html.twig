@@ -20,7 +20,7 @@
             </div>
 
             <div class="formlabel">
-                Nombre de places : <div class="formshow">{{ eventToShow.maxParticipants }}</div>
+                Nombre de places : <div class="formshow">{{ eventToShow.registeredParticipants.count}} / {{ eventToShow.maxParticipants }}</div>
             </div>
 
             <div class="formlabel">
@@ -69,9 +69,9 @@
             </div>#}
 
              <div>
-                <h2>{{ eventToShow.registeredParticipants|length }} participants inscrits :</h2>
+                <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit'  }} :</h2>
 
-                 <table>
+                 <table class="redTable">
                      <thead>
                         <tr>
                             <th>Pseudo</th>
