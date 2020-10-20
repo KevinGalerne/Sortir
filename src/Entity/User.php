@@ -72,6 +72,17 @@ class User implements UserInterface
      */
     private $phoneNumber;
 
+
+    /*
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    /*private $imageFileName;*/
+
+
+
+
+
     // RELATIONS ---------------------------------------------------------------------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="users")
@@ -88,6 +99,7 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="registeredParticipants")
      */
     private $eventsRegisteredTo;
+
 
     public function __construct()
     {
@@ -180,6 +192,31 @@ class User implements UserInterface
     }
 
 
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
+
+        return $this;
+    }
+
+    public function getImageFileName(): ?string
+    {
+        return $this->imageFileName;
+    }
+
+    public function setImageFileName(?string $imageFileName): self
+    {
+        $this->imageFileName = $imageFileName;
+
+        return $this;
+    }
+
+
 
     /**
      * A visual identifier that represents this user.
@@ -243,17 +280,6 @@ class User implements UserInterface
     }
 
 
-    public function getCampus(): ?Campus
-    {
-        return $this->campus;
-    }
-
-    public function setCampus(?Campus $campus): self
-    {
-        $this->campus = $campus;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Event[]
@@ -313,4 +339,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 }

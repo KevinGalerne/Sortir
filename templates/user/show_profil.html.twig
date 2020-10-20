@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block main %}
+
+    <div><img src="http://via.placeholder.com/200x200"></div>
+
+    <div class="credentials">
+
+        <div class="formlabel">Pseudo :</div>
+        {{ profilToShow.pseudo }}
+
+        <div class="formlabel">Nom de famille :</div>
+        {{ profilToShow.lastName | upper }}
+
+        <div class="formlabel">Prénom :</div>
+        {{ profilToShow.firstName  | capitalize }}
+
+        <div class="formlabel">Numéro de téléphone :</div>
+        {{ profilToShow.phoneNumber }}
+
+        <div class="formlabel">Email :</div>
+        {{ profilToShow.email }}
+
+    </div>
+
+
+
+{% endblock %}
