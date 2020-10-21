@@ -7,6 +7,7 @@
 
     <form class="filterform" action="{{ path('get_event') }}" method="get">
         <div class="formpart1">
+
             <!-- This part allow the user to select the campus -->
             <select name="campus" id="selectcampus">
                 <option value="">Campus</option>
@@ -23,6 +24,8 @@
             <input type="date" name="startdate" value="">
             <input type="date" name="enddate" value="">
         </div>
+
+            <!-- Checkbox filters part -->
 
         <div class="formcheckbox">
             <div class="checkboxdiv">
@@ -63,13 +66,6 @@
             <!-- 1: we filter them, the "in creation" event, yet not published, are only displayed for the author -->
             <!-- 2: then after the  'or' we also include the event that are "opened"                              -->
             {% if event.currentPlace == "in_creation" and event.author.id == app.user.id or event.currentPlace =="opened" %}
-                <!-- 3: If an event is "opened" but the date is anterior to the actual date, then we apply "past_activity" workflow on it -->
-
-
-
-
-
-
 
 
                 <div class="card">

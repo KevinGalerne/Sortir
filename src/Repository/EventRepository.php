@@ -22,9 +22,11 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    // /**
-    //  * @return Event[] Returns an array of Event objects
-    //  */
+    /**
+     * Allow the user to search a list of events based on criteria he selected
+     * @return Event[] Returns an array of Event objects
+     * @author Kevin & Raphael
+     */
     public function findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now, $nonParticipant)
     {
         $builder = $this->createQueryBuilder('e');
@@ -66,7 +68,7 @@ class EventRepository extends ServiceEntityRepository
         // 1 - This request return the event where the user is not registered
         if ($nonParticipant) {
             $builder->where(
-                // Next line means, on the event.id, return the results where the user is not according to the following request
+            // Next line means, on the event.id, return the results where the user is not according to the following request
                 $builder->expr()->notIn(
                     'e.id',
                     $this
@@ -80,7 +82,7 @@ class EventRepository extends ServiceEntityRepository
                         ->where('rp2 = :nonparticipant')
                         ->getDQL()
                 )
-                // 1-Setting 'non-participant' with the user id
+            // 1-Setting 'non-participant' with the user id
             )->setParameter('nonparticipant', $nonParticipant);
         }
         $query = $builder->getQuery();
@@ -88,9 +90,11 @@ class EventRepository extends ServiceEntityRepository
     }
 
 
-
-
-
+    /**
+     * Allow the user to cancel an event he created, this one is deleter from the database
+     * @param $eventId
+     * @author : Raphael
+     */
     public function cancelEvent($eventId)
     {
         $qb = $this->createQueryBuilder('e');
