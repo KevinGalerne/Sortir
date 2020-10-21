@@ -223,7 +223,7 @@ class EventsController extends AbstractController
      * @param EventRepository $eventRepository
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
-     * @author  Raphael
+     * @author  Laetitia & Samy
      */
     public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
     {
