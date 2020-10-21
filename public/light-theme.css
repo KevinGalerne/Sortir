@@ -562,7 +562,89 @@ a.style_bouton:hover{
     transition-timing-function: ease;
 }
 
+/*-----------------------------------------------ESSAI CARTE 2 RAPHA--------------------------------------------------*/
+/* Partie gauche de la carte */
+.event_card {
+    background-color: var(--main-background-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: 700px;
+}
+.event_card h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.event_card h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
 
+.event_preview_card {
+    background-color: rebeccapurple;
+    color: var(--main-background-color);
+    padding: 30px;
+    max-width: 250px;
+}
+
+.event_preview_card a {
+    color: var(--main-background-color);
+    display: inline-block;
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+/* Partie droite de la carte */
+.event_info_card {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+}
+.event_info_card h4, .event_info_card h6 {
+    text-align: left;
+}
+
+.participants_container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+}
+.participants_text {
+    font-size: 16px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+.actions_btns_container {
+    display: flex;
+    flex-flow: row nowrap;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+.btn {
+    background-color: rebeccapurple;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    color: var(--main-background-color);
+    font-size: 16px;
+    padding: 12px 12px;
+    margin: 5px;
+    /*position: absolute;*/
+    /*bottom: 30px;*/
+    /*right: 30px;*/
+    letter-spacing: 1px;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 /* Keyframes and animations */
 @keyframes logoanimation {
