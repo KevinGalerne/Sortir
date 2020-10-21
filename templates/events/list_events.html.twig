@@ -104,7 +104,7 @@
 
                         <!-- Registration Limit Date -->
                         <div class="card-limit-date">
-                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('d-m-Y') }}
                         </div>
 
                         <!-- Registered Participants / Max Participants -->
@@ -119,13 +119,20 @@
                                class="style_bouton">Détails</a>
                             {# Conditionnal display of "S'inscrire" ou "Se désister" #}
                             {% if event.registeredParticipants.contains(app.user) %}
+
                                 {# If the user is already registered for this event display "Se désister" #}
-                                <a href="#" class="style_bouton">Se désister</a>
+                                {% if event.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
+                                    <a href="{{ path('desist_event', {'id' : event.id} ) }}"
+                                       class="style_bouton">Se désister</a>
+                                {% endif %}
+
                             {% else %}
 
-                                {# If he's not registered, display "S'inscrire" #}
-                                <a href="{{ path('participate_event', {'id' : event.id} ) }}"
-                                   class="style_bouton">S'inscrire</a>
+                                {# If he's not registered and the subscription limite date is not passed yet , display "S'inscrire" #}
+                                {% if event.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
+                                    <a href="{{ path('participate_event', {'id' : event.id} ) }}"
+                                       class="style_bouton">S'inscrire</a>
+                                {% endif %}
                             {% endif %}
 
                             {# If the actual date is before the event's date AND the actual user is the event's author #}
@@ -160,7 +167,9 @@
         {% for event in allEvents %}
             <!-- 1: we filter them, the "in creation" event, yet not published, are only displayed for the author -->
             <!-- 2: then after the  'or' we also include the event that are "opened"                              -->
-            {% if event.currentPlace == "past_activity" %}
+
+
+            {% if event.currentPlace == "past_activity" and date(event.eventDate)>date('- 30 days') %}
 
                 <div class="cardpast">
                     <!-- Card's Picture -->

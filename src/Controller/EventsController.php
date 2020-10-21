@@ -223,7 +223,7 @@ class EventsController extends AbstractController
      * @param EventRepository $eventRepository
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
-     * @author Laetitia, Samy-Lee, Raphael, Kevin
+     * @author  Raphael
      */
     public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
     {
@@ -238,11 +238,34 @@ class EventsController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('details_event', [
+        return $this->redirectToRoute('list_events', [
             'id' => $eventToShow->getId()
         ]);
     }
+    /**
+     * @Route ("/desist/{id}", name="desist_event")
+     *
+     * @param EventRepository $eventRepository
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @author Kevin
+     */
+    public function desist(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
 
+        $eventToShow = $eventRepository->find($id);
+
+        $eventToShow->removeRegisteredParticipant($user);
+            $em->persist($eventToShow);
+            $em->flush();
+
+
+        return $this->redirectToRoute('list_events', [
+            'id' => $eventToShow->getId()
+        ]);
+    }
 
 
 
@@ -297,6 +320,8 @@ class EventsController extends AbstractController
 
         return $this->redirectToRoute('list_events');
     }
+
+
 
 
 }

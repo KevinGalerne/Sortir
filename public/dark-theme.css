@@ -413,6 +413,7 @@ form ul {
     padding-bottom: 1vh;
 }
 
+
 /* Card Container */
 .card-container {
     width: 100%;
@@ -494,8 +495,8 @@ a.style_bouton {
 a.style_bouton:hover{
     background-color: var(--second-background-color);
     transition-duration: 1s;
-
 }
+
 
 /* Card image */
 .card-image {
