@@ -33,7 +33,7 @@ input[type="checkbox"]{
     border-radius: 20px;
 }
 input:checked[type="checkbox"] {
-    background: var(--third-background-color);
+    background: darkred;
 }
 input[type="checkbox"]:before{
     content:  '';

@@ -28,12 +28,13 @@ input[type="checkbox"]{
     width: 4vw;
     height: 2vh;
     -webkit-appearance: none;
-    background: var(--third-background-color);
+    background: lightgray;
     outline: none;
+    border: solid 1px white;
     border-radius: 20px;
 }
 input:checked[type="checkbox"] {
-background: var(--third-background-color);
+    background: gray;
 }
 input[type="checkbox"]:before{
     content:  '';
