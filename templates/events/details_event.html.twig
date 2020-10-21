@@ -8,27 +8,34 @@
         <!-- Left Side -->
         <div class="eventside">
             <div class="formlabel">
-                Nom de la sortie : <div class="formshow">{{ eventToShow.name }}</div>
+                Nom de la sortie :
+                <div class="formshow">{{ eventToShow.name }}</div>
             </div>
 
             <div class="formlabel">
-                Date et heure de la sortie : <div class="formshow">{{ eventToShow.eventDate|date('H:i:s d-m-Y') }}</div>
+                Date et heure de la sortie :
+                <div class="formshow">{{ eventToShow.eventDate|date('H:i:s d-m-Y') }}</div>
             </div>
 
             <div class="formlabel">
-                Date limite d'inscription : <div class="formshow">{{ eventToShow.subscriptionLimitDate|date('H:i:s d-m-Y') }}</div>
+                Date limite d'inscription :
+                <div class="formshow">{{ eventToShow.subscriptionLimitDate|date('H:i:s d-m-Y') }}</div>
             </div>
 
             <div class="formlabel">
-                Nombre de places : <div class="formshow">{{ eventToShow.registeredParticipants.count}} / {{ eventToShow.maxParticipants }}</div>
+                Nombre de places :
+                <div class="formshow">{{ eventToShow.registeredParticipants.count }}
+                    / {{ eventToShow.maxParticipants }}</div>
             </div>
 
             <div class="formlabel">
-                Durée : <div class="formshow">{{ eventToShow.duration|date('H:i') }}</div>
+                Durée :
+                <div class="formshow">{{ eventToShow.duration|date('H:i') }}</div>
             </div>
 
             <div class="formlabel">
-                Description et infos : <div class="formshow">{{ eventToShow.description }}</div>
+                Description et infos :
+                <div class="formshow">{{ eventToShow.description }}</div>
             </div>
 
         </div>
@@ -36,68 +43,91 @@
         <!-- Right Side -->
         <div class="eventside">
             <div class="formlabel">
-                Campus : <div class="formshow">{{ app.user.campus.getName }}</div>
+                Campus :
+                <div class="formshow">{{ app.user.campus.getName }}</div>
             </div>
 
             <div class="formlabel">
-                Numéro : <div class="formshow">{{ eventToShow.streetNumber }}</div>
+                Numéro :
+                <div class="formshow">{{ eventToShow.streetNumber }}</div>
             </div>
 
             <div class="formlabel">
-                Rue : <div class="formshow">{{ eventToShow.route }}</div>
+                Rue :
+                <div class="formshow">{{ eventToShow.route }}</div>
             </div>
 
 
             <div class="formlabel">
-                Code postal : <div class="formshow">{{ eventToShow.postalCode }}</div>
+                Code postal :
+                <div class="formshow">{{ eventToShow.postalCode }}</div>
             </div>
 
             <div class="formlabel">
-                Ville : <div class="formshow">{{ eventToShow.locality }}</div>
+                Ville :
+                <div class="formshow">{{ eventToShow.locality }}</div>
             </div>
 
             <div class="formlabel">
-                Pays : <div class="formshow">{{ eventToShow.country }}</div>
+                Pays :
+                <div class="formshow">{{ eventToShow.country }}</div>
             </div>
 
-            {#<div class="formlabel">
+            {# <div class="formlabel">
                 Latitude : <input id="lat" name="lat" class="forminput">
             </div>
 
             <div class="formlabel">
                 Longitude : <input id="lng" name="lng" class="forminput">
-            </div>#}
+            </div> #}
 
-             <div>
-                <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit'  }} :</h2>
+            <div>
+                <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit' }}
+                    :</h2>
 
-                 <table class="redTable">
-                     <thead>
+                <table class="redTable">
+                    <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Prénom</th>
+                        <th>Nom de famille</th>
+                        <th>Campus</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for participant in eventToShow.registeredParticipants %}
+
                         <tr>
-                            <th>Pseudo</th>
-                            <th>Prénom</th>
-                            <th>Nom de famille</th>
-                            <th>Campus</th>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.pseudo }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.firstName | capitalize }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.lastName | upper }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.campus.name }}</a>
+                            </td>
                         </tr>
-                     </thead>
-                     <tbody>
-                     {% for participant in eventToShow.registeredParticipants  %}
 
-                             <tr>
-                                <td><a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.pseudo }}</a></td>
-                                <td><a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.firstName | capitalize}}</a></td>
-                                <td><a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.lastName | upper}}</a></td>
-                                <td><a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.campus.name }}</a></td>
-                            </tr>
-
-                     {% endfor %}
-                     </tbody>
-                 </table>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div>
-                <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
-                    <input type="submit" class="forminput" value="Participer à l'évenement !" {% if eventToShow.open %}disabled{% endif %}>
-                </form>
+
+                {% if eventToShow.registeredParticipants.contains(app.user) %}
+                <form action="{{ path('desist_event', {'id' : eventToShow.id} ) }}" method="post">
+                    <input type="submit" class="forminput" value="Se désister"
+                           {% if eventToShow.open %}disabled{% endif %}>
+                    {% else %}
+                    <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
+                        <input type="submit" class="forminput" value="S'inscrire"
+                               {% if eventToShow.open %}disabled{% endif %}>
+                        {% endif %}
+
             </div>
         </div>
     </div>
