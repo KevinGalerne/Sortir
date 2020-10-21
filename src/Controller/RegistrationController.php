@@ -47,7 +47,6 @@ class RegistrationController extends AbstractController
             if ($uploadedFile){
                 $destination = $this->getParameter('kernel.project_dir').'/public/uploads/profil_images';
 
-//                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = uniqid().'.'.$uploadedFile->guessExtension();
 
                 $uploadedFile->move($destination, $newFilename);

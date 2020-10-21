@@ -28,6 +28,14 @@
         {{  form_widget(editForm.email) }}
         <div>{{ form_errors(editForm.email) }}</div>
 
+        <div class="formlabel">
+            Image
+        </div>
+
+        {{  form_widget(editForm.imageFile) }}
+        {{ form_label(editForm.imageFile) }}
+        {{ form_errors(editForm.imageFile) }}
+
     </div>
     <button type="submit">Enregister les modifications</button>
     {{ form_end(editForm) }}

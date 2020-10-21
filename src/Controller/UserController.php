@@ -11,6 +11,7 @@ use Doctrine\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -55,6 +56,19 @@ class UserController extends AbstractController
 
 
         if ( $form->isSubmitted() && $form->isValid() ){
+
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['imageFile']->getData();
+
+            if ($uploadedFile){
+                $destination = $this->getParameter('kernel.project_dir').'/public/uploads/profil_images';
+
+                $newFilename = uniqid().'.'.$uploadedFile->guessExtension();
+
+                $uploadedFile->move($destination, $newFilename);
+
+                $user->setImageFilename($newFilename);
+            }
 
             $objectManager->persist($user);
             $objectManager->flush();

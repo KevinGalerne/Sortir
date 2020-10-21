@@ -82,10 +82,10 @@
     <div class="formlabel">
         Image
     </div>
+
     {{  form_widget(registrationForm.imageFile) }}
+    {{ form_label(registrationForm.imageFile) }}
     {{ form_errors(registrationForm.imageFile) }}
-
-
 
     <div class="profilbuttons">
         {{  form_widget(registrationForm.save) }}
