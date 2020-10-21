@@ -35,6 +35,7 @@ class EventRepository extends ServiceEntityRepository
             $builder->andWhere('e.campus = :campus')
                 ->setParameter('campus', $campus);
         }
+
         if ($userId) {
             $builder->andWhere('e.Author = :userId')
                 ->setParameter('userId', $userId);
@@ -48,7 +49,6 @@ class EventRepository extends ServiceEntityRepository
         if ($endDate) {
             $builder->andWhere('e.eventDate < :endDate')
                 ->setParameter('endDate', $endDate);
-
         }
         if ($keyword) {
             $builder->andWhere('e.description LIKE :description')
@@ -61,8 +61,9 @@ class EventRepository extends ServiceEntityRepository
                 ->setParameter('participant', $participant);
         }
         if ($now) {
-            $builder->andWhere('e.eventDate < :now')
-                ->setParameter('now', $now);
+            $builder
+                ->andWhere('e.currentPlace = :currentPlace')
+                ->setParameter('currentPlace', "past_activity");
         }
 
         // 1 - This request return the event where the user is not registered
@@ -85,6 +86,7 @@ class EventRepository extends ServiceEntityRepository
             // 1-Setting 'non-participant' with the user id
             )->setParameter('nonparticipant', $nonParticipant);
         }
+
         $query = $builder->getQuery();
         return $query->getResult();
     }

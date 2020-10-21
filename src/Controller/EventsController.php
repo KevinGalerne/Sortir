@@ -131,7 +131,8 @@ class EventsController extends AbstractController
         $now = new \DateTime();
 
         foreach ($allEvents as $event) {
-            if ($event->getEventDate() < $now) {
+            if ($event->getEventDate() < $now && $event->getCurrentPlace() != 'past_activity'
+                && $event->getCurrentPlace() != 'in_creation') {
                 $currentPlaceService->past($event->getId());
             }
         }
@@ -147,7 +148,7 @@ class EventsController extends AbstractController
     }
 
     /**
-     * This function return a list of events based on a date choice on string format (HTML calendar based)
+     * This function return a list of events based on criteria selected by user
      *
      * @Route ("/get_event", name="get_event")
      * @param EventRepository $eventRepository
@@ -186,7 +187,7 @@ class EventsController extends AbstractController
 
             $userId = $user->getId();
         } else {
-            $userId = 0;
+            $userId = null;
         }
         if ($registeredEvent) {
             $participant = $this->getUser();;
@@ -200,8 +201,15 @@ class EventsController extends AbstractController
 
 
         $campus = $request->get('campus');
-        $keyword = $request->get('keyword');
 
+        if ($campus==""){
+            $campus=null;
+        }
+
+        $keyword = $request->get('keyword');
+        if ($keyword==""){
+            $keyword=null;
+        }
         // Calling the function in the repository and passing the parameters
 
         $allEvents = $eventRepository->findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now, $nonRegistered);
