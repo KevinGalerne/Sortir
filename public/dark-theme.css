@@ -130,10 +130,8 @@ button {
 
 .logo {
     color: var(--third-background-color);
-    position: fixed;
-    top: 0;
-    left: 2%;
-    font-size: 4vh;
+
+    font-size: 8vh;
 }
 
 .logo:hover {

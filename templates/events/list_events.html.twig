@@ -93,7 +93,8 @@
                         <div class="card-date">
                             Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
 
-                            Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
+                            Le {{ event.eventDate|date('d-m-Y') }}
+                            A {{ event.eventDate|date('H') }} H {{ event.eventDate|date('i') }}
                         </div>
 
 
@@ -169,25 +170,13 @@
                 <div class="cardpast">
                     <!-- Card's Picture -->
                     <div class="card-image">
-                        {% if event.author.id == 7 %}
-                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
-                        {% elseif event.author.id == 2 %}
-                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
-                        {% else %}
-                            <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
-                        {% endif %}
+                        <img  class="authorimg" src="{{ asset('uploads/profil_images/' ~ event.author.imageFileName)}}" alt="authorimg">
                     </div>
                     <!-- End of the Picture -->
 
 
                     <!-- Card's Body -->
                     <div class="card-body">
-                        <!-- Author & Event's Date -->
-                        <div class="card-date">
-                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
-
-                            Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
-                        </div>
 
                         <!-- Event's Name -->
                         <div class="card-title">
@@ -199,10 +188,19 @@
                             <p>{{ event.description }}</p>
                             <p></p>
                         </div>
+                        <!-- Author & Event's Date -->
+                        <div class="card-date">
+                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
+
+                            Le {{ event.eventDate|date('d-m-Y') }}
+                            A {{ event.eventDate|date('H') }} H {{ event.eventDate|date('i') }}
+                        </div>
+
+
 
                         <!-- Registration Limit Date -->
                         <div class="card-limit-date">
-                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('d-m-Y') }}
                         </div>
 
                         <!-- Registered Participants / Max Participants -->
