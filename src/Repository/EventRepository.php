@@ -25,8 +25,6 @@ class EventRepository extends ServiceEntityRepository
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */
-
-
     public function findByCriteria($startDate, $endDate, $keyword, $userId, $campus, $participant, $now, $nonParticipant)
     {
         $builder = $this->createQueryBuilder('e');
@@ -64,22 +62,34 @@ class EventRepository extends ServiceEntityRepository
             $builder->andWhere('e.eventDate < :now')
                 ->setParameter('now', $now);
         }
+
+        // 1 - This request return the event where the user is not registered
         if ($nonParticipant) {
             $builder->where(
+                // Next line means, on the event.id, return the results where the user is not according to the following request
                 $builder->expr()->notIn(
                     'e.id',
                     $this
+                        // 2-We re-alias Event table with 'sq' to make a second request
                         ->createQueryBuilder('sq')
+                        // 3-Select every Event.id
                         ->select('sq.id')
+                        // 4-Join it with the User_event table aliased 'rp2'
                         ->join('sq.registeredParticipants', 'rp2')
+                        // 5-Where rp2 has the user id
                         ->where('rp2 = :nonparticipant')
                         ->getDQL()
                 )
+                // 1-Setting 'non-participant' with the user id
             )->setParameter('nonparticipant', $nonParticipant);
         }
         $query = $builder->getQuery();
         return $query->getResult();
     }
+
+
+
+
 
     public function cancelEvent($eventId)
     {

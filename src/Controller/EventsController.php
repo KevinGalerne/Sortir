@@ -26,6 +26,7 @@ class EventsController extends AbstractController
 
 
     /*************************************************************** EVENT CRUD *******************************************/
+
     /**
      * Create a new event
      *
@@ -33,6 +34,7 @@ class EventsController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @author Laetitia, Samy-Lee, Raphael, Kevin
      */
     public function create(
         Request $request,
@@ -99,7 +101,10 @@ class EventsController extends AbstractController
 
     /**
      * Access to the event details
+     *
      * @Route("/details_event/{id}", name="details_event")
+     * @param $id
+     * @author Laetitia, Samy-Lee, Raphael, Kevin
      */
     public function details($id, EventRepository $eventRepository)
     {
@@ -112,7 +117,9 @@ class EventsController extends AbstractController
 
     /**
      * Access to the event list
+     *
      * @Route("/list_events", name="list_events")
+     * @author Laetitia, Samy-Lee, Raphael, Kevin
      */
     public function list(EntityManagerInterface $em, CampusRepository $campusRepository, CurrentPlaceService $currentPlaceService, EventRepository $eventRepository)
     {
@@ -140,12 +147,14 @@ class EventsController extends AbstractController
     }
 
     /**
-     * This function return a list of events based on a date choice
+     * This function return a list of events based on a date choice on string format (HTML calendar based)
+     *
+     * @Route ("/get_event", name="get_event")
      * @param EventRepository $eventRepository
      * @param Request $request
      * @param : String
      * @return \Symfony\Component\HttpFoundation\Response : [events]
-     * @Route ("/get_event", name="get_event")
+     * @author Laetitia, Samy-Lee, Raphael, Kevin
      */
     public function getEvent(EventRepository $eventRepository, Request $request, CampusRepository $campusRepository)
     {
@@ -202,8 +211,11 @@ class EventsController extends AbstractController
 
     /**
      * @Route ("/participate/{id}", name="participate_event")
+     *
      * @param EventRepository $eventRepository
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
+     * @author Laetitia, Samy-Lee, Raphael, Kevin
      */
     public function participate(EventRepository $eventRepository, Request $request, $id, EntityManagerInterface $em)
     {
@@ -223,24 +235,7 @@ class EventsController extends AbstractController
         ]);
     }
 
-    /**
-     * This function allows the user to cancel an event he created
-     * @Route ("/cancel/{id}", name="cancel_event")
-     * @param EventRepository $eventRepository
-     * @param $id
-     */
-    public function cancel(EventRepository $eventRepository, $id)
-    {
-        /** @var User $user */
-        $user = $this->getUser();
-        $eventToCancel = $eventRepository->find($id);
 
-        if ($eventToCancel->getAuthor()->getId() == $user->getId()) {
-            $eventRepository->cancelEvent($id);
-        }
-
-        return $this->redirectToRoute('list_events');
-    }
 
 
 
@@ -251,6 +246,7 @@ class EventsController extends AbstractController
 
     /**
      * This function allows the user to open an event he created
+     *
      * @Route ("/open/{id}", name="open_event")
      * @param EventRepository $eventRepository
      * @param $id
@@ -273,15 +269,29 @@ class EventsController extends AbstractController
         $currentPlaceService->open($id);
         return $this->render('events/list_events.html.twig', ["allEvents" => $allEvents, 'allCampus' => $allCampus]);
     }
+
+    /**
+     * This function allows the user to cancel an event he created
+     *
+     * @Route ("/cancel/{id}", name="cancel_event")
+     * @param EventRepository $eventRepository
+     * @param $id
+     */
+    public function cancel(EventRepository $eventRepository, $id)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $eventToCancel = $eventRepository->find($id);
+
+        if ($eventToCancel->getAuthor()->getId() == $user->getId()) {
+            $eventRepository->cancelEvent($id);
+        }
+
+        return $this->redirectToRoute('list_events');
+    }
+
+
 }
-
-
-
-
-
-
-
-
 
 
 
