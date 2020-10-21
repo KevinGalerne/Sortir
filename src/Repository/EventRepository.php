@@ -68,7 +68,7 @@ class EventRepository extends ServiceEntityRepository
 
         // 1 - This request return the event where the user is not registered
         if ($nonParticipant) {
-            $builder->where(
+            $builder->andWhere(
             // Next line means, on the event.id, return the results where the user is not according to the following request
                 $builder->expr()->notIn(
                     'e.id',

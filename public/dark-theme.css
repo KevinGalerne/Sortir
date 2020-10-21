@@ -25,6 +25,35 @@
 
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
 
+input[type="checkbox"]{
+    position: relative;
+    width: 4vw;
+    height: 2vh;
+    -webkit-appearance: none;
+    background: var(--third-background-color);
+    outline: none;
+    border-radius: 20px;
+}
+input:checked[type="checkbox"] {
+background: var(--third-background-color);
+}
+input[type="checkbox"]:before{
+    content:  '';
+    position: absolute;
+    width: 2vw;
+    height: 2vh;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: var(--main-background-color);
+    box-shadow: 0 2px 5px var(--third-background-color);
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+input:checked[type="checkbox"]:before{
+    left: 2vw;
+}
+
 select {
     background-color: var(--main-background-color);
     color: var(--third-background-color);

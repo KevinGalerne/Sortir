@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link id="theme-link" rel="stylesheet" href="{{ asset('light-theme.css') }}">
+    <link id="theme-link" rel="stylesheet" href="{{ asset('dark-theme.css') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
@@ -14,9 +14,8 @@
 <body>
 <!-- Theme switch -->
 
-<label class="toggle_theme_button">
-    Changer le theme
-    <input type="checkbox">
+<label class="toggle_theme_button">Changer le theme
+<input type="checkbox" id="themebox">
 
 </label>
 
@@ -128,6 +127,7 @@
 
 {# Creating a dark-mode #}
 <script>
+
     // Select the button
     const btn = document.querySelector(".toggle_theme_button");
     // Select the stylesheet <link>
@@ -153,6 +153,7 @@
 
 // Sending the user choice to the navigator localstorage
         localStorage.setItem("userTheme", userTheme);
+
     });
 
 </script>
