@@ -25,7 +25,7 @@
             <input type="date" name="enddate" value="">
         </div>
 
-            <!-- Checkbox filters part -->
+        <!-- Checkbox filters part -->
 
         <div class="formcheckbox">
             <div class="checkboxdiv">
@@ -88,7 +88,7 @@
                         <div class="card-date">
                             Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
 
-                            Date de la sortie :{{ event.currentPlace }} {{ event.eventDate|date('H:i:s d-m-Y') }}
+                            Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
                         </div>
 
                         <!-- Event's Name -->
@@ -151,7 +151,74 @@
 
             {% endif %}
         {% endfor %}
-    </div>
 
+
+        <!------------------------------------------ PAST EVENTS ------------------------------------------------------>
+
+
+        <!-- Here we call every event in the database -->
+        {% for event in allEvents %}
+            <!-- 1: we filter them, the "in creation" event, yet not published, are only displayed for the author -->
+            <!-- 2: then after the  'or' we also include the event that are "opened"                              -->
+            {% if event.currentPlace == "past_activity" %}
+
+                <div class="cardpast">
+                    <!-- Card's Picture -->
+                    <div class="card-image">
+                        {% if event.author.id == 7 %}
+                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
+                        {% elseif event.author.id == 2 %}
+                            <img src="{{ asset('img/magnum.jpg') }}" alt=""/>
+                        {% else %}
+                            <img src="{{ asset('img/card-img.jpg') }}" alt=""/>
+                        {% endif %}
+                    </div>
+                    <!-- End of the Picture -->
+
+
+                    <!-- Card's Body -->
+                    <div class="card-body">
+                        <!-- Author & Event's Date -->
+                        <div class="card-date">
+                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
+
+                            Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
+                        </div>
+
+                        <!-- Event's Name -->
+                        <div class="card-title">
+                            <h3>{{ event.name }}</h3>
+                        </div>
+
+                        <!-- Event's Description -->
+                        <div class="card-excerpt">
+                            <p>{{ event.description }}</p>
+                            <p></p>
+                        </div>
+
+                        <!-- Registration Limit Date -->
+                        <div class="card-limit-date">
+                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('H:i:s d-m-Y') }}
+                        </div>
+
+                        <!-- Registered Participants / Max Participants -->
+                        <div class="card-participants">
+                            Nombre de participants : {{ event.registeredParticipants.count }}
+                            / {{ event.maxParticipants }}
+                        </div>
+
+                        <!-- Possible actions for this event -->
+                        <div class="card-actions">
+                            <a href="{{ path('details_event', {'id': event.id }) }}"
+                               class="style_bouton">Détails</a>
+                        </div>
+                        <div class="eventendcomment">Cet evènement est terminé</div>
+                    </div>
+                    <!-- End of the card's body -->
+                </div>
+
+            {% endif %}
+        {% endfor %}
+    </div>
 
 {% endblock %}

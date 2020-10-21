@@ -435,6 +435,22 @@ form ul {
     padding-bottom: 2vh;
     margin-bottom: 5vh;
 }
+.cardpast{
+    background-color: var(--main-background-color);
+    opacity: 50%;
+    color: var(--third-background-color);
+    width: 20vw;
+    margin: 1vw auto;
+    box-shadow: 0px 5px 20px var(--third-background-color);
+    border-radius: 25px;
+    padding-bottom: 2vh;
+    margin-bottom: 5vh;
+}
+.eventendcomment{
+    font-size: large;
+    font-weight: bold;
+margin-top: 5vh;
+}
 
 .card-date hr {
     margin-left: 25%;
