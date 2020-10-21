@@ -14,7 +14,7 @@
 /*--------------------------------------------------  VARIABLES ------------------------------------------------*/
 
 :root {
-    --main-background-color: #0b090a /*#005AA7*/;
+    --main-background-color: #070707 /*#005AA7*/;
     --second-background-color: silver /*2c3e50*/;
     --third-background-color: #FBFCD4;
     --hover-font-color: #C0C0C0;
@@ -391,29 +391,27 @@ form ul {
 *
 */
 
+.dateinput{
+    background-color: var(--main-background-color);
+    color: var(--second-background-color);
+    font-family: var(--second-font-family);
+    font-weight: bold;
+}
 .filterform {
     padding-top: 5vh;
     padding-bottom: 5vh;
 }
-
-.formpart1 {
-
-}
-
 .formcheckbox {
     padding-top: 3vh;
     padding-bottom: 3vh;
     display: flex;
     flex-direction: column;
-
     text-align: left;
 }
-
 .checkboxdiv {
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
-
 
 /* Card Container */
 .card-container {
