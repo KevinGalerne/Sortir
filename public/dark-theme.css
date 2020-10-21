@@ -292,6 +292,7 @@ form ul {
 */
 
 .forminput {
+    margin-top: 1vh;
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
@@ -364,6 +365,7 @@ form ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-bottom: 3vh;
 }
 
 .eventside {
@@ -385,6 +387,7 @@ form ul {
 
 }
 
+
 /*
 *
 * Event list page
@@ -398,11 +401,9 @@ form ul {
     font-weight: bold;
 }
 .filterform {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding: 1vh;
     margin-left: 3vw;
     margin-right: 3vw;
-
 }
 .formcheckbox {
     padding-top: 3vh;
@@ -431,21 +432,34 @@ form ul {
     color: var(--third-background-color);
     width: 20vw;
     margin: 1vw auto;
-    box-shadow: 0px 5px 20px var(--third-background-color);
+    box-shadow: 0 5px 20px var(--third-background-color);
     border-radius: 25px;
     padding-bottom: 2vh;
     margin-bottom: 5vh;
+    transform: scale(1.0);
+    transition-duration: 1s;
 }
+.card:hover {
+    transform: scale(1.05);
+    transition-duration: 1s;
+}
+
 .cardpast{
     background-color: var(--main-background-color);
     opacity: 50%;
     color: var(--third-background-color);
     width: 20vw;
     margin: 1vw auto;
-    box-shadow: 0px 5px 20px var(--third-background-color);
+    box-shadow: 0 5px 20px 0 var(--third-background-color);
     border-radius: 25px;
     padding-bottom: 2vh;
     margin-bottom: 5vh;
+    transform: scale(1.00);
+    transition-duration: 1s;
+}
+.cardpast:hover {
+    transform: scale(0.95);
+    transition-duration: 1s;
 }
 
 .eventendcomment{
@@ -453,7 +467,6 @@ form ul {
     font-weight: bold;
     margin-top: 5vh;
 }
-
 .card-date hr {
     margin-left: 25%;
     margin-right: 25%;
@@ -463,18 +476,6 @@ form ul {
     color: var(--third-background-color);
     text-decoration: none;
 }
-
-.card:hover {
-    transform: scale(1.05);
-    transition-duration: 1s;
-}
-
-.card-body {
-    padding-left: 1vw;
-    padding-right: 1vw;
-    padding-bottom: 5vh;
-}
-
 .card-limit-date {
     padding-bottom: 4vh;
 }
@@ -489,15 +490,16 @@ form ul {
 a.style_bouton {
     display: flex;
     justify-content: center;
-    text-decoration: none;
-    padding: 3vh 3vw;
-    margin-top: 5vh;
+
+    padding: 2vh 2vw;
+    margin-top: 1vh;
     color: var(--third-background-color);
     font-weight: bold;
-    font-size: 2vh;
+    font-size: 1.5vh;
     border: 1px solid var(--third-background-color);
     border-radius: 10px;
-    width: 2vw;
+    width: 1.5vw;
+    height: 1.5vh;
 }
 a.style_bouton:hover{
     background-color: var(--second-background-color);

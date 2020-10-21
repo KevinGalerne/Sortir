@@ -96,7 +96,7 @@
             </div>
             <div>
                 <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
-                    <input type="submit" value="Participer à l'évenement !" {% if eventToShow.open %}disabled{% endif %}>
+                    <input type="submit" class="forminput" value="Participer à l'évenement !" {% if eventToShow.open %}disabled{% endif %}>
                 </form>
             </div>
         </div>
