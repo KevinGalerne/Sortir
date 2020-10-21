@@ -78,12 +78,6 @@
 
                     <!-- Card's Body -->
                     <div class="card-body">
-                        <!-- Author & Event's Date -->
-                        <div class="card-date">
-                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
-
-                            Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
-                        </div>
 
                         <!-- Event's Name -->
                         <div class="card-title">
@@ -95,6 +89,14 @@
                             <p>{{ event.description }}</p>
                             <p></p>
                         </div>
+                        <!-- Author & Event's Date -->
+                        <div class="card-date">
+                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
+
+                            Date de la sortie : {{ event.eventDate|date('H:i:s d-m-Y') }}
+                        </div>
+
+
 
                         <!-- Registration Limit Date -->
                         <div class="card-limit-date">

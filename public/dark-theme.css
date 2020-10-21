@@ -400,6 +400,9 @@ form ul {
 .filterform {
     padding-top: 5vh;
     padding-bottom: 5vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+
 }
 .formcheckbox {
     padding-top: 3vh;
@@ -467,6 +470,8 @@ form ul {
 }
 
 .card-body {
+    padding-left: 1vw;
+    padding-right: 1vw;
     padding-bottom: 5vh;
 }
 
@@ -482,16 +487,17 @@ form ul {
 /* Card link */
 
 a.style_bouton {
+    display: flex;
+    justify-content: center;
     text-decoration: none;
-    padding: 3vh;
-    margin: 1vh;
+    padding: 3vh 3vw;
     margin-top: 5vh;
-    background-color: transparent;
     color: var(--third-background-color);
+    font-weight: bold;
+    font-size: 2vh;
     border: 1px solid var(--third-background-color);
-    border-radius: 20px;
-    width: 3vw;
-
+    border-radius: 10px;
+    width: 2vw;
 }
 a.style_bouton:hover{
     background-color: var(--second-background-color);
