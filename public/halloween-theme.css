@@ -4,17 +4,14 @@
 *
  */
 
-/* Halloween part*/
-.witch {
-    display: none;
-}
+
 
 /*--------------------------------------------------  VARIABLES ------------------------------------------------*/
 
 :root {
-    --main-background-color: white /*#005AA7*/;
+    --main-background-color: black;
     --second-background-color: silver /*2c3e50*/;
-    --third-background-color: black;
+    --third-background-color: orange;
     --hover-font-color: #C0C0C0;
     --first-font-family: 'Lobster', cursive;
     --second-font-family: 'Work', sans-serif;
@@ -592,13 +589,22 @@ a.style_bouton:hover{
     }
 }
 
+/* Halloween part*/
+.witch {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    height: 20vh;
+    animation: witchanimation 10s infinite;
+    animation-direction: alternate;
+}
 @keyframes witchanimation {
     from {
-        transform: translateY(-1000px) translateX(-100px) scale(0.5) rotate(360deg) translateY(1000px);
+        transform: translateX(-200px) rotate(900deg) scale(1.0) translateY(0);
 
     }
     to {
-        transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
+        transform: translateX(400px)  rotate(-900deg) scale(20)translateY(100px);
     }
 }
 

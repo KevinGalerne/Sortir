@@ -6,9 +6,7 @@
 
 /* Halloween part*/
 .witch {
-    height: 20vh;
-    animation: witchanimation 5s infinite;
-    animation-direction: alternate-reverse;
+   display: none;
 }
 
 /*--------------------------------------------------  VARIABLES ------------------------------------------------*/
