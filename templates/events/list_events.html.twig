@@ -86,22 +86,22 @@
                                 {% if event.registeredParticipants.contains(app.user) %}
                                     {#If the user is already registered for this event display "Se désister"#}
                                     {% if event.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
-                                        <a href="{{ path('desist_event', {'id' : event.id} ) }}" class="btn">Se désister</a>
+                                        <a href="{{ path('desist_event', {'id' : event.id} ) }}" class="bttn">Se désister</a>
                                     {% endif %}
                                 {% else %}
                                     {#If he's not registered and the subscription limite date is not passed yet , display "S'inscrire"#}
                                     {% if event.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
-                                        <a href="{{ path('participate_event', {'id' : event.id} ) }}" class="btn">S'inscrire</a>
+                                        <a href="{{ path('participate_event', {'id' : event.id} ) }}" class="bttn">S'inscrire</a>
                                     {% endif %}
                                 {% endif %}
                                 {#If the actual date is before the event's date AND the actual user is the event's author#}
                                 {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
                                     {#Display "Modifier" & "Annuler" buttons#}
-                                    <a href="#" class="btn">Modifier</a>
-                                    <a href="{{ path('cancel_event', {'id': event.id }) }}" class="btn">Annuler</a>
+                                    <a href="#" class="bttn">Modifier</a>
+                                    <a href="{{ path('cancel_event', {'id': event.id }) }}" class="bttn">Annuler</a>
                                     {#If the event is not yet published, the card display he button to publish#}
                                     {% if event.currentPlace == "in_creation" %}
-                                        <a href="{{ path('open_event',{'id': event.id }) }}" class="btn">Publier</a>
+                                        <a href="{{ path('open_event',{'id': event.id }) }}" class="bttn">Publier</a>
                                     {% endif %}
                                 {% else %}
                                 {% endif %}
