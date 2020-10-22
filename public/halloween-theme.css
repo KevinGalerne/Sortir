@@ -243,7 +243,14 @@ a {
     color: var(--third-background-color);
     animation: footeranimation 4s;
 }
-
+.witch{
+    animation: witchanimation 8s infinite;
+    animation-direction: alternate;
+    height: 10vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
 
 /*
 *
@@ -725,11 +732,11 @@ th{
 
 @keyframes witchanimation {
     from {
-        transform: translateY(-1000px) translateX(-100px) scale(0.5) rotate(360deg) translateY(1000px);
+        transform:  scale(0.5) rotate(720deg) ;
 
     }
     to {
-        transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
+        transform: scale(20) rotate(-720deg);
     }
 }
 

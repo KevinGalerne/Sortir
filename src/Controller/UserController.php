@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\EditAccountType;
 use App\Form\EditPasswordType;
 use App\Repository\EventRepository;
@@ -26,8 +27,9 @@ class UserController extends AbstractController
      */
     public function showAccount()
     {
+
         return $this->render('user/account_show.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'UserController'
         ]);
     }
 
@@ -35,12 +37,17 @@ class UserController extends AbstractController
     /**
      * @Route("/account/{pseudo}", name="user_showProfil")
      */
-    public function showProfil(UserRepository $userRepository, $pseudo, EventRepository $eventRepository)
+    public function showProfil(UserRepository $userRepository, $pseudo,  EventRepository $eventRepository)
     {
+        $user = new User();
+
         $profil = $userRepository->findOneBy(['pseudo' => $pseudo]);
+        $userId = $profil->getId();
+        $allEvents = $eventRepository->findBy(['Author' => $userId]);
 
         return $this->render('user/show_profil.html.twig', [
-            'profilToShow' => $profil,
+            'profilToShow' => $profil,'allEvents'=>$allEvents
+
         ]);
     }
 
