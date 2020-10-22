@@ -11,11 +11,11 @@
             <div class="formlabel">
                 Organisateur :
                 <div class="authorevent">
-                    <img class="authorimage"
-                    {% if app.user.imageFileName %}
-                    <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ app.user.imageFileName) }}"></div>
+                    {% if eventToShow.author.imageFileName %}
+                        <img class="authorimage"
+                             src="{{ asset('uploads/profil_images/' ~ eventToShow.author.imageFileName) }}">
                     {% else %}
-                    <div><img class="cropImage" src="{{ asset('img/user.png') }}"></div>
+                        <img class="cropImage" src="{{ asset('img/user.png') }}">
                     {% endif %}
                     <div class="formshow"><a
                                 href="{{ path('show_author',{'id': eventToShow.author.id} ) }}">{{ eventToShow.author.firstName }}</a>
@@ -139,13 +139,13 @@
                     <input type="submit" class="forminput" value="Se désister"
                            {% if eventToShow.open %}disabled{% endif %}>
                 </form>
-                    {% else %}
-                    <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
-                        <input type="submit" class="forminput" value="S'inscrire"
-                               {% if eventToShow.open %}disabled{% endif %}>
-                        {% endif %}
-                        {% endif %}
-                    </form>
+                {% else %}
+                <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
+                    <input type="submit" class="forminput" value="S'inscrire"
+                           {% if eventToShow.open %}disabled{% endif %}>
+                    {% endif %}
+                    {% endif %}
+                </form>
             </div>
         </div>
     </div>
