@@ -29,7 +29,7 @@ class RegistrationFormType extends AbstractType
             ->add('pseudo', TextType::class, ["attr" => ["class" => "forminput"]])
             ->add('firstName', TextType::class, ["attr" => ["class" => "forminput"]])
             ->add('lastName', TextType::class, ["attr" => ["class" => "forminput"]])
-            ->add('phoneNumber', TelType::class, ["attr" => ["class" => "forminput"]])
+            ->add('phoneNumber', TextType::class, ["attr" => ["class" => "forminput",'maxlength' => 10]])
             ->add('plainPassword', RepeatedType::class, [
 
 

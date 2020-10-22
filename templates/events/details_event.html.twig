@@ -7,6 +7,18 @@
 
         <!-- Left Side -->
         <div class="eventside">
+
+            <div class="formlabel">
+                Organisateur :
+                <div class="authorevent">
+                    <img class="authorimage"
+                         src="{{ asset('uploads/profil_images/' ~ eventToShow.author.imageFileName) }}">
+                    <div class="formshow"><a
+                                href="{{ path('show_author',{'id': eventToShow.author.id} ) }}">{{ eventToShow.author.firstName }}</a>
+                    </div>
+                </div>
+
+            </div>
             <div class="formlabel">
                 Nom de la sortie :
                 <div class="formshow">{{ eventToShow.name }}</div>
@@ -117,17 +129,19 @@
                 </table>
             </div>
             <div>
-
+                {% if eventToShow.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
                 {% if eventToShow.registeredParticipants.contains(app.user) %}
                 <form action="{{ path('desist_event', {'id' : eventToShow.id} ) }}" method="post">
                     <input type="submit" class="forminput" value="Se désister"
                            {% if eventToShow.open %}disabled{% endif %}>
+                </form>
                     {% else %}
                     <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
                         <input type="submit" class="forminput" value="S'inscrire"
                                {% if eventToShow.open %}disabled{% endif %}>
                         {% endif %}
-
+                        {% endif %}
+                    </form>
             </div>
         </div>
     </div>

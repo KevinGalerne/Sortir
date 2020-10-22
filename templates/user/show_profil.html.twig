@@ -3,27 +3,31 @@
 
 {% block main %}
 
-    <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ profilToShow.imageFileName)}}"></div>
+{% if profilToShow.imageFileName %}
+    <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ profilToShow.imageFileName) }}"></div>
+    {% else %}
+        <div><img class="cropImage" src="{{ asset('img/user.png') }}"></div>
 
-    <div class="credentials">
+{% endif %}
 
-        <div class="formlabel">Pseudo :</div>
-        {{ profilToShow.pseudo }}
+<div class="credentials">
 
-        <div class="formlabel">Nom de famille :</div>
-        {{ profilToShow.lastName | upper }}
+    <div class="formlabel">Pseudo :</div>
+    {{ profilToShow.pseudo }}
 
-        <div class="formlabel">Prénom :</div>
-        {{ profilToShow.firstName  | capitalize }}
+    <div class="formlabel">Nom de famille :</div>
+    {{ profilToShow.lastName | upper }}
 
-        <div class="formlabel">Numéro de téléphone :</div>
-        {{ profilToShow.phoneNumber }}
+    <div class="formlabel">Prénom :</div>
+    {{ profilToShow.firstName  | capitalize }}
 
-        <div class="formlabel">Email :</div>
-        {{ profilToShow.email }}
+    <div class="formlabel">Numéro de téléphone :</div>
+    {{ profilToShow.phoneNumber }}
 
-    </div>
+    <div class="formlabel">Email :</div>
+    {{ profilToShow.email }}
 
+</div>
 
-
+    {% include 'card.html.twig' %}
 {% endblock %}
