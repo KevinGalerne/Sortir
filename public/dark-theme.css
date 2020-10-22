@@ -498,6 +498,7 @@ form ul {
     margin: 0.5vw;
     overflow: hidden;
     width: 70vw;
+    height: 25vh;
     transform: scale(1.0);
     transition-duration: 0.2s;
 }
@@ -522,9 +523,9 @@ form ul {
 .event_preview_card {
     background-color: var(--top-card-color);
     color: var(--background-card-color);
-    padding: 30px;
+    padding-top: 5vh;
     width: 20vw;
-    height: 10vh;
+    height: 25vh;
 }
 
 .event_preview_card a {
@@ -532,7 +533,7 @@ form ul {
     display: inline-block;
     font-size: 16px;
     opacity: 0.6;
-    margin-top: 30px;
+    margin-top: 20vh;
     text-decoration: none;
 }
 
@@ -561,7 +562,8 @@ form ul {
 }
 
 .actions_btns_container {
-padding-top: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     text-align: right;
 }
 
@@ -597,8 +599,9 @@ padding-top: 2vh;
     margin: 0.5vw;
     overflow: hidden;
     width: 70vw;
+    height: 25vh;
     opacity: 60%;
-    transform: scale(1);
+    transform: scale(1.0);
     transition-duration: 0.2s;
 }
 
@@ -607,6 +610,24 @@ padding-top: 2vh;
     transition-duration: 0.2s;
 }
 
+.cardpast h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cardpast h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+.event_preview_cardpast {
+    background-color: var(--top-card-color);
+    color: var(--background-card-color);
+    padding-top: 5vh;
+    width: 20vw;
+    height: 25vh;
+}
 
 /*
 *
@@ -643,22 +664,28 @@ padding-top: 2vh;
 }
 
 /* Table template */
+table{
+    border-collapse: collapse;
 
+
+
+}
+
+
+tbody tr:hover{
+   background-color:  #D6F1FF;
+    color: #004466
+}
 th, td {
-
-    padding: 10px;
-    border: 2px solid white;
+    padding: 2vh;
+    border-bottom: 2px solid white;
 }
 
-table a {
-    color: white;
-    padding: 10px;
+th{
+    background-color: #004466;
+    color:  #D6F1FF ;
 }
 
-table a:hover {
-    color: red;
-
-}
 
 
 
