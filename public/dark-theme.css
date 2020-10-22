@@ -391,8 +391,9 @@ form ul {
     padding-left: 5vw;
 }
 
-.profilbuttons {
-    padding: 50px;
+.profilbutton {
+    margin-top: 1vh;
+    margin-top: 5vh;
 }
 
 
@@ -562,8 +563,8 @@ form ul {
 }
 
 .actions_btns_container {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    padding-top: 8vh;
+    padding-bottom: 1vh;
     text-align: right;
 }
 
