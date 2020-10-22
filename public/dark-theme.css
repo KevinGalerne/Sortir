@@ -318,12 +318,16 @@ button {
     border: solid 1px var(--third-background-color);
     border-radius: 20px;
     color: var(--third-background-color);
-    height: 8vh;
+    height: 4vh;
     width: 15vw;
     font-weight: bold;
     padding-top: 2vh;
     margin-top: 2vh;
 }
+a.editbutton{
+
+}
+
 
 /*
 * Password Edit Page
