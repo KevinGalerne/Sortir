@@ -12,7 +12,10 @@
                 Organisateur :
                 <div class="authorevent">
                     <img class="authorimage"
-                         src="{{ asset('uploads/profil_images/' ~ eventToShow.author.imageFileName) }}">
+                    {% if app.user.imageFileName %}
+                    <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ app.user.imageFileName) }}"></div>
+                    {% else %}
+                    <div><img class="cropImage" src="{{ asset('img/user.png') }}"></div>
                     <div class="formshow"><a
                                 href="{{ path('show_author',{'id': eventToShow.author.id} ) }}">{{ eventToShow.author.firstName }}</a>
                     </div>

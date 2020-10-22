@@ -499,12 +499,12 @@ form ul {
     overflow: hidden;
     width: 70vw;
     transform: scale(1.0);
-    transition-duration: 1s;
+    transition-duration: 0.2s;
 }
 
 .event_card:hover {
     transform: scale(1.02);
-    transition-duration: 1s;
+    transition-duration: 0.2s;
 }
 
 .event_card h6 {
@@ -602,12 +602,12 @@ form ul {
     width: 70vw;
     opacity: 60%;
     transform: scale(1);
-    transition-duration: 1s;
+    transition-duration: 0.2s;
 }
 
 .cardpast:hover {
-    transform: scale(0.95);
-    transition-duration: 1s;
+    transform: scale(1.05);
+    transition-duration: 0.2s;
 }
 
 
