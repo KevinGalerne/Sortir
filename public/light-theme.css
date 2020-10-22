@@ -25,9 +25,12 @@
 
 
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
+input.forminput {
+    background-color: var(--third-background-color);
+}
+
 input.dateinput {
-    background-color: var(--main-background-color);
-    color: var(--third-background-color);
+    background-color: var(--third-background-color);
 }
 
 input[type="checkbox"] {
@@ -145,6 +148,8 @@ a {
 }
 
 /*Logo block */
+
+
 .logoblock {
     padding-top: 5vh;
     text-align: center;
@@ -203,12 +208,14 @@ a {
     font-weight: bold;
 }
 
+
 /*--------------------------------------------------  PAGES ------------------------------------------------*/
 
 /*
+*
 * Welcome page
+*
 */
-
 .animatedlogo {
     color: var(--third-background-color);
     text-align: center;
@@ -241,9 +248,10 @@ a {
 
 
 /*
+*
 * Login page
+*
  */
-
 .userloggedmessage {
     padding-top: 5vh;
 }
@@ -258,7 +266,6 @@ a {
     width: 20vw;
 
 }
-
 
 /*
 *
@@ -315,7 +322,6 @@ a.editbutton{
 
 }
 
-
 /*
 * Password Edit Page
 *
@@ -327,20 +333,18 @@ form ul {
     color: red;
 }
 
-
 /*
 *
 * Create User page
 *
 */
-
 .forminput {
     margin-top: 1vh;
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--main-background-color);
-    color: var(--third-background-color);
+    background-color: var(--third-background-color);
+    color: var(--main-background-color);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
@@ -350,8 +354,8 @@ form ul {
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--main-background-color);
-    color: var(--third-background-color);
+    background-color: var(--third-background-color);
+    color: var(--main-background-color);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
@@ -382,10 +386,10 @@ form ul {
     padding-left: 5vw;
 }
 
-.profilbuttons {
-    padding: 50px;
+.profilbutton {
+    margin-top: 1vh;
+    margin-top: 5vh;
 }
-
 
 /*
 *
@@ -430,12 +434,18 @@ form ul {
 
 }
 
-
 /*
 *
 * Event list page
 *
 */
+.container_form_list_events {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-items: center;
+}
+
 .dateinput {
     background-color: var(--main-background-color);
     color: var(--second-background-color);
@@ -455,6 +465,12 @@ form ul {
     display: flex;
     flex-direction: column;
     text-align: left;
+
+}
+
+.checkboxdiv-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
 .checkboxdiv {
@@ -462,7 +478,6 @@ form ul {
     padding-top: 1vh;
     padding-bottom: 1vh;
     justify-content: space-between;
-    width: 30%;
 }
 
 
@@ -471,6 +486,7 @@ form ul {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
 
@@ -489,6 +505,7 @@ form ul {
     margin: 0.5vw;
     overflow: hidden;
     width: 70vw;
+    height: 25vh;
     transform: scale(1.0);
     transition-duration: 0.2s;
 }
@@ -513,9 +530,9 @@ form ul {
 .event_preview_card {
     background-color: var(--top-card-color);
     color: var(--background-card-color);
-    padding: 30px;
+    padding-top: 5vh;
     width: 20vw;
-    height: 10vh;
+    height: 25vh;
 }
 
 .event_preview_card a {
@@ -523,7 +540,7 @@ form ul {
     display: inline-block;
     font-size: 16px;
     opacity: 0.6;
-    margin-top: 30px;
+    margin-top: 20vh;
     text-decoration: none;
 }
 
@@ -552,7 +569,8 @@ form ul {
 }
 
 .actions_btns_container {
-    padding-top: 2vh;
+    padding-top: 8vh;
+    padding-bottom: 1vh;
     text-align: right;
 }
 
@@ -588,8 +606,9 @@ form ul {
     margin: 0.5vw;
     overflow: hidden;
     width: 70vw;
+    height: 25vh;
     opacity: 60%;
-    transform: scale(1);
+    transform: scale(1.0);
     transition-duration: 0.2s;
 }
 
@@ -598,6 +617,24 @@ form ul {
     transition-duration: 0.2s;
 }
 
+.cardpast h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cardpast h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+.event_preview_cardpast {
+    background-color: var(--top-card-color);
+    color: var(--background-card-color);
+    padding-top: 5vh;
+    width: 20vw;
+    height: 25vh;
+}
 
 /*
 *
@@ -634,22 +671,28 @@ form ul {
 }
 
 /* Table template */
+table{
+    border-collapse: collapse;
 
+
+
+}
+
+
+tbody tr:hover{
+    background-color:  #D6F1FF;
+    color: #004466
+}
 th, td {
-
-    padding: 10px;
-    border: 2px solid white;
+    padding: 2vh;
+    border-bottom: 2px solid white;
 }
 
-table a {
-    color: white;
-    padding: 10px;
+th{
+    background-color: #004466;
+    color:  #D6F1FF ;
 }
 
-table a:hover {
-    color: red;
-
-}
 
 
 
