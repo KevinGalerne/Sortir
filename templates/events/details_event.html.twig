@@ -115,26 +115,22 @@
                 </thead>
                 <tbody>
                 {% for participant in eventToShow.registeredParticipants %}
-                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">
-                    <div>
 
-                            <tr>
-                                <td>
-                                    {{ participant.pseudo }}
-                                </td>
-                                <td>
-                                    {{ participant.firstName | capitalize }}
-                                </td>
-                                <td>
-                                    {{ participant.lastName | upper }}
-                                </td>
-                                <td>
-                                    {{ participant.campus.name }}
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.pseudo }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}"> {{ participant.firstName | capitalize }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.lastName | upper }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.campus.name }}</a>
+                            </td>
+                        </tr>
 
-                    </div>
-                </a>
 
 
 

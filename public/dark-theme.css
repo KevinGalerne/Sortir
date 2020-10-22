@@ -676,8 +676,12 @@ table{
 
 tbody tr:hover{
    background-color:  #D6F1FF;
-    color: #004466
+    text-decoration: none;
 }
+tbody tr:hover a {
+    color: #00293D;
+}
+
 th, td {
     padding: 2vh;
     border-bottom: 2px solid white;
@@ -688,9 +692,16 @@ th{
     color:  #D6F1FF ;
 }
 
+table tr td a {
+    display:block;
+    height:100%;
+    width:100%;
+}
 
-
-
+table tr td {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 
 
