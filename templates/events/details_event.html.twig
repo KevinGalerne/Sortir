@@ -16,6 +16,7 @@
                     <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ app.user.imageFileName) }}"></div>
                     {% else %}
                     <div><img class="cropImage" src="{{ asset('img/user.png') }}"></div>
+                    {% endif %}
                     <div class="formshow"><a
                                 href="{{ path('show_author',{'id': eventToShow.author.id} ) }}">{{ eventToShow.author.firstName }}</a>
                     </div>
