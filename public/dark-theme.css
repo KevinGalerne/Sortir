@@ -582,11 +582,8 @@ form ul {
 }
 
 .actions_btns_container {
-    display: flex;
-    flex-flow: row nowrap;
-    position: absolute;
-    bottom: 25px;
-    right: 25px;
+padding-top: 2vh;
+    text-align: right;
 }
 
 .bttn {
@@ -596,8 +593,8 @@ form ul {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     color: var(--background-card-color);
     font-size: 16px;
-    padding: 12px 12px;
-    margin: 5px;
+    padding: 2vh 2vh;
+
     /*position: absolute;*/
     /*bottom: 30px;*/
     /*right: 30px;*/
