@@ -45,6 +45,9 @@
 
 
             <a class="menubutton" href="{{ path('user_account_show') }}">Mon compte</a>
+            {% if is_granted ('ROLE_ADMIN') %}
+                <a class="menubutton" href="{{ path('app_register') }}">Enregistrer un utilisateur</a>
+            {% endif %}
             <a class="menubutton" href="{{ path('list_events') }}">Voir les évènements</a>
             <a class="menubutton" href="{{ path("create_event") }}">Créer un évènement</a>
             <a class="menubutton" href="{{ path("app_logout") }}">Déconnexion</a>
