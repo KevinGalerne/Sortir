@@ -423,6 +423,7 @@ form ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-right: 3vw;
 }
 
 .date {
