@@ -280,9 +280,22 @@ button {
     margin: auto;
     margin-top: 5vh;
     padding-top: 2vh;
-
-
 }
+.cropImage {
+    width: 15vw;
+    border-radius: 100px;
+    border: solid 2px var(--third-background-color);
+    margin-bottom: 5vh;
+    transition-duration: 2s;
+}
+
+.cropImage:hover {
+    transform: scale(1.1);
+    transition-duration: 2s;
+}
+
+
+
 
 /*
 *
@@ -598,46 +611,19 @@ form ul {
 }
 
 
-/*--------------------------------------------------------------------------------------------------------------------*/
+/*
+*
+* Details Event
+*
+ */
 
-/* Keyframes and animations */
-@keyframes logoanimation {
-    from {
-        transform: translateY(-600px) scale(0.5);
-    }
-    to {
-        transform: translateY(0px) scale(1);
-    }
+.authorimage {
+    margin-bottom: 3vh;
+    height: 20vh;
+    width: 10vw;
+    border-radius: 20px;
 }
 
-@keyframes stepinanimation {
-    from {
-        transform: translateX(-1400px) scale(0.5);
-    }
-    to {
-        transform: translateY(0px) scale(1);
-    }
-}
-
-@keyframes footeranimation {
-    from {
-        transform: translateY(-1400px) scale(0.5);
-
-    }
-    to {
-        transform: translateY(0px) scale(1);
-    }
-}
-
-@keyframes witchanimation {
-    from {
-        transform: translateY(-1000px) translateX(-100px) scale(0.5) rotate(360deg) translateY(1000px);
-
-    }
-    to {
-        transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
-    }
-}
 
 /* Form general template */
 
@@ -677,17 +663,48 @@ table a:hover {
 
 }
 
-/* Profil Images -------------------------------------------------------------------------------------------------- */
 
-.cropImage {
-    width: 15vw;
-    border-radius: 100px;
-    border: solid 2px var(--third-background-color);
-    margin-bottom: 5vh;
-    transition-duration: 2s;
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+/* Keyframes and animations */
+@keyframes logoanimation {
+    from {
+        transform: translateY(-600px) scale(0.5);
+    }
+    to {
+        transform: translateY(0px) scale(1);
+    }
 }
 
-.cropImage:hover {
-    transform: scale(1.3);
-    transition-duration: 2s;
+@keyframes stepinanimation {
+    from {
+        transform: translateX(-1400px) scale(0.5);
+    }
+    to {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes footeranimation {
+    from {
+        transform: translateY(-1400px) scale(0.5);
+
+    }
+    to {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes witchanimation {
+    from {
+        transform: translateY(-1000px) translateX(-100px) scale(0.5) rotate(360deg) translateY(1000px);
+
+    }
+    to {
+        transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
+    }
 }
