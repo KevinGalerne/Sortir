@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block cards %}
+    <!------------------------------------------------------- Cards ----------------------------------------------------->
+    <div class="card-container">
+
+        <!-- Here we call every event in the database -->
+        {% for event in allEvents %}
+            <!-- 1: we filter them, the "in creation" event, yet not published, are only displayed for the author -->
+            <!-- 2: then after the  'or' we also include the event that are "opened"                              -->
+            {% if event.currentPlace == "in_creation" and event.author.id == app.user.id or event.currentPlace =="opened" %}
+
+                {# ------------------------------------------------- ESSAI RAPHA SOIR ----------------------------------------------- #}
+                <div class="event_card_container">
+                    <div class="event_card">
+                        <div class="event_preview_card">
+                            <h6>{{ event.author.firstName }} propose :</h6>
+                            <h2>{{ event.name }}</h2>
+                            <a href="{{ path('details_event', {'id': event.id }) }}">Détails ></a>
+                        </div>
+                        <div class="event_info_card">
+                            <div class="participants_container">
+                                <span class="participants_text">{{ event.registeredParticipants.count }} / {{ event.maxParticipants }} Participants</span>
+                            </div>
+                            <h6>Le {{ event.eventDate|date('d-m-Y') }}</h6>
+                            <h4>{{ event.description }}</h4>
+                            <div class="actions_btns_container">
+                                {# Conditionnal display of "S'inscrire" ou "Se désister" #}
+                                {% if event.registeredParticipants.contains(app.user) %}
+                                    {# If the user is already registered for this event display "Se désister" #}
+                                    {% if event.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
+                                        <a href="{{ path('desist_event', {'id' : event.id} ) }}" class="bttn">Se
+                                            désister</a>
+                                    {% endif %}
+                                {% else %}
+                                    {# If he's not registered and the subscription limite date is not passed yet , display "S'inscrire" #}
+                                    {% if event.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
+                                        <a href="{{ path('participate_event', {'id' : event.id} ) }}" class="bttn">S'inscrire</a>
+                                    {% endif %}
+                                {% endif %}
+                                {# If the actual date is before the event's date AND the actual user is the event's author #}
+                                {% if ("now" < event.eventDate) and (event.author.id == app.user.id) %}
+                                    {# Display "Modifier" & "Annuler" buttons #}
+                                    <a href="#" class="bttn">Modifier</a>
+                                    <a href="{{ path('cancel_event', {'id': event.id }) }}" class="bttn">Annuler</a>
+                                    {# If the event is not yet published, the card display he button to publish #}
+                                    {% if event.currentPlace == "in_creation" %}
+                                        <a href="{{ path('open_event',{'id': event.id }) }}" class="bttn">Publier</a>
+                                    {% endif %}
+                                {% else %}
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+        <!------------------------------------------ PAST EVENTS ------------------------------------------------------>
+
+
+        <!-- Here we call every event in the database -->
+        {% for event in allEvents %}
+            <!-- 1: we filter them, the "in creation" event, yet not published, are only displayed for the author -->
+            <!-- 2: then after the  'or' we also include the event that are "opened"                              -->
+
+
+            {% if event.currentPlace == "past_activity" and date(event.eventDate)>date('- 30 days') %}
+
+                <div class="cardpast">
+                    <!-- Card's Picture -->
+                    <div class="card-image">
+                        <img  class="authorimg" src="{{ asset('uploads/profil_images/' ~ event.author.imageFileName)}}" alt="authorimg">
+                    </div>
+                    <!-- End of the Picture -->
+
+
+                    <!-- Card's Body -->
+                    <div class="card-body">
+
+                        <!-- Event's Name -->
+                        <div class="card-title">
+                            <h3>{{ event.name }}</h3>
+                        </div>
+
+                        <!-- Event's Description -->
+                        <div class="card-excerpt">
+                            <p>{{ event.description }}</p>
+                            <p></p>
+                        </div>
+                        <!-- Author & Event's Date -->
+                        <div class="card-date">
+                            Organisée par : {{ event.author.firstName }} {{ event.author.lastName }} <br>
+
+                            Le {{ event.eventDate|date('d-m-Y') }}
+                            A {{ event.eventDate|date('H') }} H {{ event.eventDate|date('i') }}
+                        </div>
+
+
+
+                        <!-- Registration Limit Date -->
+                        <div class="card-limit-date">
+                            Date limite d'inscription : {{ event.subscriptionLimitDate|date('d-m-Y') }}
+                        </div>
+
+                        <!-- Registered Participants / Max Participants -->
+                        <div class="card-participants">
+                            Nombre de participants : {{ event.registeredParticipants.count }}
+                            / {{ event.maxParticipants }}
+                        </div>
+
+                        <!-- Possible actions for this event -->
+                        <div class="card-actions">
+                            <a href="{{ path('details_event', {'id': event.id }) }}"
+                               class="style_bouton">Détails</a>
+                        </div>
+                        <div class="eventendcomment">Cet evènement est terminé</div>
+                    </div>
+                    <!-- End of the card's body -->
+                </div>
+
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+</body>
+</html>

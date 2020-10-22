@@ -51,10 +51,10 @@ class UserController extends AbstractController
      */
     public function showAuthor(UserRepository $userRepository, $id, EventRepository $eventRepository)
     {
-        
+        $allEvents = $eventRepository->findBy(['Author' => $id]);
         $profil = $userRepository->findOneBy(['id' => $id]);
         return $this->render('user/show_profil.html.twig', [
-            'profilToShow' => $profil,
+            'profilToShow' => $profil, 'allEvents'=>$allEvents
         ]);
     }
 
