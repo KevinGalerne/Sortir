@@ -337,10 +337,11 @@ button {
     border: solid 1px var(--third-background-color);
     border-radius: 20px;
     color: var(--third-background-color);
-    height: 4vh;
+    height: 8vh;
     width: 15vw;
     font-weight: bold;
     padding-top: 2vh;
+    margin-top: 2vh;
 }
 
 /*
