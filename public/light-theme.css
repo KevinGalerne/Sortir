@@ -603,7 +603,7 @@ a.style_bouton:hover{
 .event_preview_card a {
     color: var(--background-card-color);
     display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     opacity: 0.6;
     margin-top: 30px;
     text-decoration: none;

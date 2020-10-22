@@ -12,10 +12,11 @@
 /*--------------------------------------------------  VARIABLES ------------------------------------------------*/
 
 :root {
-    --main-background-color: #0E1111 /*#005AA7*/;
-    --second-background-color: #D51E25 /*2c3e50*/;
-    --third-background-color: white;
-    --top-card-color: #D51E25;
+    --main-background-color: #00293D /*#005AA7*/;
+    --second-background-color: #19364D /*2c3e50*/;
+    --third-background-color: #D6F1FF;
+    --top-card-color: #0088CC;
+    --background-card-color: #004466;
     --hover-font-color: #C0C0C0;
     --first-font-family: 'Lobster', cursive;
     --second-font-family: 'Work', sans-serif;
@@ -23,25 +24,31 @@
 }
 
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
+input.forminput {
+    background-color: var(--third-background-color);
+}
+input.dateinput {
+    background-color: var(--third-background-color);
+}
 
 input[type="checkbox"]{
     position: relative;
     width: 4vw;
-    height: 2vh;
+    height: 1vh;
     -webkit-appearance: none;
-    background: var(--second-background-color);
+    background: var(--background-card-color);
     outline: none;
-
+    border: solid 1px var(--main-background-color);
     border-radius: 20px;
 }
 input:checked[type="checkbox"] {
-    background: darkred;
+    background: var(--top-card-color);
 }
 input[type="checkbox"]:before{
     content:  '';
     position: absolute;
     width: 2vw;
-    height: 2vh;
+    height: 1vh;
     border-radius: 20px;
     top: 0;
     left: 0;
@@ -423,7 +430,7 @@ form ul {
 
 .dateinput{
     background-color: var(--main-background-color);
-    color: var(--third-background-color);
+    color: var(--second-background-color);
     font-family: var(--second-font-family);
     font-weight: bold;
 }
@@ -440,8 +447,11 @@ form ul {
     text-align: left;
 }
 .checkboxdiv {
+    display: flex;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    justify-content: space-between;
+    width: 30%;
 }
 
 
@@ -561,9 +571,12 @@ a.style_bouton:hover{
 }
 
 /*-----------------------------------------------ESSAI CARTE 2 RAPHA--------------------------------------------------*/
+.event_card_container {
+
+}
 /* Partie gauche de la carte */
 .event_card {
-    background-color: var(--main-background-color);
+    background-color: var(--background-card-color);
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -585,15 +598,15 @@ a.style_bouton:hover{
 
 .event_preview_card {
     background-color: var(--top-card-color);
-    color: var(--main-background-color);
+    color: var(--background-card-color);
     padding: 30px;
     max-width: 250px;
 }
 
 .event_preview_card a {
-    color: var(--main-background-color);
+    color: var(--third-background-color);
     display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     opacity: 0.6;
     margin-top: 30px;
     text-decoration: none;
@@ -633,7 +646,7 @@ a.style_bouton:hover{
     border: 0;
     border-radius: 50px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    color: var(--main-background-color);
+    color: var(--background-card-color);
     font-size: 16px;
     padding: 12px 12px;
     margin: 5px;
@@ -641,6 +654,12 @@ a.style_bouton:hover{
     /*bottom: 30px;*/
     /*right: 30px;*/
     letter-spacing: 1px;
+}
+
+.bttn:hover {
+    background-color: var(--background-card-color);
+    border: 1px solid var(--top-card-color);
+    color: var(--top-card-color);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
