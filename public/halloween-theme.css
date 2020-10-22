@@ -22,24 +22,34 @@
 
 
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
+input.forminput {
+    background-color: var(--third-background-color);
+}
 
-input[type="checkbox"]{
+input.dateinput {
+    background-color: var(--third-background-color);
+}
+
+input[type="checkbox"] {
     position: relative;
     width: 4vw;
-    height: 2vh;
+    height: 1vh;
     -webkit-appearance: none;
-    background: var(--third-background-color);
+    background: var(--background-card-color);
     outline: none;
+    border: solid 1px var(--main-background-color);
     border-radius: 20px;
 }
+
 input:checked[type="checkbox"] {
-    background: darkred;
+    background: var(--top-card-color);
 }
-input[type="checkbox"]:before{
-    content:  '';
+
+input[type="checkbox"]:before {
+    content: '';
     position: absolute;
     width: 2vw;
-    height: 2vh;
+    height: 1vh;
     border-radius: 20px;
     top: 0;
     left: 0;
@@ -48,7 +58,8 @@ input[type="checkbox"]:before{
     transform: scale(1.1);
     transition: 0.5s;
 }
-input:checked[type="checkbox"]:before{
+
+input:checked[type="checkbox"]:before {
     left: 2vw;
 }
 
@@ -71,19 +82,37 @@ a {
     color: var(--third-background-color);
 }
 
-button {
-    background-color: var(--main-background-color);
-    font-family: var(--second-font-family);
-    border-radius: 20px;
-    color: var(--third-background-color);
-    height: 5vh;
-    width: 10vw;
-    font-weight: bold;
-    border: solid 1px var(--third-background-color);
-    border-radius: 20px;
+/*button {*/
+/*    background-color: var(--main-background-color);*/
+/*    font-family: var(--second-font-family);*/
+/*    border-radius: 20px;*/
+/*    color: var(--third-background-color);*/
+/*    height: 5vh;*/
+/*    width: 10vw;*/
+/*    font-weight: bold;*/
+/*    border: solid 1px var(--third-background-color);*/
+/*    border-radius: 20px;*/
+/*}*/
+
+/* ------------------------------------------------- ALL BUTTONS ------------------------------------------------ */
+.sortir_buttons {
+    background-color: var(--top-card-color);
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    color: var(--background-card-color);
+    font-size: 16px;
+    padding: 12px 12px;
+    margin: 5px;
+    letter-spacing: 1px;
+}
+.sortir_buttons:hover {
+    background-color: var(--background-card-color);
+    border: 1px solid var(--top-card-color);
+    color: var(--top-card-color);
 }
 
-/*--------------------------------------------------  TWIG BLOCKS ------------------------------------------------*/
+/* ------------------------------------------------- TWIG BLOCKS ------------------------------------------------ */
 
 /* Header block */
 
@@ -257,18 +286,9 @@ button {
     margin-bottom: 5vh;
 }
 
-.profilbutton {
-    height: 4vh;
-    width: 15vw;
-
-    border: solid 1px var(--third-background-color);
-    font-weight: bold;
-    border-radius: 20px;
-    margin: auto;
-    margin-top: 5vh;
-    padding-top: 2vh;
-
-
+.profil_button_container {
+    display: flex;
+    justify-content: center;
 }
 
 /*
@@ -296,7 +316,12 @@ button {
     width: 15vw;
     font-weight: bold;
     padding-top: 2vh;
+    margin-top: 2vh;
 }
+a.editbutton{
+
+}
+
 
 /*
 * Password Edit Page
@@ -321,19 +346,19 @@ form ul {
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--main-background-color);
-    color: var(--third-background-color);
+    background-color: var(--third-background-color);
+    color: var(--main-background-color);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
 }
 
-.forminput2 {
+.forminput_api {
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--second-background-color);
-    color: var(--third-background-color);
+    background-color: var(--third-background-color);
+    color: var(--main-background-color);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
@@ -364,8 +389,9 @@ form ul {
     padding-left: 5vw;
 }
 
-.profilbuttons {
-    padding: 50px;
+.profilbutton {
+    margin-top: 1vh;
+    margin-top: 5vh;
 }
 
 
@@ -374,7 +400,6 @@ form ul {
 * Create event page
 *
 */
-
 .eventdescription {
     height: 20vh;
     width: 15vw;
@@ -397,6 +422,7 @@ form ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-right: 3vw;
 }
 
 .date {
@@ -418,18 +444,19 @@ form ul {
 * Event list page
 *
 */
-
-.dateinput{
+.dateinput {
     background-color: var(--main-background-color);
     color: var(--second-background-color);
     font-family: var(--second-font-family);
     font-weight: bold;
 }
+
 .filterform {
     padding: 1vh;
     margin-left: 3vw;
     margin-right: 3vw;
 }
+
 .formcheckbox {
     padding-top: 3vh;
     padding-bottom: 3vh;
@@ -437,9 +464,13 @@ form ul {
     flex-direction: column;
     text-align: left;
 }
+
 .checkboxdiv {
+    display: flex;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    justify-content: space-between;
+    width: 30%;
 }
 
 
@@ -448,117 +479,220 @@ form ul {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
-/* CSS List Card */
 
-.card {
-    background-color: var(--main-background-color);
-    color: var(--third-background-color);
-    width: 20vw;
-    margin: 1vw auto;
-    box-shadow: 0 5px 20px var(--third-background-color);
-    border-radius: 25px;
-    padding-bottom: 2vh;
-    margin-bottom: 5vh;
+/*-----------------------------------------------When event is opened--------------------------------------------------*/
+.event_card_container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Partie gauche de la carte */
+.event_card {
+    background-color: var(--background-card-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin: 0.5vw;
+    overflow: hidden;
+    width: 70vw;
+    height: 25vh;
     transform: scale(1.0);
-    transition-duration: 1s;
-}
-.card:hover {
-    transform: scale(1.05);
-    transition-duration: 1s;
+    transition-duration: 0.2s;
 }
 
-.cardpast{
-    background-color: var(--main-background-color);
-    opacity: 50%;
-    color: var(--third-background-color);
+.event_card:hover {
+    transform: scale(1.02);
+    transition-duration: 0.2s;
+}
+
+.event_card h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.event_card h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.event_preview_card {
+    background-color: var(--top-card-color);
+    color: var(--background-card-color);
+    padding-top: 5vh;
     width: 20vw;
-    margin: 1vw auto;
-    box-shadow: 0 5px 20px 0 var(--third-background-color);
-    border-radius: 25px;
-    padding-bottom: 2vh;
-    margin-bottom: 5vh;
-    transform: scale(1.00);
-    transition-duration: 1s;
-}
-.cardpast:hover {
-    transform: scale(0.95);
-    transition-duration: 1s;
+    height: 25vh;
 }
 
-.eventendcomment{
-    font-size: large;
-    font-weight: bold;
-    margin-top: 5vh;
-}
-.card-date hr {
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-.card a {
+.event_preview_card a {
     color: var(--third-background-color);
+    display: inline-block;
+    font-size: 16px;
+    opacity: 0.6;
+    margin-top: 20vh;
     text-decoration: none;
 }
-.card-limit-date {
-    padding-bottom: 4vh;
-}
-.card-actions{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
 
-/* Card link */
-
-a.style_bouton {
-    display: flex;
-    justify-content: center;
-
-    padding: 2vh 2vw;
-    margin-top: 1vh;
-    color: var(--third-background-color);
-    font-weight: bold;
-    font-size: 1.5vh;
-    border: 1px solid var(--third-background-color);
-    border-radius: 10px;
-    width: 1.5vw;
-    height: 1.5vh;
-}
-a.style_bouton:hover{
-    background-color: var(--second-background-color);
-    transition-duration: 1s;
-}
-
-
-/* Card image */
-.card-image {
+/* Partie droite de la carte */
+.event_info_card {
+    padding: 30px;
     position: relative;
-    overflow: hidden;
-    height: 200px;
-    -moz-border-radius: 25px 25px 0px 0px;
-    -webkit-border-radius: 25px 25px 0px 0px;
-    border-radius: 25px 25px 0px 0px;
-    margin-bottom: 10px;
-    /*box-shadow: 0px 5px 20px gray;*/
-}
-
-.card-image img {
     width: 100%;
-    /* Méthode de centrage en fonction de la taille de l'image */
+}
+
+.event_info_card h4, .event_info_card h6 {
+    text-align: left;
+}
+
+.participants_container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: grayscale(0);
-    /* Transition */
-    /*transition-property: filter width;*/
-    transition-duration: .3s;
-    transition-timing-function: ease;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+}
+
+.participants_text {
+    font-size: 16px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+.actions_btns_container {
+    padding-top: 8vh;
+    padding-bottom: 1vh;
+    text-align: right;
+}
+
+.bttn {
+    background-color: var(--top-card-color);
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    color: var(--background-card-color);
+    font-size: 16px;
+    padding: 2vh 2vh;
+
+    /*position: absolute;*/
+    /*bottom: 30px;*/
+    /*right: 30px;*/
+    letter-spacing: 1px;
+}
+
+.bttn:hover {
+    background-color: var(--background-card-color);
+    border: 1px solid var(--top-card-color);
+    color: var(--top-card-color);
+}
+
+/*-----------------------------------------------When event is passed--------------------------------------------------*/
+
+
+.cardpast {
+    background-color: var(--background-card-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin: 0.5vw;
+    overflow: hidden;
+    width: 70vw;
+    height: 25vh;
+    opacity: 60%;
+    transform: scale(1.0);
+    transition-duration: 0.2s;
+}
+
+.cardpast:hover {
+    transform: scale(1.05);
+    transition-duration: 0.2s;
+}
+
+.cardpast h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cardpast h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+.event_preview_cardpast {
+    background-color: var(--top-card-color);
+    color: var(--background-card-color);
+    padding-top: 5vh;
+    width: 20vw;
+    height: 25vh;
+}
+
+/*
+*
+* Details Event
+*
+ */
+
+.authorimage {
+    margin-bottom: 3vh;
+    height: 20vh;
+    width: 10vw;
+    border-radius: 20px;
 }
 
 
+/* Form general template */
+
+.errors {
+    display: inline-block;
+    color: red;
+    position: relative;
+}
+
+.flash-success {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: green;
+    width: fit-content;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF;
+
+}
+
+/* Table template */
+table{
+    border-collapse: collapse;
+
+
+
+}
+
+
+tbody tr:hover{
+    background-color:  #D6F1FF;
+    color: #004466
+}
+th, td {
+    padding: 2vh;
+    border-bottom: 2px solid white;
+}
+
+th{
+    background-color: #004466;
+    color:  #D6F1FF ;
+}
+
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 /* Keyframes and animations */
 @keyframes logoanimation {
@@ -589,73 +723,20 @@ a.style_bouton:hover{
     }
 }
 
-/* Halloween part*/
-.witch {
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    height: 20vh;
-    animation: witchanimation 10s infinite;
-    animation-direction: alternate;
-}
 @keyframes witchanimation {
     from {
-        transform: translateX(-200px) rotate(900deg) scale(1.0) translateY(0);
+        transform: translateY(-1000px) translateX(-100px) scale(0.5) rotate(360deg) translateY(1000px);
 
     }
     to {
-        transform: translateX(400px)  rotate(-900deg) scale(20)translateY(100px);
+        transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
     }
 }
 
-/* Form general template */
-
-.errors {
-    display: inline-block;
-    color: red;
-    position: relative;
-}
-
-.flash-success {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: green;
-    width: fit-content;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    color: #FFFFFF;
-
-}
-
-/* Table template */
-
-th, td {
-
-    padding: 10px;
-    border: 2px solid white;
-}
-
-table a{
-    color: white;
-    padding: 10px;
-}
-table a:hover{
-    color: red;
-
-}
-
 /* Profil Images -------------------------------------------------------------------------------------------------- */
-
-.cropImage{
+.cropImage {
     width: 15vw;
     border-radius: 100px;
     border: solid 2px var(--third-background-color);
     margin-bottom: 5vh;
-    transition-duration: 2s;
-}
-
-.cropImage:hover{
-    transform: scale(1.3);
-    transition-duration: 2s;
 }
