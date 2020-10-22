@@ -97,54 +97,63 @@
                 Longitude : <input id="lng" name="lng" class="forminput">
             </div> #}
 
-            <div>
-                <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit' }}
-                    :</h2>
 
-                <table class="redTable">
-                    <thead>
-                    <tr>
-                        <th>Pseudo</th>
-                        <th>Prénom</th>
-                        <th>Nom de famille</th>
-                        <th>Campus</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for participant in eventToShow.registeredParticipants %}
+        </div>
 
-                        <tr>
-                            <td>
-                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.pseudo }}</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.firstName | capitalize }}</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.lastName | upper }}</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.campus.name }}</a>
-                            </td>
-                        </tr>
+        <div>
+            <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit' }}
+                :</h2>
 
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div>
-                {% if eventToShow.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
-                {% if eventToShow.registeredParticipants.contains(app.user) %}
-                <form action="{{ path('desist_event', {'id' : eventToShow.id} ) }}" method="post">
-                    <input type="submit" class="sortir_buttons" value="Se désister" {% if eventToShow.open %}disabled{% endif %}>
-                </form>
-                {% else %}
-                <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
-                    <input type="submit" class="sortir_buttons" value="S'inscrire" {% if eventToShow.open %}disabled{% endif %}>
-                    {% endif %}
-                    {% endif %}
-                </form>
-            </div>
+            <table class="redTable">
+                <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Prénom</th>
+                    <th>Nom de famille</th>
+                    <th>Campus</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for participant in eventToShow.registeredParticipants %}
+                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">
+                    <div>
+
+                            <tr>
+                                <td>
+                                    {{ participant.pseudo }}
+                                </td>
+                                <td>
+                                    {{ participant.firstName | capitalize }}
+                                </td>
+                                <td>
+                                    {{ participant.lastName | upper }}
+                                </td>
+                                <td>
+                                    {{ participant.campus.name }}
+                                </td>
+                            </tr>
+
+                    </div>
+                </a>
+
+
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            {% if eventToShow.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
+            {% if eventToShow.registeredParticipants.contains(app.user) %}
+            <form action="{{ path('desist_event', {'id' : eventToShow.id} ) }}" method="post">
+                <input type="submit" class="submit_filter_events" value="Se désister" {% if eventToShow.open %}disabled{% endif %}>
+            </form>
+            {% else %}
+            <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
+                <input type="submit" class="submit_filter_events" value="S'inscrire" {% if eventToShow.open %}disabled{% endif %}>
+                {% endif %}
+                {% endif %}
+            </form>
         </div>
     </div>
 {% endblock %}
