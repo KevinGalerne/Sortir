@@ -16,6 +16,7 @@
     --second-background-color: silver /*2c3e50*/;
     --third-background-color: black;
     --top-card-color: #86BBD8;
+    --background-card-color: #F0F6FA;
     --hover-font-color: #C0C0C0;
     --first-font-family: 'Lobster', cursive;
     --second-font-family: 'Work', sans-serif;
@@ -30,7 +31,7 @@
 input[type="checkbox"]{
     position: relative;
     width: 4vw;
-    height: 2vh;
+    height: 1vh;
     -webkit-appearance: none;
     background: white;
     outline: none;
@@ -44,7 +45,7 @@ input[type="checkbox"]:before{
     content:  '';
     position: absolute;
     width: 2vw;
-    height: 2vh;
+    height: 1vh;
     border-radius: 20px;
     top: 0;
     left: 0;
@@ -443,8 +444,11 @@ form ul {
     text-align: left;
 }
 .checkboxdiv {
+    display: flex;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    justify-content: space-between;
+    width: 30%;
 }
 
 
@@ -569,7 +573,7 @@ a.style_bouton:hover{
 }
 /* Partie gauche de la carte */
 .event_card {
-    background-color: var(--main-background-color);
+    background-color: var(--background-card-color);
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -591,13 +595,13 @@ a.style_bouton:hover{
 
 .event_preview_card {
     background-color: var(--top-card-color);
-    color: var(--main-background-color);
+    color: var(--background-card-color);
     padding: 30px;
     max-width: 250px;
 }
 
 .event_preview_card a {
-    color: var(--main-background-color);
+    color: var(--background-card-color);
     display: inline-block;
     font-size: 12px;
     opacity: 0.6;
@@ -639,7 +643,7 @@ a.style_bouton:hover{
     border: 0;
     border-radius: 50px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    color: var(--main-background-color);
+    color: var(--background-card-color);
     font-size: 16px;
     padding: 12px 12px;
     margin: 5px;
@@ -650,7 +654,7 @@ a.style_bouton:hover{
 }
 
 .bttn:hover {
-    background-color: var(--main-background-color);
+    background-color: var(--background-card-color);
     border: 1px solid var(--top-card-color);
     color: var(--top-card-color);
 }
