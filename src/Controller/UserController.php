@@ -45,6 +45,20 @@ class UserController extends AbstractController
     }
 
     /**
+     * Access to the author page
+     * @Route("/show_author/{id}", name="show_author")
+     * @param $id
+     */
+    public function showAuthor(UserRepository $userRepository, $id, EventRepository $eventRepository)
+    {
+        
+        $profil = $userRepository->findOneBy(['id' => $id]);
+        return $this->render('user/show_profil.html.twig', [
+            'profilToShow' => $profil,
+        ]);
+    }
+
+    /**
      * @Route("/account/edit", name="user_account_edit", priority="100")
      */
     public function editAccount(Request $request, EntityManagerInterface $objectManager)
