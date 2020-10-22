@@ -7,6 +7,13 @@
 
         <!-- Left Side -->
         <div class="eventside">
+
+          <div class="formlabel">
+              Organisateur :
+              <img class="cropImage" src="{{ asset('uploads/profil_images/' ~ eventToShow.author.imageFileName) }}">
+
+              <div class="formshow">{{ eventToShow.author.firstName }}</div>
+          </div>
             <div class="formlabel">
                 Nom de la sortie :
                 <div class="formshow">{{ eventToShow.name }}</div>
