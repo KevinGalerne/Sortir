@@ -115,43 +115,29 @@
                 </thead>
                 <tbody>
                 {% for participant in eventToShow.registeredParticipants %}
+                <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">
+                    <div>
 
-                    <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">
-                        <tr>
-                            <td>
-                                {{ participant.pseudo }}
-                            </td>
-                            <td>
-                                {{ participant.firstName | capitalize }}
-                            </td>
-                            <td>
-                                {{ participant.lastName | upper }}
-                            </td>
-                            <td>
-                                {{ participant.campus.name }}
-                            </td>
-                        </tr>
-                    </a>
+                            <tr>
+                                <td>
+                                    {{ participant.pseudo }}
+                                </td>
+                                <td>
+                                    {{ participant.firstName | capitalize }}
+                                </td>
+                                <td>
+                                    {{ participant.lastName | upper }}
+                                </td>
+                                <td>
+                                    {{ participant.campus.name }}
+                                </td>
+                            </tr>
 
-<<<<<<< Updated upstream
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div>
-                {% if eventToShow.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
-                {% if eventToShow.registeredParticipants.contains(app.user) %}
-                <form action="{{ path('desist_event', {'id' : eventToShow.id} ) }}" method="post">
-                    <input type="submit" class="sortir_buttons" value="Se désister" {% if eventToShow.open %}disabled{% endif %}>
-                </form>
-                {% else %}
-                <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
-                    <input type="submit" class="sortir_buttons" value="S'inscrire" {% if eventToShow.open %}disabled{% endif %}>
-                    {% endif %}
-                    {% endif %}
-                </form>
-            </div>
-=======
+                    </div>
+                </a>
+
+
+
                 {% endfor %}
                 </tbody>
             </table>
@@ -168,7 +154,6 @@
                 {% endif %}
                 {% endif %}
             </form>
->>>>>>> Stashed changes
         </div>
     </div>
 {% endblock %}
