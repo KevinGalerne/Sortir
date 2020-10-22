@@ -47,7 +47,8 @@ class EventType extends AbstractType
                        ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
             ->add('save',
                   SubmitType::class,
-                       ['label' => 'Enregistrer'])
+                       ['label' => 'Enregistrer',
+                           "attr"=>["class"=>"sortir_buttons"]])
 
         ;
     }

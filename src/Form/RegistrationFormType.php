@@ -58,7 +58,8 @@ class RegistrationFormType extends AbstractType
                 "Administrateur" => "ROLE_ADMIN",
                 "Utilisateur" => "ROLE_STUDENT",
             ]])
-            ->add('save', SubmitType::class, ['label' => 'Enregistrer'])
+            ->add('save', SubmitType::class, ['label' => 'Enregistrer',
+                                                            "attr"=>["class"=>"sortir_buttons"]])
             ->add("campus", EntityType::class, ["attr" => ["class" => "forminput"], "class" => "App\Entity\Campus", "choice_label" => "name"])
             ->add('imageFile', FileType::class,
                 [
