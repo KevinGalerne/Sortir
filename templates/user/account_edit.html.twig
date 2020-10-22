@@ -37,14 +37,14 @@
         {{ form_errors(editForm.imageFile) }}
 
     </div>
-    <button type="submit">Enregister les modifications</button>
+    <button class="sortir_buttons" type="submit">Enregister les modifications</button>
     {{ form_end(editForm) }}
 
 
     <div  class="infotitle">Modifier mon mot de passe</div>
     <div class="edit_buttondiv">
-    <a class="editbutton" href={{ path('user_account_show') }}>Revenir au profil</a>
-    <a class="editbutton" href="{{ path('user_password_edit') }}">Modifier le mot de passe</a>
+    <a class="sortir_buttons" href={{ path('user_account_show') }}>Revenir au profil</a>
+    <a class="sortir_buttons" href="{{ path('user_password_edit') }}">Modifier le mot de passe</a>
 
     </div>
 {% endblock %}

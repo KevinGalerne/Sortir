@@ -4,103 +4,86 @@
 {% block main %}
 
     <div class="eventform">
-
-        <!-- Left Side -->
-        <div class="eventside">
-
-            <div class="formlabel">
-                Organisateur :
-                <div class="authorevent">
-                    {% if eventToShow.author.imageFileName %}
-                        <img class="authorimage"
-                             src="{{ asset('uploads/profil_images/' ~ eventToShow.author.imageFileName) }}">
-                    {% else %}
-                        <img class="cropImage" src="{{ asset('img/user.png') }}">
-                    {% endif %}
-                    <div class="formshow"><a
-                                href="{{ path('show_author',{'id': eventToShow.author.id} ) }}">{{ eventToShow.author.firstName }}</a>
+        <div class="event_top">
+            <!-- Left Side -->
+            <div class="eventside">
+                <div class="formlabel">
+                    Organisateur :
+                    <div class="authorevent">
+                        {% if eventToShow.author.imageFileName %}
+                            <img class="authorimage"
+                                 src="{{ asset('uploads/profil_images/' ~ eventToShow.author.imageFileName) }}">
+                        {% else %}
+                            <img class="cropImage" src="{{ asset('img/user.png') }}">
+                        {% endif %}
+                        <div class="formshow"><a
+                                    href="{{ path('show_author',{'id': eventToShow.author.id} ) }}">{{ eventToShow.author.firstName }}</a>
+                        </div>
                     </div>
                 </div>
-
+                <div class="formlabel">
+                    Nom de la sortie :
+                    <div class="formshow">{{ eventToShow.name }}</div>
+                </div>
+                <div class="formlabel">
+                    Date et heure de la sortie :
+                    <div class="formshow">{{ eventToShow.eventDate|date('H:i:s d-m-Y') }}</div>
+                </div>
+                <div class="formlabel">
+                    Date limite d'inscription :
+                    <div class="formshow">{{ eventToShow.subscriptionLimitDate|date('H:i:s d-m-Y') }}</div>
+                </div>
+                <div class="formlabel">
+                    Nombre de places :
+                    <div class="formshow">{{ eventToShow.registeredParticipants.count }}
+                        / {{ eventToShow.maxParticipants }}</div>
+                </div>
+                <div class="formlabel">
+                    Durée :
+                    <div class="formshow">{{ eventToShow.duration|date('H:i') }}</div>
+                </div>
+                <div class="formlabel">
+                    Description et infos :
+                    <div class="formshow">{{ eventToShow.description }}</div>
+                </div>
             </div>
-            <div class="formlabel">
-                Nom de la sortie :
-                <div class="formshow">{{ eventToShow.name }}</div>
+            <!-- Right Side -->
+            <div class="eventside">
+                <div class="formlabel">
+                    Campus :
+                    <div class="formshow">{{ app.user.campus.getName }}</div>
+                </div>
+                <div class="formlabel">
+                    Numéro :
+                    <div class="formshow">{{ eventToShow.streetNumber }}</div>
+                </div>
+                <div class="formlabel">
+                    Rue :
+                    <div class="formshow">{{ eventToShow.route }}</div>
+                </div>
+                <div class="formlabel">
+                    Code postal :
+                    <div class="formshow">{{ eventToShow.postalCode }}</div>
+                </div>
+                <div class="formlabel">
+                    Ville :
+                    <div class="formshow">{{ eventToShow.locality }}</div>
+                </div>
+                <div class="formlabel">
+                    Pays :
+                    <div class="formshow">{{ eventToShow.country }}</div>
+                </div>
+                <div class="formlabel">
+                    Latitude :
+                    <div class="formshow">{{ eventToShow.latitude }}</div>
+                </div>
+                <div class="formlabel">
+                    Longitude :
+                    <div class="formshow">{{ eventToShow.longitude }}</div>
+                </div>
             </div>
-
-            <div class="formlabel">
-                Date et heure de la sortie :
-                <div class="formshow">{{ eventToShow.eventDate|date('H:i:s d-m-Y') }}</div>
-            </div>
-
-            <div class="formlabel">
-                Date limite d'inscription :
-                <div class="formshow">{{ eventToShow.subscriptionLimitDate|date('H:i:s d-m-Y') }}</div>
-            </div>
-
-            <div class="formlabel">
-                Nombre de places :
-                <div class="formshow">{{ eventToShow.registeredParticipants.count }}
-                    / {{ eventToShow.maxParticipants }}</div>
-            </div>
-
-            <div class="formlabel">
-                Durée :
-                <div class="formshow">{{ eventToShow.duration|date('H:i') }}</div>
-            </div>
-
-            <div class="formlabel">
-                Description et infos :
-                <div class="formshow">{{ eventToShow.description }}</div>
-            </div>
-
         </div>
-
-        <!-- Right Side -->
-        <div class="eventside">
-            <div class="formlabel">
-                Campus :
-                <div class="formshow">{{ app.user.campus.getName }}</div>
-            </div>
-
-            <div class="formlabel">
-                Numéro :
-                <div class="formshow">{{ eventToShow.streetNumber }}</div>
-            </div>
-
-            <div class="formlabel">
-                Rue :
-                <div class="formshow">{{ eventToShow.route }}</div>
-            </div>
-
-
-            <div class="formlabel">
-                Code postal :
-                <div class="formshow">{{ eventToShow.postalCode }}</div>
-            </div>
-
-            <div class="formlabel">
-                Ville :
-                <div class="formshow">{{ eventToShow.locality }}</div>
-            </div>
-
-            <div class="formlabel">
-                Pays :
-                <div class="formshow">{{ eventToShow.country }}</div>
-            </div>
-
-            {# <div class="formlabel">
-                Latitude : <input id="lat" name="lat" class="forminput">
-            </div>
-
-            <div class="formlabel">
-                Longitude : <input id="lng" name="lng" class="forminput">
-            </div> #}
-
-
-        </div>
-
-        <div>
+        <div class="event_details_table_participants">
             <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit' }}
                 :</h2>
 
@@ -142,11 +125,11 @@
             {% if eventToShow.subscriptionLimitDate|date('d-m-Y') > "now"|date('d-m-Y') %}
             {% if eventToShow.registeredParticipants.contains(app.user) %}
             <form action="{{ path('desist_event', {'id' : eventToShow.id} ) }}" method="post">
-                <input type="submit" class="submit_filter_events" value="Se désister" {% if eventToShow.open %}disabled{% endif %}>
+                <input type="submit" class="sortir_buttons" value="Se désister" {% if eventToShow.open %}disabled{% endif %}>
             </form>
             {% else %}
             <form action="{{ path('participate_event', {'id' : eventToShow.id} ) }}" method="post">
-                <input type="submit" class="submit_filter_events" value="S'inscrire" {% if eventToShow.open %}disabled{% endif %}>
+                <input type="submit" class="sortir_buttons" value="S'inscrire" {% if eventToShow.open %}disabled{% endif %}>
                 {% endif %}
                 {% endif %}
             </form>

@@ -5,85 +5,63 @@
     {{ form_start(eventForm) }}
 
     <div class="eventform">
-
-
-        <!-- Left Side -->
-        <div class="eventside">
-            <div class="formlabel">
-                Campus : <div class="formcampus">{{ app.user.campus.getName }}</div>
+        <div class="event_top">
+            <!-- Left Side -->
+            <div class="eventside">
+                <div class="formlabel">
+                    Campus : <div class="formcampus">{{ app.user.campus.getName }}</div>
+                </div>
+                <div class="formlabel">
+                    Nom de la sortie : <div class="eventfield">{{ form_widget(eventForm.name) }}</div>
+                </div>
+                <div class="formlabel">
+                    Date et heure de la sortie : <div class="eventfield">{{ form_widget(eventForm.eventDate) }}</div>
+                </div>
+                <div class="formlabel">
+                    Date limite d'inscription : <div class="eventfield">{{ form_widget(eventForm.subscriptionLimitDate) }}</div>
+                </div>
+                <div class="formlabel">
+                    Nombre de places : <div class="eventfield">{{ form_widget(eventForm.maxParticipants) }}</div>
+                </div>
+                <div class="formlabel">
+                    Durée : <div class="eventfield">{{ form_widget(eventForm.duration) }}</div>
+                </div>
+                <div class="formlabel">
+                    Description et infos : <div class="formdescription">{{ form_widget(eventForm.description) }}</div>
+                </div>
             </div>
-
-            <div class="formlabel">
-                Nom de la sortie : <div class="eventfield">{{ form_widget(eventForm.name) }}</div>
-            </div>
-
-            <div class="formlabel">
-                Date et heure de la sortie : <div class="eventfield">{{ form_widget(eventForm.eventDate) }}</div>
-            </div>
-
-            <div class="formlabel">
-                Date limite d'inscription : <div class="eventfield">{{ form_widget(eventForm.subscriptionLimitDate) }}</div>
-            </div>
-
-            <div class="formlabel">
-                Nombre de places : <div class="eventfield">{{ form_widget(eventForm.maxParticipants) }}</div>
-            </div>
-
-            <div class="formlabel">
-                Durée : <div class="eventfield">{{ form_widget(eventForm.duration) }}</div>
-            </div>
-
-            <div class="formlabel">
-                Description et infos : <div class="formdescription">{{ form_widget(eventForm.description) }}</div>
-            </div>
-        </div>
-
-        <!-- Right Side -->
-        <div class="eventside">
-            <div class="formlabel">
-                Lieu : <input id="user_input_autocomplete_address" placeholder="Saisissez votre recherche" type="text" class="forminput_api">
-            </div>
-
-            <div class="formlabel">
-                Nom du lieu : <input id="place_name" name="place_name" class="forminput" type="text">
-            </div>
-
-            <div class="formlabel">
-                N° : <input id="street_number" name="event_street_number" class="forminput" type="number">
-            </div>
-
-            <div class="formlabel">
-                Rue : <input id="route" name="event_route" class="forminput" type="text">
-            </div>
-
-            <div class="formlabel">
-                Code Postal : <input id="postal_code" name="event_postal_code" class="forminput" type="number">
-            </div>
-
-            <div class="formlabel">
-                Ville : <input id="locality" name="event_locality" class="forminput" type="text">
-            </div>
-
-            <div class="formlabel">
-                Pays : <input id="country" name="event_country" class="forminput" type="text">
-            </div>
-
-            <div class="formlabel">
-                Latitude : <input id="latitude" name="latitude" class="forminput">
-            </div>
-
-            <div class="formlabel">
-                Longitude : <input id="longitude" name="longitude" class="forminput">
+            <!-- Right Side -->
+            <div class="eventside">
+                <div class="formlabel">
+                    Lieu : <input id="user_input_autocomplete_address" placeholder="Saisissez votre recherche" type="text" class="forminput_api">
+                </div>
+                <div class="formlabel">
+                    Nom du lieu : <input id="place_name" name="place_name" class="forminput" type="text">
+                </div>
+                <div class="formlabel">
+                    N° : <input id="street_number" name="event_street_number" class="forminput" type="number">
+                </div>
+                <div class="formlabel">
+                    Rue : <input id="route" name="event_route" class="forminput" type="text">
+                </div>
+                <div class="formlabel">
+                    Code Postal : <input id="postal_code" name="event_postal_code" class="forminput" type="number">
+                </div>
+                <div class="formlabel">
+                    Ville : <input id="locality" name="event_locality" class="forminput" type="text">
+                </div>
+                <div class="formlabel">
+                    Pays : <input id="country" name="event_country" class="forminput" type="text">
+                </div>
+                <div class="formlabel">
+                    Latitude : <input id="latitude" name="latitude" class="forminput">
+                </div>
+                <div class="formlabel">
+                    Longitude : <input id="longitude" name="longitude" class="forminput">
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
     {#Div des boutons#}
     <div>
         {{ form_widget(eventForm.save) }}

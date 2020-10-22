@@ -14,7 +14,7 @@
 :root {
     --main-background-color: white /*#005AA7*/;
     --second-background-color: silver /*2c3e50*/;
-    --third-background-color: #BD240F;
+    --third-background-color: black;
     --top-card-color: #BD240F;
     --background-card-color: #FDEEEC;
     --hover-font-color: #C0C0C0;
@@ -26,11 +26,12 @@
 
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
 input.forminput {
-    background-color: var(--third-background-color);
+    background-color: var(--main-background-color);
 }
 
 input.dateinput {
-    background-color: var(--third-background-color);
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
 }
 
 input[type="checkbox"] {
@@ -326,6 +327,16 @@ a.editbutton{
 * Password Edit Page
 *
  */
+.edit_password_global_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.edit_password_buttons_container {
+    display: flex;
+    flex-flow: row;
+    margin-top: 2vh;
+}
 
 form ul {
     list-style: none;
@@ -343,8 +354,8 @@ form ul {
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--third-background-color);
-    color: var(--main-background-color);
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
@@ -354,8 +365,8 @@ form ul {
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--third-background-color);
-    color: var(--main-background-color);
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
@@ -409,9 +420,41 @@ form ul {
 
 .eventform {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    padding-bottom: 3vh;
+}
+
+.eventside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 3vw;
+}
+
+.event_top {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding-bottom: 2vh;
+    margin-bottom: 2vh;
+}
+
+.event_details_table_participants {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 2vh auto 2vh auto;
+    padding: 2vh 0 2vh 0;
+    width: 60%;
+}
+
+.event_details_table_participants th {
+    background-color: var(--top-card-color);
+    color: var(--background-card-color);
+}
+
+.event_details_table_participants td {
+    background-color: var(--background-card-color);
+    color: var(--top-card-color);
 }
 
 .eventside {
