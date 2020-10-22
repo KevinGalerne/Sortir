@@ -25,20 +25,24 @@
 
 
 /*--------------------------------------------------  HTML BASICS  ------------------------------------------------*/
+input.dateinput {
+    background-color: var(--main-background-color);
+    color: var(--third-background-color);
+}
 
 input[type="checkbox"] {
     position: relative;
     width: 4vw;
     height: 1vh;
     -webkit-appearance: none;
-    background: white;
+    background: var(--background-card-color);
     outline: none;
-    border: solid 1px black;
+    border: solid 1px var(--main-background-color);
     border-radius: 20px;
 }
 
 input:checked[type="checkbox"] {
-    background: black;
+    background: var(--top-card-color);
 }
 
 input[type="checkbox"]:before {
@@ -78,20 +82,19 @@ a {
     color: var(--third-background-color);
 }
 
-button {
-    background-color: var(--main-background-color);
-    font-family: var(--second-font-family);
-    border-radius: 20px;
-    color: var(--third-background-color);
-    height: 5vh;
-    width: 10vw;
-    font-weight: bold;
-    border: solid 1px var(--third-background-color);
-    border-radius: 20px;
-}
+/*button {*/
+/*    background-color: var(--main-background-color);*/
+/*    font-family: var(--second-font-family);*/
+/*    border-radius: 20px;*/
+/*    color: var(--third-background-color);*/
+/*    height: 5vh;*/
+/*    width: 10vw;*/
+/*    font-weight: bold;*/
+/*    border: solid 1px var(--third-background-color);*/
+/*    border-radius: 20px;*/
+/*}*/
 
 /* ------------------------------------------------- ALL BUTTONS ------------------------------------------------ */
-
 .sortir_buttons {
     background-color: var(--top-card-color);
     border: 0;
@@ -109,7 +112,7 @@ button {
     color: var(--top-card-color);
 }
 
-/*--------------------------------------------------  TWIG BLOCKS ------------------------------------------------*/
+/* ------------------------------------------------- TWIG BLOCKS ------------------------------------------------ */
 
 /* Header block */
 
@@ -142,8 +145,6 @@ button {
 }
 
 /*Logo block */
-
-
 .logoblock {
     padding-top: 5vh;
     text-align: center;
@@ -202,13 +203,10 @@ button {
     font-weight: bold;
 }
 
-
 /*--------------------------------------------------  PAGES ------------------------------------------------*/
 
 /*
-*
 * Welcome page
-*
 */
 
 .animatedlogo {
@@ -243,9 +241,7 @@ button {
 
 
 /*
-*
 * Login page
-*
  */
 
 .userloggedmessage {
@@ -313,7 +309,12 @@ button {
     width: 15vw;
     font-weight: bold;
     padding-top: 2vh;
+    margin-top: 2vh;
 }
+a.editbutton{
+
+}
+
 
 /*
 * Password Edit Page
@@ -345,11 +346,11 @@ form ul {
     text-align: center;
 }
 
-.forminput2 {
+.forminput_api {
     height: 2vh;
     width: 15vw;
     border-radius: 5px;
-    background-color: var(--second-background-color);
+    background-color: var(--main-background-color);
     color: var(--third-background-color);
     font-weight: bold;
     letter-spacing: 1px;
@@ -391,7 +392,6 @@ form ul {
 * Create event page
 *
 */
-
 .eventdescription {
     height: 20vh;
     width: 15vw;
@@ -414,6 +414,7 @@ form ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-right: 3vw;
 }
 
 .date {
@@ -435,7 +436,6 @@ form ul {
 * Event list page
 *
 */
-
 .dateinput {
     background-color: var(--main-background-color);
     color: var(--second-background-color);
@@ -473,123 +473,11 @@ form ul {
     flex-flow: row wrap;
 }
 
-/* CSS List Card */
 
-.card {
-    background-color: var(--main-background-color);
-    color: var(--third-background-color);
-    width: 20vw;
-    margin: 1vw auto;
-    box-shadow: 0 5px 20px var(--third-background-color);
-    border-radius: 25px;
-    padding-bottom: 2vh;
-    margin-bottom: 5vh;
-    transform: scale(1.0);
-    transition-duration: 1s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    transition-duration: 1s;
-}
-
-.cardpast {
-    background-color: var(--main-background-color);
-    opacity: 50%;
-    color: var(--third-background-color);
-    width: 20vw;
-    margin: 1vw auto;
-    box-shadow: 0 5px 20px 0 var(--third-background-color);
-    border-radius: 25px;
-    padding-bottom: 2vh;
-    margin-bottom: 5vh;
-    transform: scale(1.00);
-    transition-duration: 1s;
-}
-
-.cardpast:hover {
-    transform: scale(0.95);
-    transition-duration: 1s;
-}
-
-.eventendcomment {
-    font-size: large;
-    font-weight: bold;
-    margin-top: 5vh;
-}
-
-.card-date hr {
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-.card a {
-    color: var(--third-background-color);
-    text-decoration: none;
-}
-
-.card-limit-date {
-    padding-bottom: 4vh;
-}
-
-.card-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-/* Card link */
-
-a.style_bouton {
-    display: flex;
-    justify-content: center;
-
-    padding: 2vh 2vw;
-    margin-top: 1vh;
-    color: var(--third-background-color);
-    font-weight: bold;
-    font-size: 1.5vh;
-    border: 1px solid var(--third-background-color);
-    border-radius: 10px;
-    width: 1.5vw;
-    height: 1.5vh;
-}
-
-a.style_bouton:hover {
-    background-color: var(--second-background-color);
-    transition-duration: 1s;
-}
-
-
-/* Card image */
-.card-image {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-    -moz-border-radius: 25px 25px 0px 0px;
-    -webkit-border-radius: 25px 25px 0px 0px;
-    border-radius: 25px 25px 0px 0px;
-    margin-bottom: 10px;
-    /*box-shadow: 0px 5px 20px gray;*/
-}
-
-.card-image img {
-    width: 100%;
-    /* Méthode de centrage en fonction de la taille de l'image */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: grayscale(0);
-    /* Transition */
-    /*transition-property: filter width;*/
-    transition-duration: .3s;
-    transition-timing-function: ease;
-}
-
-/*-----------------------------------------------ESSAI CARTE 2 RAPHA--------------------------------------------------*/
+/*-----------------------------------------------When event is opened--------------------------------------------------*/
 .event_card_container {
-
+    display: flex;
+    flex-direction: column;
 }
 
 /* Partie gauche de la carte */
@@ -598,10 +486,16 @@ a.style_bouton:hover {
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
-    max-width: 100%;
-    margin: 20px;
+    margin: 0.5vw;
     overflow: hidden;
-    width: 700px;
+    width: 70vw;
+    transform: scale(1.0);
+    transition-duration: 0.2s;
+}
+
+.event_card:hover {
+    transform: scale(1.02);
+    transition-duration: 0.2s;
 }
 
 .event_card h6 {
@@ -620,11 +514,12 @@ a.style_bouton:hover {
     background-color: var(--top-card-color);
     color: var(--background-card-color);
     padding: 30px;
-    max-width: 250px;
+    width: 20vw;
+    height: 10vh;
 }
 
 .event_preview_card a {
-    color: var(--background-card-color);
+    color: var(--third-background-color);
     display: inline-block;
     font-size: 16px;
     opacity: 0.6;
@@ -657,11 +552,8 @@ a.style_bouton:hover {
 }
 
 .actions_btns_container {
-    display: flex;
-    flex-flow: row nowrap;
-    position: absolute;
-    bottom: 25px;
-    right: 25px;
+    padding-top: 2vh;
+    text-align: right;
 }
 
 .bttn {
@@ -671,8 +563,8 @@ a.style_bouton:hover {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     color: var(--background-card-color);
     font-size: 16px;
-    padding: 12px 12px;
-    margin: 5px;
+    padding: 2vh 2vh;
+
     /*position: absolute;*/
     /*bottom: 30px;*/
     /*right: 30px;*/
@@ -683,6 +575,27 @@ a.style_bouton:hover {
     background-color: var(--background-card-color);
     border: 1px solid var(--top-card-color);
     color: var(--top-card-color);
+}
+
+/*-----------------------------------------------When event is passed--------------------------------------------------*/
+
+
+.cardpast {
+    background-color: var(--background-card-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin: 0.5vw;
+    overflow: hidden;
+    width: 70vw;
+    opacity: 60%;
+    transform: scale(1);
+    transition-duration: 0.2s;
+}
+
+.cardpast:hover {
+    transform: scale(1.05);
+    transition-duration: 0.2s;
 }
 
 
@@ -698,6 +611,49 @@ a.style_bouton:hover {
     width: 10vw;
     border-radius: 20px;
 }
+
+
+/* Form general template */
+
+.errors {
+    display: inline-block;
+    color: red;
+    position: relative;
+}
+
+.flash-success {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: green;
+    width: fit-content;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFFFFF;
+
+}
+
+/* Table template */
+
+th, td {
+
+    padding: 10px;
+    border: 2px solid white;
+}
+
+table a {
+    color: white;
+    padding: 10px;
+}
+
+table a:hover {
+    color: red;
+
+}
+
+
+
+
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -739,44 +695,6 @@ a.style_bouton:hover {
     to {
         transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
     }
-}
-
-/* Form general template */
-
-.errors {
-    display: inline-block;
-    color: red;
-    position: relative;
-}
-
-.flash-success {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: green;
-    width: fit-content;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    color: #FFFFFF;
-
-}
-
-/* Table template */
-
-th, td {
-
-    padding: 10px;
-    border: 2px solid white;
-}
-
-table a {
-    color: white;
-    padding: 10px;
-}
-
-table a:hover {
-    color: red;
-
 }
 
 /* Profil Images -------------------------------------------------------------------------------------------------- */
