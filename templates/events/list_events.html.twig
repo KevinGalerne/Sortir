@@ -5,54 +5,49 @@
 {% block main %}
 
     <!--------------------------------------------------- Filter form -------------------------------------------->
-
     <form class="filterform" action="{{ path('get_event') }}" method="get">
-        <div class="formpart1">
+        <div class="container_form_list_events">
+            <div class="formpart1">
+                <!-- This part allow the user to select the campus -->
+                <select name="campus" id="selectcampus">
+                    <option value="">Campus</option>
+                    {% for campus in allCampus %}
+                        <option value="{{ campus.id }}">{{ campus.name }}</option>
+                    {% endfor %}
+                </select>
+                <!-- This part allow the user to select events on keywords -->
+                <input type="text" class="forminput" name="keyword" placeholder="Recherchez par mot-clef">
+                <!-- This part allow the user to select events on date -->
+                <input class="dateinput" type="date" name="startdate" value="">
+                <input class="dateinput" type="date" name="enddate" value="">
+            </div>
 
-            <!-- This part allow the user to select the campus -->
-            <select name="campus" id="selectcampus">
-                <option value="">Campus</option>
-                {% for campus in allCampus %}
-                    <option value="{{ campus.id }}">{{ campus.name }}</option>
-                {% endfor %}
-            </select>
-
-            <!-- This part allow the user to select events on keywords -->
-            <input type="text" class="forminput" name="keyword" placeholder="Recherchez par mot-clef">
-
-            <!-- This part allow the user to select events on date -->
-            <input class="dateinput" type="date" name="startdate" value="">
-            <input class="dateinput" type="date" name="enddate" value="">
+            <!-- Checkbox filters part -->
+            <div class="checkboxdiv-wrapper">
+                <div class="formcheckbox">
+                    <div class="checkboxdiv">
+                        <label for="usercheckbox">Evènements que j'organise</label>
+                        <input type="checkbox" id="usercheckbox" name="usercheckbox">
+                    </div>
+                    <div class="checkboxdiv">
+                        <label for="registeredevent">Evènements auxquels je participe</label>
+                        <input type="checkbox" id="registeredevent" name="registeredevent">
+                    </div>
+                    <div class="checkboxdiv">
+                        <label for="passed">Sorties passées</label>
+                        <input type="checkbox" id="passed" name="passed">
+                    </div>
+                    <div class="checkboxdiv">
+                        <label for="nonregisteredevent">Evènements auxquels je ne participe pas</label>
+                        <input type="checkbox" id="nonregisteredevent" name="nonregisteredevent">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Checkbox filters part -->
-
-        <div class="formcheckbox">
-            <div class="checkboxdiv">
-                <label for="usercheckbox">Evènements que j'organise</label>
-                <input type="checkbox" id="usercheckbox" name="usercheckbox">
-            </div>
-
-
-            <div class="checkboxdiv">
-                <label for="registeredevent">Evènements auxquels je participe</label>
-                <input type="checkbox" id="registeredevent" name="registeredevent">
-            </div>
-
-            <div class="checkboxdiv">
-                <label for="passed">Sorties passées</label>
-                <input type="checkbox" id="passed" name="passed">
-            </div>
-
-            <div class="checkboxdiv">
-                <label for="nonregisteredevent">Evènements auxquels je ne participe pas</label>
-                <input type="checkbox" id="nonregisteredevent" name="nonregisteredevent">
-            </div>
-
-
-        </div>
-
+        <!-- Bouton envoi du form -->
         <input class="sortir_buttons" type="submit" value="Envoyer">
+
     </form>
 
     {% include 'card.html.twig' %}

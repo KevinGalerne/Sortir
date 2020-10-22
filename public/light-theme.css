@@ -216,7 +216,6 @@ a {
 * Welcome page
 *
 */
-
 .animatedlogo {
     color: var(--third-background-color);
     text-align: center;
@@ -253,7 +252,6 @@ a {
 * Login page
 *
  */
-
 .userloggedmessage {
     padding-top: 5vh;
 }
@@ -268,7 +266,6 @@ a {
     width: 20vw;
 
 }
-
 
 /*
 *
@@ -325,7 +322,6 @@ a.editbutton{
 
 }
 
-
 /*
 * Password Edit Page
 *
@@ -337,13 +333,11 @@ form ul {
     color: red;
 }
 
-
 /*
 *
 * Create User page
 *
 */
-
 .forminput {
     margin-top: 1vh;
     height: 2vh;
@@ -397,7 +391,6 @@ form ul {
     margin-top: 5vh;
 }
 
-
 /*
 *
 * Create event page
@@ -441,12 +434,18 @@ form ul {
 
 }
 
-
 /*
 *
 * Event list page
 *
 */
+.container_form_list_events {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-items: center;
+}
+
 .dateinput {
     background-color: var(--main-background-color);
     color: var(--second-background-color);
@@ -466,6 +465,12 @@ form ul {
     display: flex;
     flex-direction: column;
     text-align: left;
+
+}
+
+.checkboxdiv-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
 .checkboxdiv {
@@ -473,7 +478,6 @@ form ul {
     padding-top: 1vh;
     padding-bottom: 1vh;
     justify-content: space-between;
-    width: 30%;
 }
 
 
