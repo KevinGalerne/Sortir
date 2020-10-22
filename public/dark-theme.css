@@ -643,22 +643,28 @@ padding-top: 2vh;
 }
 
 /* Table template */
+table{
+    border-collapse: collapse;
 
+
+
+}
+
+
+tbody tr:hover{
+   background-color:  #D6F1FF;
+    color: #004466
+}
 th, td {
-
-    padding: 10px;
-    border: 2px solid white;
+    padding: 2vh;
+    border-bottom: 2px solid white;
 }
 
-table a {
-    color: white;
-    padding: 10px;
+th{
+    background-color: #004466;
+    color:  #D6F1FF ;
 }
 
-table a:hover {
-    color: red;
-
-}
 
 
 
