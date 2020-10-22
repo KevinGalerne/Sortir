@@ -90,6 +90,25 @@ button {
     border-radius: 20px;
 }
 
+/* ------------------------------------------------- ALL BUTTONS ------------------------------------------------ */
+
+.sortir_buttons {
+    background-color: var(--top-card-color);
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    color: var(--background-card-color);
+    font-size: 16px;
+    padding: 12px 12px;
+    margin: 5px;
+    letter-spacing: 1px;
+}
+.sortir_buttons:hover {
+    background-color: var(--background-card-color);
+    border: 1px solid var(--top-card-color);
+    color: var(--top-card-color);
+}
+
 /*--------------------------------------------------  TWIG BLOCKS ------------------------------------------------*/
 
 /* Header block */
@@ -425,25 +444,6 @@ form ul {
 * Event list page
 *
 */
-.submit_filter_events {
-    background-color: var(--top-card-color);
-    border: 0;
-    border-radius: 50px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    color: var(--background-card-color);
-    font-size: 16px;
-    padding: 12px 12px;
-    margin: 5px;
-    /*position: absolute;*/
-    /*bottom: 30px;*/
-    /*right: 30px;*/
-    letter-spacing: 1px;
-}
-.submit_filter_events:hover {
-    background-color: var(--background-card-color);
-    border: 1px solid var(--top-card-color);
-    color: var(--top-card-color);
-}
 
 .dateinput {
     background-color: var(--main-background-color);
