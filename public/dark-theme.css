@@ -97,7 +97,6 @@ button {
 }
 
 /* ------------------------------------------------- ALL BUTTONS ------------------------------------------------ */
-
 .sortir_buttons {
     background-color: var(--top-card-color);
     border: 0;
@@ -289,32 +288,10 @@ button {
     margin-bottom: 5vh;
 }
 
-.profilbutton {
-    height: 4vh;
-    width: 15vw;
-
-    border: solid 1px var(--third-background-color);
-    font-weight: bold;
-    border-radius: 20px;
-    margin: auto;
-    margin-top: 5vh;
-    padding-top: 2vh;
+.profil_button_container {
+    display: flex;
+    justify-content: center;
 }
-.cropImage {
-    width: 15vw;
-    border-radius: 100px;
-    border: solid 2px var(--third-background-color);
-    margin-bottom: 5vh;
-    transition-duration: 2s;
-}
-
-.cropImage:hover {
-    transform: scale(1.1);
-    transition-duration: 2s;
-}
-
-
-
 
 /*
 *
@@ -726,4 +703,12 @@ table a:hover {
     to {
         transform: translateY(500px) translateX(1000px) scale(1) rotate(-360deg);
     }
+}
+
+/* Profil Images -------------------------------------------------------------------------------------------------- */
+.cropImage {
+    width: 15vw;
+    border-radius: 100px;
+    border: solid 2px var(--third-background-color);
+    margin-bottom: 5vh;
 }
