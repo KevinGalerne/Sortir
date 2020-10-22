@@ -564,6 +564,9 @@ a.style_bouton:hover{
 }
 
 /*-----------------------------------------------ESSAI CARTE 2 RAPHA--------------------------------------------------*/
+.event_card_container {
+
+}
 /* Partie gauche de la carte */
 .event_card {
     background-color: var(--main-background-color);
@@ -644,6 +647,12 @@ a.style_bouton:hover{
     /*bottom: 30px;*/
     /*right: 30px;*/
     letter-spacing: 1px;
+}
+
+.bttn:hover {
+    background-color: var(--main-background-color);
+    border: 1px solid var(--top-card-color);
+    color: var(--top-card-color);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
