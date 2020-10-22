@@ -39,8 +39,6 @@ class UserController extends AbstractController
      */
     public function showProfil(UserRepository $userRepository, $pseudo,  EventRepository $eventRepository)
     {
-        $user = new User();
-
         $profil = $userRepository->findOneBy(['pseudo' => $pseudo]);
         $userId = $profil->getId();
         $allEvents = $eventRepository->findBy(['Author' => $userId]);
