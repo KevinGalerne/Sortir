@@ -3,7 +3,9 @@
 
 {% block main %}
 
+{% if profilToShow.imageFileName %}
     <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ profilToShow.imageFileName)}}"></div>
+{% endif %}
 
     <div class="credentials">
 
@@ -23,6 +25,9 @@
         {{ profilToShow.email }}
 
     </div>
+
+
+    {% for event %}
 
 
 
