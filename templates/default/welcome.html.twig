@@ -6,12 +6,20 @@
 
 {% block logo %}
     <div class="animatedlogo">Sortir.com</div>
-    <a href="{{ path("app_login") }}"><div class="stepin"> Accéder au site</div></a>
+    {% if app.user %}
+        <a href="{{ path("list_events") }}">
+            <div class="stepin"> Accéder au site</div>
+        </a>
+    {% else %}
+        <a href="{{ path("app_login") }}">
+            <div class="stepin"> Accéder au site</div>
+        </a>
+    {% endif %}
 {% endblock %}
 
 
 {% block welcome %}
-<img class="witch" src="{{ asset("img/witchcraft.png") }}"
+    <img class="witch" src="{{ asset("img/witchcraft.png") }}"
 
 {% endblock %}
 

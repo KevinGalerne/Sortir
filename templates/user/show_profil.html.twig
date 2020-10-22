@@ -5,6 +5,9 @@
 
 {% if profilToShow.imageFileName %}
     <div><img class="cropImage" src="{{ asset('uploads/profil_images/' ~ profilToShow.imageFileName) }}"></div>
+    {% else %}
+        <div><img class="cropImage" src="{{ asset('img/user.png') }}"></div>
+
 {% endif %}
 
 <div class="credentials">
