@@ -90,9 +90,9 @@
 
 {# Inclusion de Google Maps JS API #}
 <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAgHMYyQyz3bRKsvHc8W-o-B12ctxR6EdA"></script>
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAgHMYyQyz3bRKsvHc8W-o-B12ctxR6EdA" async></script>
 {# Script pour l'autocomplétion #}
-<script>
+<script async>
     /*Recherche lieu*/
     function initializeAutocomplete(id) {
         var element = document.getElementById(id);
@@ -131,7 +131,7 @@
 
 
 {# Creating a dark-mode #}
-<script>
+<script async>
 let count = 0;
     // Select the button
     const btn = document.querySelector(".toggle_theme_button");
