@@ -12,10 +12,11 @@
 /*--------------------------------------------------  VARIABLES ------------------------------------------------*/
 
 :root {
-    --main-background-color: white /*#005AA7*/;
-    --second-background-color: silver /*2c3e50*/;
+    --main-background-color: #F7F2E8 /*#005AA7*/;
+    --second-background-color: #709983 /*2c3e50*/;
     --third-background-color: black;
-    --top-card-color: #BD240F;
+
+    --top-card-color: #3BC14A;
     --background-card-color: #FDEEEC;
     --hover-font-color: #C0C0C0;
     --first-font-family: 'Lobster', cursive;
@@ -39,7 +40,7 @@ input[type="checkbox"] {
     width: 4vw;
     height: 1vh;
     -webkit-appearance: none;
-    background: var(--background-card-color);
+    background: var(--second-background-color);
     outline: none;
     border: solid 1px var(--main-background-color);
     border-radius: 20px;
