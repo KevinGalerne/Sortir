@@ -18,39 +18,41 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Date;
 
 class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $today = new \DateTime('now');
         $builder
             ->add('name',
-                  TextType::class,
-                       ["attr"=>["class"=>"forminput", "placeholder"=>"Entrez le nom de la sortie."]])
+                TextType::class,
+                ["attr" => ["class" => "forminput", "placeholder" => "Entrez le nom de la sortie."]])
             ->add('eventDate',
-                  DateTimeType::class,
-                       ["data" => new \DateTime('now')])
+                DateTimeType::class,
+                ['attr' => ['min' => $today->format('Y-m-d H:i:s')],
+                    "data" => new \DateTime('now')])
             ->add('duration',
-                  TimeType::class,
-                       ["placeholder"=>[
-                           "hour"=>"Heures",
-                           "minute"=>"Minutes"
-                       ]])
+                TimeType::class,
+                ["placeholder" => [
+                    "hour" => "Heures",
+                    "minute" => "Minutes"
+                ]])
             ->add('subscriptionLimitDate',
-                  DateTimeType::class,
-                       ["data" => new \DateTime('now')])
+                DateTimeType::class,
+                ['attr' => ['min' => $today->format('Y-m-d H:i:s')],
+                    "data" => new \DateTime('now')])
             ->add('maxParticipants',
-                  IntegerType::class,
-                       ["attr"=>["class"=>"forminput"]])
+                IntegerType::class,
+                ["attr" => ["class" => "forminput", 'min' => 0]])
             ->add('description',
-                  TextareaType::class,
-                       ["attr"=>["class"=>"eventdescription", "placeholder"=>"Entrez une description de la sortie."]])
+                TextareaType::class,
+                ["attr" => ["class" => "eventdescription", "placeholder" => "Entrez une description de la sortie."]])
             ->add('save',
-                  SubmitType::class,
-                       ['label' => 'Enregistrer',
-                           "attr"=>["class"=>"sortir_buttons"]])
-
-        ;
+                SubmitType::class,
+                ['label' => 'Enregistrer',
+                    "attr" => ["class" => "sortir_buttons"]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
