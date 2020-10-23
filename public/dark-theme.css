@@ -438,23 +438,8 @@ form ul {
     margin-bottom: 2vh;
 }
 
-.event_details_table_participants {
-    display: flex;
-    flex-flow: column nowrap;
-    margin: 2vh auto 2vh auto;
-    padding: 2vh 0 2vh 0;
-    width: 60%;
-}
 
-.event_details_table_participants th {
-    background-color: var(--top-card-color);
-    color: var(--background-card-color);
-}
 
-.event_details_table_participants td {
-    background-color: var(--background-card-color);
-    color: var(--top-card-color);
-}
 
 .eventside {
     display: flex;
@@ -713,29 +698,34 @@ form ul {
 }
 
 /* Table template */
+
 table{
     border-collapse: collapse;
-
-
-
 }
 
-
-tbody tr:hover{
-    background-color:  #D6F1FF;
-    color: #004466
-}
 th, td {
     padding: 2vh;
     border-bottom: 2px solid white;
 }
 
-th{
-    background-color: #004466;
-    color:  #D6F1FF ;
+
+.event_details_table_participants {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 2vh auto 2vh auto;
+    padding: 2vh 0 2vh 0;
+    width: 60%;
 }
 
+.event_details_table_participants th {
+    background-color: var(--top-card-color);
+    color: var(--background-card-color);
+}
 
+.event_details_table_participants td {
+    background-color: var(--background-card-color);
+    color: var(--top-card-color);
+}
 
 
 
