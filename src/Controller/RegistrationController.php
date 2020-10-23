@@ -21,6 +21,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class RegistrationController extends AbstractController
 {
     /**
+     * @IsGranted ("ROLE_ADMIN")
      * Register a new user
      * @Route("/register", name="app_register")
      */
