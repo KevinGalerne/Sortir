@@ -87,7 +87,7 @@
             <h2>{{ eventToShow.registeredParticipants|length }}{{ eventToShow.registeredParticipants|length > 1 ? ' participants inscrits' : ' participant inscrit' }}
                 :</h2>
 
-            <table class="redTable">
+            <table>
                 <thead>
                 <tr>
                     <th>Pseudo</th>
@@ -113,9 +113,6 @@
                                 <a href="{{ path('user_showProfil', {'pseudo' : participant.pseudo} ) }}">{{ participant.campus.name }}</a>
                             </td>
                         </tr>
-
-
-
 
                 {% endfor %}
                 </tbody>
